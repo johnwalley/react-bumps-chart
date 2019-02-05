@@ -1,0 +1,1750 @@
+{
+  "data": {
+    "set": "May Bumps",
+    "gender": "Women",
+    "crews": [
+      {
+        "name": "J",
+        "values": [
+          { "day": 0, "pos": 1 },
+          { "day": 1, "pos": 1 },
+          { "day": 2, "pos": 1 },
+          { "day": 3, "pos": 1 },
+          { "day": 4, "pos": 1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "J",
+            "day": 0,
+            "blades": true,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 1 },
+              { "day": 1, "pos": 1 },
+              { "day": 2, "pos": 1 },
+              { "day": 3, "pos": 1 },
+              { "day": 4, "pos": 1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "E",
+        "values": [
+          { "day": 0, "pos": 2 },
+          { "day": 1, "pos": 2 },
+          { "day": 2, "pos": 3 },
+          { "day": 3, "pos": 3 },
+          { "day": 4, "pos": 3 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "E",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 2 },
+              { "day": 1, "pos": 2 },
+              { "day": 2, "pos": 3 },
+              { "day": 3, "pos": 3 },
+              { "day": 4, "pos": 3 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ca",
+        "values": [
+          { "day": 0, "pos": 3 },
+          { "day": 1, "pos": 4 },
+          { "day": 2, "pos": 5 },
+          { "day": 3, "pos": 5 },
+          { "day": 4, "pos": 5 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Ca",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 3 },
+              { "day": 1, "pos": 4 },
+              { "day": 2, "pos": 5 },
+              { "day": 3, "pos": 5 },
+              { "day": 4, "pos": 5 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "N",
+        "values": [
+          { "day": 0, "pos": 4 },
+          { "day": 1, "pos": 3 },
+          { "day": 2, "pos": 2 },
+          { "day": 3, "pos": 2 },
+          { "day": 4, "pos": 2 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "N",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 4 },
+              { "day": 1, "pos": 3 },
+              { "day": 2, "pos": 2 },
+              { "day": 3, "pos": 2 },
+              { "day": 4, "pos": 2 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "D",
+        "values": [
+          { "day": 0, "pos": 5 },
+          { "day": 1, "pos": 5 },
+          { "day": 2, "pos": 4 },
+          { "day": 3, "pos": 4 },
+          { "day": 4, "pos": 4 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "D",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 5 },
+              { "day": 1, "pos": 5 },
+              { "day": 2, "pos": 4 },
+              { "day": 3, "pos": 4 },
+              { "day": 4, "pos": 4 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "L",
+        "values": [
+          { "day": 0, "pos": 6 },
+          { "day": 1, "pos": 7 },
+          { "day": 2, "pos": 7 },
+          { "day": 3, "pos": 7 },
+          { "day": 4, "pos": 7 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "L",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 6 },
+              { "day": 1, "pos": 7 },
+              { "day": 2, "pos": 7 },
+              { "day": 3, "pos": 7 },
+              { "day": 4, "pos": 7 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cl",
+        "values": [
+          { "day": 0, "pos": 7 },
+          { "day": 1, "pos": 6 },
+          { "day": 2, "pos": 6 },
+          { "day": 3, "pos": 6 },
+          { "day": 4, "pos": 6 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cl",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 7 },
+              { "day": 1, "pos": 6 },
+              { "day": 2, "pos": 6 },
+              { "day": 3, "pos": 6 },
+              { "day": 4, "pos": 6 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cr",
+        "values": [
+          { "day": 0, "pos": 8 },
+          { "day": 1, "pos": 9 },
+          { "day": 2, "pos": 10 },
+          { "day": 3, "pos": 11 },
+          { "day": 4, "pos": 12 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cr",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 8 },
+              { "day": 1, "pos": 9 },
+              { "day": 2, "pos": 10 },
+              { "day": 3, "pos": 11 },
+              { "day": 4, "pos": 12 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "G",
+        "values": [
+          { "day": 0, "pos": 9 },
+          { "day": 1, "pos": 8 },
+          { "day": 2, "pos": 8 },
+          { "day": 3, "pos": 8 },
+          { "day": 4, "pos": 8 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "G",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 9 },
+              { "day": 1, "pos": 8 },
+              { "day": 2, "pos": 8 },
+              { "day": 3, "pos": 8 },
+              { "day": 4, "pos": 8 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "T",
+        "values": [
+          { "day": 0, "pos": 10 },
+          { "day": 1, "pos": 10 },
+          { "day": 2, "pos": 9 },
+          { "day": 3, "pos": 9 },
+          { "day": 4, "pos": 10 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "T",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 10 },
+              { "day": 1, "pos": 10 },
+              { "day": 2, "pos": 9 },
+              { "day": 3, "pos": 9 },
+              { "day": 4, "pos": 10 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ph",
+        "values": [
+          { "day": 0, "pos": 11 },
+          { "day": 1, "pos": 12 },
+          { "day": 2, "pos": 13 },
+          { "day": 3, "pos": 14 },
+          { "day": 4, "pos": 15 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Ph",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 11 },
+              { "day": 1, "pos": 12 },
+              { "day": 2, "pos": 13 },
+              { "day": 3, "pos": 14 },
+              { "day": 4, "pos": 15 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cu",
+        "values": [
+          { "day": 0, "pos": 12 },
+          { "day": 1, "pos": 11 },
+          { "day": 2, "pos": 11 },
+          { "day": 3, "pos": 10 },
+          { "day": 4, "pos": 9 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cu",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 12 },
+              { "day": 1, "pos": 11 },
+              { "day": 2, "pos": 11 },
+              { "day": 3, "pos": 10 },
+              { "day": 4, "pos": 9 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "F",
+        "values": [
+          { "day": 0, "pos": 13 },
+          { "day": 1, "pos": 14 },
+          { "day": 2, "pos": 14 },
+          { "day": 3, "pos": 13 },
+          { "day": 4, "pos": 13 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "F",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 13 },
+              { "day": 1, "pos": 14 },
+              { "day": 2, "pos": 14 },
+              { "day": 3, "pos": 13 },
+              { "day": 4, "pos": 13 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pb",
+        "values": [
+          { "day": 0, "pos": 14 },
+          { "day": 1, "pos": 13 },
+          { "day": 2, "pos": 12 },
+          { "day": 3, "pos": 12 },
+          { "day": 4, "pos": 11 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pb",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 14 },
+              { "day": 1, "pos": 13 },
+              { "day": 2, "pos": 12 },
+              { "day": 3, "pos": 12 },
+              { "day": 4, "pos": 11 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Q",
+        "values": [
+          { "day": 0, "pos": 15 },
+          { "day": 1, "pos": 15 },
+          { "day": 2, "pos": 16 },
+          { "day": 3, "pos": 16 },
+          { "day": 4, "pos": 17 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Q",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 15 },
+              { "day": 1, "pos": 15 },
+              { "day": 2, "pos": 16 },
+              { "day": 3, "pos": 16 },
+              { "day": 4, "pos": 17 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "J2",
+        "values": [
+          { "day": 0, "pos": 16 },
+          { "day": 1, "pos": 17 },
+          { "day": 2, "pos": 18 },
+          { "day": 3, "pos": 19 },
+          { "day": 4, "pos": 20 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "J2",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 16 },
+              { "day": 1, "pos": 17 },
+              { "day": 2, "pos": 18 },
+              { "day": 3, "pos": 19 },
+              { "day": 4, "pos": 20 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "H",
+        "values": [
+          { "day": 0, "pos": 17 },
+          { "day": 1, "pos": 16 },
+          { "day": 2, "pos": 15 },
+          { "day": 3, "pos": 15 },
+          { "day": 4, "pos": 14 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "H",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 17 },
+              { "day": 1, "pos": 16 },
+              { "day": 2, "pos": 15 },
+              { "day": 3, "pos": 15 },
+              { "day": 4, "pos": 14 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "M",
+        "values": [
+          { "day": 0, "pos": 18 },
+          { "day": 1, "pos": 19 },
+          { "day": 2, "pos": 20 },
+          { "day": 3, "pos": 21 },
+          { "day": 4, "pos": 22 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "M",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 18 },
+              { "day": 1, "pos": 19 },
+              { "day": 2, "pos": 20 },
+              { "day": 3, "pos": 21 },
+              { "day": 4, "pos": 22 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SC",
+        "values": [
+          { "day": 0, "pos": 19 },
+          { "day": 1, "pos": 18 },
+          { "day": 2, "pos": 17 },
+          { "day": 3, "pos": 17 },
+          { "day": 4, "pos": 16 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SC",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 19 },
+              { "day": 1, "pos": 18 },
+              { "day": 2, "pos": 17 },
+              { "day": 3, "pos": 17 },
+              { "day": 4, "pos": 16 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TH",
+        "values": [
+          { "day": 0, "pos": 20 },
+          { "day": 1, "pos": 20 },
+          { "day": 2, "pos": 19 },
+          { "day": 3, "pos": 18 },
+          { "day": 4, "pos": 18 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "TH",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 20 },
+              { "day": 1, "pos": 20 },
+              { "day": 2, "pos": 19 },
+              { "day": 3, "pos": 18 },
+              { "day": 4, "pos": 18 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "K",
+        "values": [
+          { "day": 0, "pos": 21 },
+          { "day": 1, "pos": 21 },
+          { "day": 2, "pos": 21 },
+          { "day": 3, "pos": 20 },
+          { "day": 4, "pos": 19 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "K",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 21 },
+              { "day": 1, "pos": 21 },
+              { "day": 2, "pos": 21 },
+              { "day": 3, "pos": 20 },
+              { "day": 4, "pos": 19 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "N2",
+        "values": [
+          { "day": 0, "pos": 22 },
+          { "day": 1, "pos": 22 },
+          { "day": 2, "pos": 23 },
+          { "day": 3, "pos": 24 },
+          { "day": 4, "pos": 25 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "N2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 22 },
+              { "day": 1, "pos": 22 },
+              { "day": 2, "pos": 23 },
+              { "day": 3, "pos": 24 },
+              { "day": 4, "pos": 25 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ME",
+        "values": [
+          { "day": 0, "pos": 23 },
+          { "day": 1, "pos": 24 },
+          { "day": 2, "pos": 25 },
+          { "day": 3, "pos": 26 },
+          { "day": 4, "pos": 27 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "ME",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 23 },
+              { "day": 1, "pos": 24 },
+              { "day": 2, "pos": 25 },
+              { "day": 3, "pos": 26 },
+              { "day": 4, "pos": 27 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dw",
+        "values": [
+          { "day": 0, "pos": 24 },
+          { "day": 1, "pos": 23 },
+          { "day": 2, "pos": 22 },
+          { "day": 3, "pos": 22 },
+          { "day": 4, "pos": 21 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Dw",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 24 },
+              { "day": 1, "pos": 23 },
+              { "day": 2, "pos": 22 },
+              { "day": 3, "pos": 22 },
+              { "day": 4, "pos": 21 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "LC",
+        "values": [
+          { "day": 0, "pos": 25 },
+          { "day": 1, "pos": 25 },
+          { "day": 2, "pos": 24 },
+          { "day": 3, "pos": 23 },
+          { "day": 4, "pos": 23 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "LC",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 25 },
+              { "day": 1, "pos": 25 },
+              { "day": 2, "pos": 24 },
+              { "day": 3, "pos": 23 },
+              { "day": 4, "pos": 23 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "S",
+        "values": [
+          { "day": 0, "pos": 26 },
+          { "day": 1, "pos": 26 },
+          { "day": 2, "pos": 27 },
+          { "day": 3, "pos": 28 },
+          { "day": 4, "pos": 29 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "S",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 26 },
+              { "day": 1, "pos": 26 },
+              { "day": 2, "pos": 27 },
+              { "day": 3, "pos": 28 },
+              { "day": 4, "pos": 29 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pb2",
+        "values": [
+          { "day": 0, "pos": 27 },
+          { "day": 1, "pos": 28 },
+          { "day": 2, "pos": 29 },
+          { "day": 3, "pos": 30 },
+          { "day": 4, "pos": 30 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pb2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 27 },
+              { "day": 1, "pos": 28 },
+              { "day": 2, "pos": 29 },
+              { "day": 3, "pos": 30 },
+              { "day": 4, "pos": 30 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "W",
+        "values": [
+          { "day": 0, "pos": 28 },
+          { "day": 1, "pos": 27 },
+          { "day": 2, "pos": 26 },
+          { "day": 3, "pos": 25 },
+          { "day": 4, "pos": 24 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "W",
+            "day": 0,
+            "blades": true,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 28 },
+              { "day": 1, "pos": 27 },
+              { "day": 2, "pos": 26 },
+              { "day": 3, "pos": 25 },
+              { "day": 4, "pos": 24 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "R",
+        "values": [
+          { "day": 0, "pos": 29 },
+          { "day": 1, "pos": 30 },
+          { "day": 2, "pos": 31 },
+          { "day": 3, "pos": 32 },
+          { "day": 4, "pos": 33 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "R",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 29 },
+              { "day": 1, "pos": 30 },
+              { "day": 2, "pos": 31 },
+              { "day": 3, "pos": 32 },
+              { "day": 4, "pos": 33 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "E2",
+        "values": [
+          { "day": 0, "pos": 30 },
+          { "day": 1, "pos": 29 },
+          { "day": 2, "pos": 28 },
+          { "day": 3, "pos": 27 },
+          { "day": 4, "pos": 26 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "E2",
+            "day": 0,
+            "blades": true,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 30 },
+              { "day": 1, "pos": 29 },
+              { "day": 2, "pos": 28 },
+              { "day": 3, "pos": 27 },
+              { "day": 4, "pos": 26 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SS",
+        "values": [
+          { "day": 0, "pos": 31 },
+          { "day": 1, "pos": 31 },
+          { "day": 2, "pos": 30 },
+          { "day": 3, "pos": 29 },
+          { "day": 4, "pos": 28 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SS",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 31 },
+              { "day": 1, "pos": 31 },
+              { "day": 2, "pos": 30 },
+              { "day": 3, "pos": 29 },
+              { "day": 4, "pos": 28 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "D2",
+        "values": [
+          { "day": 0, "pos": 32 },
+          { "day": 1, "pos": 33 },
+          { "day": 2, "pos": 32 },
+          { "day": 3, "pos": 31 },
+          { "day": 4, "pos": 31 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "D2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 32 },
+              { "day": 1, "pos": 33 },
+              { "day": 2, "pos": 32 },
+              { "day": 3, "pos": 31 },
+              { "day": 4, "pos": 31 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CC",
+        "values": [
+          { "day": 0, "pos": 33 },
+          { "day": 1, "pos": 32 },
+          { "day": 2, "pos": 33 },
+          { "day": 3, "pos": 33 },
+          { "day": 4, "pos": 32 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "CC",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 33 },
+              { "day": 1, "pos": 32 },
+              { "day": 2, "pos": 33 },
+              { "day": 3, "pos": 33 },
+              { "day": 4, "pos": 32 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Q2",
+        "values": [
+          { "day": 0, "pos": 34 },
+          { "day": 1, "pos": 34 },
+          { "day": 2, "pos": 34 },
+          { "day": 3, "pos": 34 },
+          { "day": 4, "pos": 35 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Q2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 34 },
+              { "day": 1, "pos": 34 },
+              { "day": 2, "pos": 34 },
+              { "day": 3, "pos": 34 },
+              { "day": 4, "pos": 35 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cl2",
+        "values": [
+          { "day": 0, "pos": 35 },
+          { "day": 1, "pos": 35 },
+          { "day": 2, "pos": 36 },
+          { "day": 3, "pos": 37 },
+          { "day": 4, "pos": 37 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cl2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 35 },
+              { "day": 1, "pos": 35 },
+              { "day": 2, "pos": 36 },
+              { "day": 3, "pos": 37 },
+              { "day": 4, "pos": 37 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ca2",
+        "values": [
+          { "day": 0, "pos": 36 },
+          { "day": 1, "pos": 37 },
+          { "day": 2, "pos": 37 },
+          { "day": 3, "pos": 36 },
+          { "day": 4, "pos": 36 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Ca2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 36 },
+              { "day": 1, "pos": 37 },
+              { "day": 2, "pos": 37 },
+              { "day": 3, "pos": 36 },
+              { "day": 4, "pos": 36 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "L2",
+        "values": [
+          { "day": 0, "pos": 37 },
+          { "day": 1, "pos": 36 },
+          { "day": 2, "pos": 35 },
+          { "day": 3, "pos": 35 },
+          { "day": 4, "pos": 34 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "L2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 37 },
+              { "day": 1, "pos": 36 },
+              { "day": 2, "pos": 35 },
+              { "day": 3, "pos": 35 },
+              { "day": 4, "pos": 34 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "N3",
+        "values": [
+          { "day": 0, "pos": 38 },
+          { "day": 1, "pos": 39 },
+          { "day": 2, "pos": 40 },
+          { "day": 3, "pos": 41 },
+          { "day": 4, "pos": 42 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "N3",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 38 },
+              { "day": 1, "pos": 39 },
+              { "day": 2, "pos": 40 },
+              { "day": 3, "pos": 41 },
+              { "day": 4, "pos": 42 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TH2",
+        "values": [
+          { "day": 0, "pos": 39 },
+          { "day": 1, "pos": 38 },
+          { "day": 2, "pos": 38 },
+          { "day": 3, "pos": 38 },
+          { "day": 4, "pos": 38 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "TH2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 39 },
+              { "day": 1, "pos": 38 },
+              { "day": 2, "pos": 38 },
+              { "day": 3, "pos": 38 },
+              { "day": 4, "pos": 38 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SE",
+        "values": [
+          { "day": 0, "pos": 40 },
+          { "day": 1, "pos": 40 },
+          { "day": 2, "pos": 39 },
+          { "day": 3, "pos": 39 },
+          { "day": 4, "pos": 40 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SE",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 40 },
+              { "day": 1, "pos": 40 },
+              { "day": 2, "pos": 39 },
+              { "day": 3, "pos": 39 },
+              { "day": 4, "pos": 40 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ME2",
+        "values": [
+          { "day": 0, "pos": 41 },
+          { "day": 1, "pos": 42 },
+          { "day": 2, "pos": 43 },
+          { "day": 3, "pos": 44 },
+          { "day": 4, "pos": 45 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "ME2",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 41 },
+              { "day": 1, "pos": 42 },
+              { "day": 2, "pos": 43 },
+              { "day": 3, "pos": 44 },
+              { "day": 4, "pos": 45 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "HH",
+        "values": [
+          { "day": 0, "pos": 42 },
+          { "day": 1, "pos": 41 },
+          { "day": 2, "pos": 41 },
+          { "day": 3, "pos": 40 },
+          { "day": 4, "pos": 39 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "HH",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 42 },
+              { "day": 1, "pos": 41 },
+              { "day": 2, "pos": 41 },
+              { "day": 3, "pos": 40 },
+              { "day": 4, "pos": 39 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cr2",
+        "values": [
+          { "day": 0, "pos": 43 },
+          { "day": 1, "pos": 44 },
+          { "day": 2, "pos": 45 },
+          { "day": 3, "pos": 46 },
+          { "day": 4, "pos": 47 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cr2",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 43 },
+              { "day": 1, "pos": 44 },
+              { "day": 2, "pos": 45 },
+              { "day": 3, "pos": 46 },
+              { "day": 4, "pos": 47 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SC2",
+        "values": [
+          { "day": 0, "pos": 44 },
+          { "day": 1, "pos": 43 },
+          { "day": 2, "pos": 42 },
+          { "day": 3, "pos": 42 },
+          { "day": 4, "pos": 41 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SC2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 44 },
+              { "day": 1, "pos": 43 },
+              { "day": 2, "pos": 42 },
+              { "day": 3, "pos": 42 },
+              { "day": 4, "pos": 41 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "E3",
+        "values": [
+          { "day": 0, "pos": 45 },
+          { "day": 1, "pos": 45 },
+          { "day": 2, "pos": 44 },
+          { "day": 3, "pos": 43 },
+          { "day": 4, "pos": 43 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "E3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 45 },
+              { "day": 1, "pos": 45 },
+              { "day": 2, "pos": 44 },
+              { "day": 3, "pos": 43 },
+              { "day": 4, "pos": 43 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "J3",
+        "values": [
+          { "day": 0, "pos": 46 },
+          { "day": 1, "pos": 47 },
+          { "day": 2, "pos": 48 },
+          { "day": 3, "pos": 48 },
+          { "day": 4, "pos": 49 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "J3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 46 },
+              { "day": 1, "pos": 47 },
+              { "day": 2, "pos": 48 },
+              { "day": 3, "pos": 48 },
+              { "day": 4, "pos": 49 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pb3",
+        "values": [
+          { "day": 0, "pos": 47 },
+          { "day": 1, "pos": 46 },
+          { "day": 2, "pos": 46 },
+          { "day": 3, "pos": 45 },
+          { "day": 4, "pos": 44 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pb3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 47 },
+              { "day": 1, "pos": 46 },
+              { "day": 2, "pos": 46 },
+              { "day": 3, "pos": 45 },
+              { "day": 4, "pos": 44 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "K2",
+        "values": [
+          { "day": 0, "pos": 48 },
+          { "day": 1, "pos": 49 },
+          { "day": 2, "pos": 49 },
+          { "day": 3, "pos": 50 },
+          { "day": 4, "pos": 51 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "K2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 48 },
+              { "day": 1, "pos": 49 },
+              { "day": 2, "pos": 49 },
+              { "day": 3, "pos": 50 },
+              { "day": 4, "pos": 51 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dw2",
+        "values": [
+          { "day": 0, "pos": 49 },
+          { "day": 1, "pos": 48 },
+          { "day": 2, "pos": 47 },
+          { "day": 3, "pos": 47 },
+          { "day": 4, "pos": 46 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Dw2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 49 },
+              { "day": 1, "pos": 48 },
+              { "day": 2, "pos": 47 },
+              { "day": 3, "pos": 47 },
+              { "day": 4, "pos": 46 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cl3",
+        "values": [
+          { "day": 0, "pos": 50 },
+          { "day": 1, "pos": 50 },
+          { "day": 2, "pos": 51 },
+          { "day": 3, "pos": 51 },
+          { "day": 4, "pos": 50 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cl3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 50 },
+              { "day": 1, "pos": 50 },
+              { "day": 2, "pos": 51 },
+              { "day": 3, "pos": 51 },
+              { "day": 4, "pos": 50 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "H2",
+        "values": [
+          { "day": 0, "pos": 51 },
+          { "day": 1, "pos": 51 },
+          { "day": 2, "pos": 50 },
+          { "day": 3, "pos": 49 },
+          { "day": 4, "pos": 48 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "H2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 51 },
+              { "day": 1, "pos": 51 },
+              { "day": 2, "pos": 50 },
+              { "day": 3, "pos": 49 },
+              { "day": 4, "pos": 48 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "F2",
+        "values": [
+          { "day": 0, "pos": 52 },
+          { "day": 1, "pos": 53 },
+          { "day": 2, "pos": 54 },
+          { "day": 3, "pos": 55 },
+          { "day": 4, "pos": 56 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "F2",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 52 },
+              { "day": 1, "pos": 53 },
+              { "day": 2, "pos": 54 },
+              { "day": 3, "pos": 55 },
+              { "day": 4, "pos": 56 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Q3",
+        "values": [
+          { "day": 0, "pos": 53 },
+          { "day": 1, "pos": 52 },
+          { "day": 2, "pos": 52 },
+          { "day": 3, "pos": 53 },
+          { "day": 4, "pos": 54 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Q3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 53 },
+              { "day": 1, "pos": 52 },
+              { "day": 2, "pos": 52 },
+              { "day": 3, "pos": 53 },
+              { "day": 4, "pos": 54 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "LC2",
+        "values": [
+          { "day": 0, "pos": 54 },
+          { "day": 1, "pos": 54 },
+          { "day": 2, "pos": 53 },
+          { "day": 3, "pos": 52 },
+          { "day": 4, "pos": 52 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "LC2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 54 },
+              { "day": 1, "pos": 54 },
+              { "day": 2, "pos": 53 },
+              { "day": 3, "pos": 52 },
+              { "day": 4, "pos": 52 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "L3",
+        "values": [
+          { "day": 0, "pos": 55 },
+          { "day": 1, "pos": 56 },
+          { "day": 2, "pos": 57 },
+          { "day": 3, "pos": 58 },
+          { "day": 4, "pos": 59 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "L3",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 55 },
+              { "day": 1, "pos": 56 },
+              { "day": 2, "pos": 57 },
+              { "day": 3, "pos": 58 },
+              { "day": 4, "pos": 59 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SC3",
+        "values": [
+          { "day": 0, "pos": 56 },
+          { "day": 1, "pos": 55 },
+          { "day": 2, "pos": 55 },
+          { "day": 3, "pos": 54 },
+          { "day": 4, "pos": 53 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SC3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 56 },
+              { "day": 1, "pos": 55 },
+              { "day": 2, "pos": 55 },
+              { "day": 3, "pos": 54 },
+              { "day": 4, "pos": 53 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "M2",
+        "values": [
+          { "day": 0, "pos": 57 },
+          { "day": 1, "pos": 58 },
+          { "day": 2, "pos": 59 },
+          { "day": 3, "pos": 60 },
+          { "day": 4, "pos": 61 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "M2",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 57 },
+              { "day": 1, "pos": 58 },
+              { "day": 2, "pos": 59 },
+              { "day": 3, "pos": 60 },
+              { "day": 4, "pos": 61 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ca3",
+        "values": [
+          { "day": 0, "pos": 58 },
+          { "day": 1, "pos": 57 },
+          { "day": 2, "pos": 56 },
+          { "day": 3, "pos": 56 },
+          { "day": 4, "pos": 55 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Ca3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 58 },
+              { "day": 1, "pos": 57 },
+              { "day": 2, "pos": 56 },
+              { "day": 3, "pos": 56 },
+              { "day": 4, "pos": 55 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SS2",
+        "values": [
+          { "day": 0, "pos": 59 },
+          { "day": 1, "pos": 59 },
+          { "day": 2, "pos": 58 },
+          { "day": 3, "pos": 57 },
+          { "day": 4, "pos": 57 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SS2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 59 },
+              { "day": 1, "pos": 59 },
+              { "day": 2, "pos": 58 },
+              { "day": 3, "pos": 57 },
+              { "day": 4, "pos": 57 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cl4",
+        "values": [
+          { "day": 0, "pos": 60 },
+          { "day": 1, "pos": 60 },
+          { "day": 2, "pos": 60 },
+          { "day": 3, "pos": 59 },
+          { "day": 4, "pos": 58 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cl4",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 60 },
+              { "day": 1, "pos": 60 },
+              { "day": 2, "pos": 60 },
+              { "day": 3, "pos": 59 },
+              { "day": 4, "pos": 58 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "E4",
+        "values": [
+          { "day": 0, "pos": 61 },
+          { "day": 1, "pos": 64 },
+          { "day": 2, "pos": 64 },
+          { "day": 3, "pos": 65 },
+          { "day": 4, "pos": 66 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "E4",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 61 },
+              { "day": 1, "pos": 64 },
+              { "day": 2, "pos": 64 },
+              { "day": 3, "pos": 65 },
+              { "day": 4, "pos": 66 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dw3",
+        "values": [
+          { "day": 0, "pos": 62 },
+          { "day": 1, "pos": 63 },
+          { "day": 2, "pos": 63 },
+          { "day": 3, "pos": 62 },
+          { "day": 4, "pos": 63 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Dw3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 62 },
+              { "day": 1, "pos": 63 },
+              { "day": 2, "pos": 63 },
+              { "day": 3, "pos": 62 },
+              { "day": 4, "pos": 63 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pb4",
+        "values": [
+          { "day": 0, "pos": 63 },
+          { "day": 1, "pos": 62 },
+          { "day": 2, "pos": 62 },
+          { "day": 3, "pos": 63 },
+          { "day": 4, "pos": 62 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pb4",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 63 },
+              { "day": 1, "pos": 62 },
+              { "day": 2, "pos": 62 },
+              { "day": 3, "pos": 63 },
+              { "day": 4, "pos": 62 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TH3",
+        "values": [
+          { "day": 0, "pos": 64 },
+          { "day": 1, "pos": 61 },
+          { "day": 2, "pos": 61 },
+          { "day": 3, "pos": 61 },
+          { "day": 4, "pos": 60 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "TH3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 64 },
+              { "day": 1, "pos": 61 },
+              { "day": 2, "pos": 61 },
+              { "day": 3, "pos": 61 },
+              { "day": 4, "pos": 60 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "W2",
+        "values": [
+          { "day": 0, "pos": 65 },
+          { "day": 1, "pos": 65 },
+          { "day": 2, "pos": 66 },
+          { "day": 3, "pos": 67 },
+          { "day": 4, "pos": 67 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "W2",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 65 },
+              { "day": 1, "pos": 65 },
+              { "day": 2, "pos": 66 },
+              { "day": 3, "pos": 67 },
+              { "day": 4, "pos": 67 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Q4",
+        "values": [
+          { "day": 0, "pos": 66 },
+          { "day": 1, "pos": 67 },
+          { "day": 2, "pos": 68 },
+          { "day": 3, "pos": 69 },
+          { "day": 4, "pos": 68 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Q4",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 66 },
+              { "day": 1, "pos": 67 },
+              { "day": 2, "pos": 68 },
+              { "day": 3, "pos": 69 },
+              { "day": 4, "pos": 68 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TH4",
+        "values": [
+          { "day": 0, "pos": 67 },
+          { "day": 1, "pos": 66 },
+          { "day": 2, "pos": 65 },
+          { "day": 3, "pos": 64 },
+          { "day": 4, "pos": 64 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "TH4",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 67 },
+              { "day": 1, "pos": 66 },
+              { "day": 2, "pos": 65 },
+              { "day": 3, "pos": 64 },
+              { "day": 4, "pos": 64 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "H3",
+        "values": [
+          { "day": 0, "pos": 68 },
+          { "day": 1, "pos": 69 },
+          { "day": 2, "pos": 69 },
+          { "day": 3, "pos": 68 },
+          { "day": 4, "pos": 69 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "H3",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 68 },
+              { "day": 1, "pos": 69 },
+              { "day": 2, "pos": 69 },
+              { "day": 3, "pos": 68 },
+              { "day": 4, "pos": 69 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SC4",
+        "values": [
+          { "day": 0, "pos": 69 },
+          { "day": 1, "pos": 68 },
+          { "day": 2, "pos": 67 },
+          { "day": 3, "pos": 66 },
+          { "day": 4, "pos": 65 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "SC4",
+            "day": 0,
+            "blades": true,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 69 },
+              { "day": 1, "pos": 68 },
+              { "day": 2, "pos": 67 },
+              { "day": 3, "pos": 66 },
+              { "day": 4, "pos": 65 }
+            ]
+          }
+        ]
+      }
+    ],
+    "startYear": 2018,
+    "endYear": 2018,
+    "maxCrews": 69,
+    "divisions": [
+      {
+        "year": 2018,
+        "divisions": [
+          { "start": 1, "size": 17 },
+          { "start": 18, "size": 17 },
+          { "start": 35, "size": 17 },
+          { "start": 52, "size": 18 }
+        ],
+        "startDay": 0,
+        "numDays": 4
+      }
+    ],
+    "small": "Mays"
+  }
+}
