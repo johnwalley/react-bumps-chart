@@ -37,6 +37,7 @@ const heightOfOneCrew = 24;
 const Container = styled.div`
   position: relative;
   max-width: 800px;
+  min-width: 520px;
 `;
 
 const Wrapper = styled.div`
