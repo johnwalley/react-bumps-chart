@@ -30,4 +30,4 @@ If you want to build
 
 ## Documentation
 
-See https://react-bumps-chart.netlify.com/
+See https://react-bumps-chart.mulberryhousesoftware.com/
