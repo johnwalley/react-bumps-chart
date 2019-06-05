@@ -119,14 +119,21 @@ const BumpsChart = ({ data }) => {
       names = shortShortNames.oxford;
       abbr = abbreviations.oxford;
       break;
+    case 'Town Bumps':
+      names = shortShortNames.uk;
+      abbr = Object.assign(
+        {},
+        ...Object.values(abbreviations.uk).map(x => ({ [x]: x }))
+      );
+      break;
   }
 
   const crews = data.crews.map(crew => {
     return {
       code: Object.keys(names).find(
-        key => names[key] === abbr[crew.name.replace(/\d/g, '')]
+        key => names[key] === abbr[crew.name.replace(/ ?\d$/g, '')]
       ),
-      number: +crew.name.match(/\d+/),
+      number: +crew.name.match(/\d+$/),
       name: crew.name,
     };
   });
@@ -203,24 +210,15 @@ const BumpsChart = ({ data }) => {
     );
   };
 
+  const BackgroundContainer = styled.div`
+    position: absolute;
+    width: 100%;
+  `;
+
   const Background = () => {
     return (
-      <div
-        style={{
-          position: 'absolute',
-          cursor: 'pointer',
-          pointerEvents: 'all',
-          width: '100%',
-        }}
-      >
-        <svg
-          style={{
-            cursor: 'pointer',
-            pointerEvents: 'all',
-          }}
-          height={heightOfOneCrew * numCrews}
-          width="100%"
-        >
+      <BackgroundContainer>
+        <svg height={heightOfOneCrew * numCrews} width="100%">
           <g className="zebra-stripes">
             {data.crews.map((d, i) => (
               <rect
@@ -248,7 +246,7 @@ const BumpsChart = ({ data }) => {
             ))}
           </g>
         </svg>
-      </div>
+      </BackgroundContainer>
     );
   };
 

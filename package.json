@@ -34,7 +34,7 @@
     "react": "^16.8.0",
     "react-container-dimensions": "^1.4.1",
     "react-dom": "^16.8.0",
-    "react-rowing-blades": "^1.3.2",
+    "react-rowing-blades": "^1.4.0",
     "styled-components": "^4.2.0"
   }
 }
