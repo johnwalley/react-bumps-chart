@@ -129,11 +129,28 @@ const BumpsChart = ({ data }) => {
   }
 
   const crews = data.crews.map(crew => {
+    let code = Object.keys(names).find(
+      key => names[key] === abbr[crew.name.replace(/ ?\d+$/g, '')]
+    );
+
+    // Couldn't find club code based on abbreviation
+    // Search using full name instead
+    if (!code) {
+      code = Object.keys(names).find(
+        key => names[key] === crew.name.replace(/ ?\d+$/g, '')
+      );
+    }
+
+    const number = +crew.name.match(/\d+$/);
+
     return {
-      code: Object.keys(names).find(
-        key => names[key] === abbr[crew.name.replace(/ ?\d$/g, '')]
-      ),
-      number: +crew.name.match(/\d+$/),
+      code,
+      number,
+      label:
+        names[code] +
+        (number
+          ? ` ${data.set === 'Town Bumps' ? number : roman[number - 1]}`
+          : ''),
       name: crew.name,
     };
   });
@@ -266,9 +283,7 @@ const BumpsChart = ({ data }) => {
                 <Position active={hover === d.name}>{i + 1}</Position>
                 <StyledBlade club={d.code} size={50} />
               </BladeWrapper>
-              <Label active={hover === d.name}>
-                {names[d.code] + (d.number ? ` ${roman[d.number - 1]}` : '')}
-              </Label>
+              <Label active={hover === d.name}>{d.label}</Label>
             </Crew>
           ))}
         </Crews>
@@ -284,10 +299,7 @@ const BumpsChart = ({ data }) => {
               active={hover === '' || hover === crews[finishOrder[i]].name}
             >
               <Label active={hover === crews[finishOrder[i]].name}>
-                {names[crews[finishOrder[i]].code] +
-                  (crews[finishOrder[i]].number
-                    ? ` ${roman[crews[finishOrder[i]].number - 1]}`
-                    : '')}
+                {crews[finishOrder[i]].label}
               </Label>
               <BladeWrapper>
                 <Blade club={crews[finishOrder[i]].code} size={50} />
