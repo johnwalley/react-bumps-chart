@@ -34,23 +34,27 @@ const roman = [
 
 const heightOfOneCrew = 24;
 
+const calculateFontSize = width => {
+  return width < 500 ? 11 : 14;
+};
+
 const Container = styled.div`
   position: relative;
-  max-width: 800px;
-  min-width: 520px;
+  max-width: 520px;
+  min-width: 320px;
+  font-family: sans-serif;
+  font-size: ${props => calculateFontSize(props.width)}px;
 `;
 
 const Wrapper = styled.div`
   position: relative;
   top: -100%;
-  font-family: sans-serif;
-  font-size: 14px;
   display: flex;
   justify-content: flex-start;
 `;
 
 const Crews = styled.div`
-  flex: 2 1 0;
+  flex: 1 1 0;
   cursor: pointer;
 `;
 
@@ -128,32 +132,34 @@ const BumpsChart = ({ data }) => {
       break;
   }
 
-  const crews = data.crews.map(crew => {
-    let code = Object.keys(names).find(
-      key => names[key] === abbr[crew.name.replace(/ ?\d+$/g, '')]
-    );
-
-    // Couldn't find club code based on abbreviation
-    // Search using full name instead
-    if (!code) {
-      code = Object.keys(names).find(
-        key => names[key] === crew.name.replace(/ ?\d+$/g, '')
+  const crews = data.crews
+    .sort((a, b) => a.values[0].pos - b.values[0].pos)
+    .map(crew => {
+      let code = Object.keys(names).find(
+        key => names[key] === abbr[crew.name.replace(/ ?\d+$/g, '')]
       );
-    }
 
-    const number = +crew.name.match(/\d+$/);
+      // Couldn't find club code based on abbreviation
+      // Search using full name instead
+      if (!code) {
+        code = Object.keys(names).find(
+          key => names[key] === crew.name.replace(/ ?\d+$/g, '')
+        );
+      }
 
-    return {
-      code,
-      number,
-      label:
-        names[code] +
-        (number
-          ? ` ${data.set === 'Town Bumps' ? number : roman[number - 1]}`
-          : ''),
-      name: crew.name,
-    };
-  });
+      const number = +crew.name.match(/\d+$/);
+
+      return {
+        code,
+        number,
+        label:
+          names[code] +
+          (number
+            ? ` ${data.set === 'Town Bumps' ? number : roman[number - 1]}`
+            : ''),
+        name: crew.name,
+      };
+    });
 
   const startPositions = data.crews.map(crew => crew.values[0].pos);
   const finishPositions = data.crews.map(crew => crew.values[4].pos);
@@ -268,50 +274,52 @@ const BumpsChart = ({ data }) => {
   };
 
   return (
-    <Container>
-      <Background />
-      <Wrapper>
-        <Crews>
-          {crews.map((d, i) => (
-            <Crew
-              key={i}
-              onMouseEnter={() => setHover(d.name)}
-              onMouseLeave={() => setHover('')}
-              active={hover === '' || hover === d.name}
-            >
-              <BladeWrapper>
-                <Position active={hover === d.name}>{i + 1}</Position>
-                <StyledBlade club={d.code} size={50} />
-              </BladeWrapper>
-              <Label active={hover === d.name}>{d.label}</Label>
-            </Crew>
-          ))}
-        </Crews>
-        <Results>
-          <Lines />
-        </Results>
-        <Crews>
-          {crews.map((d, i) => (
-            <Crew
-              key={i}
-              onMouseEnter={() => setHover(crews[finishOrder[i]].name)}
-              onMouseLeave={() => setHover('')}
-              active={hover === '' || hover === crews[finishOrder[i]].name}
-            >
-              <Label active={hover === crews[finishOrder[i]].name}>
-                {crews[finishOrder[i]].label}
-              </Label>
-              <BladeWrapper>
-                <Blade club={crews[finishOrder[i]].code} size={50} />
-                <Position active={hover === crews[finishOrder[i]].name}>
-                  {i + 1}
-                </Position>
-              </BladeWrapper>
-            </Crew>
-          ))}
-        </Crews>
-      </Wrapper>
-    </Container>
+    <ContainerDimensions>
+      <Container>
+        <Background />
+        <Wrapper>
+          <Crews>
+            {crews.map((d, i) => (
+              <Crew
+                key={i}
+                onMouseEnter={() => setHover(d.name)}
+                onMouseLeave={() => setHover('')}
+                active={hover === '' || hover === d.name}
+              >
+                <BladeWrapper>
+                  <Position active={hover === d.name}>{i + 1}</Position>
+                  <StyledBlade club={d.code} size={50} />
+                </BladeWrapper>
+                <Label active={hover === d.name}>{d.label}</Label>
+              </Crew>
+            ))}
+          </Crews>
+          <Results>
+            <Lines />
+          </Results>
+          <Crews>
+            {crews.map((d, i) => (
+              <Crew
+                key={i}
+                onMouseEnter={() => setHover(crews[finishOrder[i]].name)}
+                onMouseLeave={() => setHover('')}
+                active={hover === '' || hover === crews[finishOrder[i]].name}
+              >
+                <Label active={hover === crews[finishOrder[i]].name}>
+                  {crews[finishOrder[i]].label}
+                </Label>
+                <BladeWrapper>
+                  <Blade club={crews[finishOrder[i]].code} size={50} />
+                  <Position active={hover === crews[finishOrder[i]].name}>
+                    {i + 1}
+                  </Position>
+                </BladeWrapper>
+              </Crew>
+            ))}
+          </Crews>
+        </Wrapper>
+      </Container>
+    </ContainerDimensions>
   );
 };
 

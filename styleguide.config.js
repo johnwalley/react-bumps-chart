@@ -12,9 +12,20 @@ module.exports = {
     },
     {
       name: 'Components',
-      components: './src/**/[A-Z]*.jsx',
+      components: './src/**/[A-Z]*.js',
       exampleMode: 'expand',
       usageMode: 'expand',
     },
   ],
+  webpackConfig: {
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+        },
+      ],
+    },
+  },
 };
