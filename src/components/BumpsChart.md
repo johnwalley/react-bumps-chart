@@ -26,3 +26,12 @@ const mockData = require('./mocks');
   <BumpsChart data={mockData.town_men_2018} />
 </>;
 ```
+
+```jsx
+const mockData = require('./mocks');
+
+<>
+  <h1>Lent Bumps 2019 - Men's Divisions</h1>
+  <BumpsChart data={mockData.lents_men_2019} />
+</>;
+```

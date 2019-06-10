@@ -116,9 +116,11 @@ const BumpsChart = ({ data }) => {
 
   switch (data.set) {
     case 'May Bumps':
+    case 'Lent Bumps':
       names = shortShortNames.cambridge;
       abbr = abbreviations.cambridge;
       break;
+    case 'Summer Eights':
     case 'Torpids':
       names = shortShortNames.oxford;
       abbr = abbreviations.oxford;
@@ -130,21 +132,33 @@ const BumpsChart = ({ data }) => {
         ...Object.values(abbreviations.uk).map(x => ({ [x]: x }))
       );
       break;
+    default:
+      throw new Error(`${data.set} not recognised as a set`);
   }
 
   const crews = data.crews
     .sort((a, b) => a.values[0].pos - b.values[0].pos)
     .map(crew => {
-      let code = Object.keys(names).find(
-        key => names[key] === abbr[crew.name.replace(/ ?\d+$/g, '')]
-      );
+      const name = crew.name.replace(/ ?\d+$/g, '');
+
+      let code = Object.keys(names).find(key => names[key] === abbr[name]);
 
       // Couldn't find club code based on abbreviation
       // Search using full name instead
       if (!code) {
-        code = Object.keys(names).find(
-          key => names[key] === crew.name.replace(/ ?\d+$/g, '')
-        );
+        code = Object.keys(names).find(key => names[key] === name);
+      }
+
+      if (!code) {
+        if (name === 'LMBC') {
+          code = 'lmb';
+        } else if (name === '1st and 3rd') {
+          code = 'ftt';
+        } else if (name === "St Catharine's") {
+          code = 'scc';
+        } else if (name === "St Edmund's") {
+          code = 'sec';
+        }
       }
 
       const number = +crew.name.match(/\d+$/);
