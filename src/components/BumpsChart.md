@@ -5,7 +5,9 @@ const mockData = require('./mocks');
 
 <>
   <h1>May Bumps 2018 - Women's Divisions</h1>
-  <BumpsChart data={mockData.mays_women_2018} />
+  <div style={{ width: '320px' }}>
+    <BumpsChart data={mockData.mays_women_2018} />
+  </div>
 </>;
 ```
 

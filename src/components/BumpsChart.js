@@ -8,6 +8,8 @@ import ContainerDimensions from 'react-container-dimensions';
 import Blade, { shortShortNames, abbreviations } from 'react-rowing-blades';
 
 const UNSELECTED_OPACITY = 0.7;
+const BLADE_SIZE = 32;
+const heightOfOneCrew = 18;
 
 const roman = [
   'I',
@@ -32,10 +34,8 @@ const roman = [
   'XX',
 ];
 
-const heightOfOneCrew = 24;
-
 const calculateFontSize = width => {
-  return width < 500 ? 11 : 14;
+  return width < 500 ? 10 : 14;
 };
 
 const Container = styled.div`
@@ -68,13 +68,13 @@ const Crew = styled.div`
   justify-content: space-between;
   align-items: center;
   opacity: ${props => (props.active ? 1 : UNSELECTED_OPACITY)};
-  padding: 0 10px 0 10px;
+  padding: 0 6px 0 6px;
 `;
 
 const BladeWrapper = styled.div`
   flex: 0 0 auto;
   display: flex;
-  width: 70px;
+  width: 40px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -302,7 +302,7 @@ const BumpsChart = ({ data }) => {
               >
                 <BladeWrapper>
                   <Position active={hover === d.name}>{i + 1}</Position>
-                  <StyledBlade club={d.code} size={50} />
+                  <StyledBlade club={d.code} size={BLADE_SIZE} />
                 </BladeWrapper>
                 <Label active={hover === d.name}>{d.label}</Label>
               </Crew>
@@ -323,7 +323,7 @@ const BumpsChart = ({ data }) => {
                   {crews[finishOrder[i]].label}
                 </Label>
                 <BladeWrapper>
-                  <Blade club={crews[finishOrder[i]].code} size={50} />
+                  <Blade club={crews[finishOrder[i]].code} size={BLADE_SIZE} />
                   <Position active={hover === crews[finishOrder[i]].name}>
                     {i + 1}
                   </Position>

@@ -1,6 +1,6 @@
 {
   "name": "react-bumps-chart",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "React Bumps Chart is a library for drawing rowing bumps charts.",
   "main": "umd/react-bumps-chart.js",
   "module": "esm/index.js",
