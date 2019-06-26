@@ -4,12 +4,12 @@ import { line } from 'd3-shape';
 import { voronoi } from 'd3-voronoi';
 import { merge } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
-import ContainerDimensions from 'react-container-dimensions';
+import { withSize } from 'react-sizeme';
+
 import Blade, { shortShortNames, abbreviations } from 'react-rowing-blades';
 
 const UNSELECTED_OPACITY = 0.7;
-const BLADE_SIZE = 32;
-const heightOfOneCrew = 18;
+const MOBILE_WIDTH = 400;
 
 const roman = [
   'I',
@@ -35,7 +35,7 @@ const roman = [
 ];
 
 const calculateFontSize = width => {
-  return width < 500 ? 10 : 14;
+  return width < MOBILE_WIDTH ? 10 : 14;
 };
 
 const Container = styled.div`
@@ -64,7 +64,7 @@ const Results = styled.div`
 
 const Crew = styled.div`
   display: flex;
-  height: ${heightOfOneCrew}px;
+  height: ${props => props.height}px;
   justify-content: space-between;
   align-items: center;
   opacity: ${props => (props.active ? 1 : UNSELECTED_OPACITY)};
@@ -72,9 +72,8 @@ const Crew = styled.div`
 `;
 
 const BladeWrapper = styled.div`
-  flex: 0 0 auto;
+  flex: 0 0 ${props => props.width}px;
   display: flex;
-  width: 40px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -90,7 +89,7 @@ const Label = styled.div`
 
 const StyledBlade = styled(Blade)`
   flex: 0 0 auto;
-  transform: scale(-1, 1);
+  transform: ${props => (props.reverse ? 'scale(-1, 1)' : null)};
 `;
 
 const StyledSvg = styled.svg`
@@ -102,14 +101,18 @@ const StyledSvg = styled.svg`
 const Line = styled.path`
   fill: none;
   stroke: black;
-  stroke-width: ${props => (props.active ? '2px' : '1px')};
+  stroke-width: ${props => (props.active ? '1.5px' : '1px')};
   stroke-dasharray: ${props =>
     props.blades ? '10,5' : props.spoons ? '5,5' : null};
   opacity: ${props => (props.active ? 1 : UNSELECTED_OPACITY)};
 `;
 
-const BumpsChart = ({ data }) => {
+const BumpsChart = ({ data, size: { width } }) => {
   const [hover, setHover] = useState('');
+
+  const heightOfOneCrew = width < MOBILE_WIDTH ? 12 : 20;
+  const bladeSize = width < MOBILE_WIDTH ? 22 : 36;
+  const bladeWrapperWidth = width < MOBILE_WIDTH ? 32 : 48;
 
   let names;
   let abbr;
@@ -288,53 +291,56 @@ const BumpsChart = ({ data }) => {
   };
 
   return (
-    <ContainerDimensions>
-      <Container>
-        <Background />
-        <Wrapper>
-          <Crews>
-            {crews.map((d, i) => (
-              <Crew
-                key={i}
-                onMouseEnter={() => setHover(d.name)}
-                onMouseLeave={() => setHover('')}
-                active={hover === '' || hover === d.name}
-              >
-                <BladeWrapper>
-                  <Position active={hover === d.name}>{i + 1}</Position>
-                  <StyledBlade club={d.code} size={BLADE_SIZE} />
-                </BladeWrapper>
-                <Label active={hover === d.name}>{d.label}</Label>
-              </Crew>
-            ))}
-          </Crews>
-          <Results>
-            <Lines />
-          </Results>
-          <Crews>
-            {crews.map((d, i) => (
-              <Crew
-                key={i}
-                onMouseEnter={() => setHover(crews[finishOrder[i]].name)}
-                onMouseLeave={() => setHover('')}
-                active={hover === '' || hover === crews[finishOrder[i]].name}
-              >
-                <Label active={hover === crews[finishOrder[i]].name}>
-                  {crews[finishOrder[i]].label}
-                </Label>
-                <BladeWrapper>
-                  <Blade club={crews[finishOrder[i]].code} size={BLADE_SIZE} />
-                  <Position active={hover === crews[finishOrder[i]].name}>
-                    {i + 1}
-                  </Position>
-                </BladeWrapper>
-              </Crew>
-            ))}
-          </Crews>
-        </Wrapper>
-      </Container>
-    </ContainerDimensions>
+    <Container width={width}>
+      <Background />
+      <Wrapper>
+        <Crews>
+          {crews.map((d, i) => (
+            <Crew
+              key={i}
+              onMouseEnter={() => setHover(d.name)}
+              onMouseLeave={() => setHover('')}
+              active={hover === '' || hover === d.name}
+              height={heightOfOneCrew}
+            >
+              <BladeWrapper width={bladeWrapperWidth}>
+                <Position active={hover === d.name}>{i + 1}</Position>
+                <StyledBlade club={d.code} size={bladeSize} reverse />
+              </BladeWrapper>
+              <Label active={hover === d.name}>{d.label}</Label>
+            </Crew>
+          ))}
+        </Crews>
+        <Results>
+          <Lines />
+        </Results>
+        <Crews>
+          {crews.map((d, i) => (
+            <Crew
+              key={i}
+              onMouseEnter={() => setHover(crews[finishOrder[i]].name)}
+              onMouseLeave={() => setHover('')}
+              active={hover === '' || hover === crews[finishOrder[i]].name}
+              height={heightOfOneCrew}
+            >
+              <Label active={hover === crews[finishOrder[i]].name}>
+                {crews[finishOrder[i]].label}
+              </Label>
+              <BladeWrapper width={bladeWrapperWidth}>
+                <StyledBlade
+                  club={crews[finishOrder[i]].code}
+                  size={bladeSize}
+                />
+                <Position active={hover === crews[finishOrder[i]].name}>
+                  {i + 1}
+                </Position>
+              </BladeWrapper>
+            </Crew>
+          ))}
+        </Crews>
+      </Wrapper>
+    </Container>
   );
 };
 
-export default BumpsChart;
+export default withSize()(BumpsChart);

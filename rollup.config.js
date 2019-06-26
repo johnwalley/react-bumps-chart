@@ -13,7 +13,11 @@ export default [
         exclude: 'node_modules/**',
       }),
       resolve(),
-      commonjs(),
+      commonjs({
+        namedExports: {
+          'node_modules/react-sizeme/dist/react-sizeme.js': ['withSize'],
+        },
+      }),
       terser(),
     ],
     output: {
