@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { line } from 'd3-shape';
 import { voronoi } from 'd3-voronoi';
-import { merge } from 'd3-array';
+import { merge, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { withSize } from 'react-sizeme';
 
@@ -290,6 +290,14 @@ const BumpsChart = ({ data, size: { width } }) => {
     );
   };
 
+  const placeInDivision = useMemo(
+    () =>
+      merge(
+        data.divisions[0].divisions.map(division => range(1, division.size + 1))
+      ),
+    [data.divisions[0].divisions]
+  );
+
   return (
     <Container width={width}>
       <Background />
@@ -304,7 +312,9 @@ const BumpsChart = ({ data, size: { width } }) => {
               height={heightOfOneCrew}
             >
               <BladeWrapper width={bladeWrapperWidth}>
-                <Position active={hover === d.name}>{i + 1}</Position>
+                <Position active={hover === d.name}>
+                  {placeInDivision[i]}
+                </Position>
                 <StyledBlade club={d.code} size={bladeSize} reverse />
               </BladeWrapper>
               <Label active={hover === d.name}>{d.label}</Label>
