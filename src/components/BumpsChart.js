@@ -9,7 +9,7 @@ import { withSize } from 'react-sizeme';
 import Blade, { shortShortNames, abbreviations } from 'react-rowing-blades';
 
 const UNSELECTED_OPACITY = 0.7;
-const MOBILE_WIDTH = 400;
+const MOBILE_WIDTH = 440;
 
 const roman = [
   'I',
@@ -112,7 +112,7 @@ const BumpsChart = ({ data, size: { width } }) => {
 
   const heightOfOneCrew = width < MOBILE_WIDTH ? 12 : 20;
   const bladeSize = width < MOBILE_WIDTH ? 22 : 36;
-  const bladeWrapperWidth = width < MOBILE_WIDTH ? 32 : 48;
+  const bladeWrapperWidth = width < MOBILE_WIDTH ? 32 : 52;
 
   let names;
   let abbr;
