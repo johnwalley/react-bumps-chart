@@ -46,6 +46,11 @@ const Container = styled.div`
   font-size: ${props => calculateFontSize(props.width)}px;
 `;
 
+const BackgroundContainer = styled.div`
+  position: absolute;
+  width: 100%;
+`;
+
 const Wrapper = styled.div`
   position: relative;
   top: -100%;
@@ -249,11 +254,6 @@ const BumpsChart = ({ data, size: { width } }) => {
       </StyledSvg>
     );
   };
-
-  const BackgroundContainer = styled.div`
-    position: absolute;
-    width: 100%;
-  `;
 
   const Background = () => {
     return (
