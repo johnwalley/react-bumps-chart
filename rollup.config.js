@@ -15,7 +15,7 @@ export default [
       resolve(),
       commonjs({
         namedExports: {
-          'node_modules/react-sizeme/dist/react-sizeme.js': ['withSize'],
+          'react-sizeme': ['withSize'],
         },
       }),
       terser(),
