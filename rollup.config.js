@@ -23,6 +23,7 @@ export default [
     output: {
       file: pkg.main,
       format: 'umd',
+      globals: { react: 'React', 'styled-components': 'styled' },
       name: 'reactRowingBlades',
       esModule: false,
     },
