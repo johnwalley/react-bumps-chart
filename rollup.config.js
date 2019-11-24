@@ -37,7 +37,7 @@ export default [
       }),
     ],
     output: {
-      file: 'esm/index.js',
+      file: pkg.module,
       format: 'esm',
     },
   },
