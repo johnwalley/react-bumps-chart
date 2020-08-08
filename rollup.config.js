@@ -35,6 +35,12 @@ export default [
       babel({
         exclude: 'node_modules/**',
       }),
+      resolve(),
+      commonjs({
+        namedExports: {
+          'react-sizeme': ['withSize'],
+        },
+      }),
     ],
     output: {
       file: pkg.module,
