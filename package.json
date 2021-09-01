@@ -37,7 +37,7 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "d3-array": "^2.0.0",
+    "d3-array": "^3.0.2",
     "d3-scale": "^3.0.0",
     "d3-shape": "^2.0.0",
     "d3-voronoi": "^1.1.4",
