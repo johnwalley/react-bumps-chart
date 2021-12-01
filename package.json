@@ -41,7 +41,7 @@
     "d3-scale": "^3.0.0",
     "d3-shape": "^2.0.0",
     "d3-voronoi": "^1.1.4",
-    "react-rowing-blades": "^1.6.1",
+    "react-rowing-blades": "^2.1.0",
     "react-sizeme": "^2.6.10"
   },
   "peerDependencies": {
