@@ -6,7 +6,7 @@ import { merge, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { withSize } from 'react-sizeme';
 
-import Blade, { shortShortNames, abbreviations } from 'react-rowing-blades';
+import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
 
 const UNSELECTED_OPACITY = 0.7;
 const MOBILE_WIDTH = 440;
