@@ -34,7 +34,7 @@ const roman = [
   'XX',
 ];
 
-const calculateFontSize = width => {
+const calculateFontSize = (width) => {
   return width < MOBILE_WIDTH ? 10 : 14;
 };
 
@@ -43,7 +43,7 @@ const Container = styled.div`
   max-width: 520px;
   min-width: 320px;
   font-family: sans-serif;
-  font-size: ${props => calculateFontSize(props.width)}px;
+  font-size: ${(props) => calculateFontSize(props.width)}px;
 `;
 
 const BackgroundContainer = styled.div`
@@ -69,32 +69,32 @@ const Results = styled.div`
 
 const Crew = styled.div`
   display: flex;
-  height: ${props => props.height}px;
+  height: ${(props) => props.height}px;
   justify-content: space-between;
   align-items: center;
-  opacity: ${props => (props.active ? 1 : UNSELECTED_OPACITY)};
+  opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
   padding: 0 6px 0 6px;
 `;
 
 const BladeWrapper = styled.div`
-  flex: 0 0 ${props => props.width}px;
+  flex: 0 0 ${(props) => props.width}px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Position = styled.div`
-  font-weight: ${props => (props.active ? 'bold' : 'normal')};
+  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
 `;
 
 const Label = styled.div`
   flex: 0 0 auto;
-  font-weight: ${props => (props.active ? 'bold' : 'normal')};
+  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
 `;
 
 const StyledBlade = styled(Blade)`
   flex: 0 0 auto;
-  transform: ${props => (props.reverse ? 'scale(-1, 1)' : null)};
+  transform: ${(props) => (props.reverse ? 'scale(-1, 1)' : null)};
 `;
 
 const StyledSvg = styled.svg`
@@ -106,10 +106,10 @@ const StyledSvg = styled.svg`
 const Line = styled.path`
   fill: none;
   stroke: black;
-  stroke-width: ${props => (props.active ? '1.5px' : '1px')};
-  stroke-dasharray: ${props =>
+  stroke-width: ${(props) => (props.active ? '1.5px' : '1px')};
+  stroke-dasharray: ${(props) =>
     props.blades ? '10,5' : props.spoons ? '5,5' : null};
-  opacity: ${props => (props.active ? 1 : UNSELECTED_OPACITY)};
+  opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
 `;
 
 const BumpsChart = ({ data, size: { width } }) => {
@@ -137,7 +137,7 @@ const BumpsChart = ({ data, size: { width } }) => {
       names = shortShortNames.uk;
       abbr = Object.assign(
         {},
-        ...Object.values(abbreviations.uk).map(x => ({ [x]: x }))
+        ...Object.values(abbreviations.uk).map((x) => ({ [x]: x }))
       );
       break;
     default:
@@ -146,15 +146,15 @@ const BumpsChart = ({ data, size: { width } }) => {
 
   const crews = data.crews
     .sort((a, b) => a.values[0].pos - b.values[0].pos)
-    .map(crew => {
+    .map((crew) => {
       const name = crew.name.replace(/ ?\d+$/g, '');
 
-      let code = Object.keys(names).find(key => names[key] === abbr[name]);
+      let code = Object.keys(names).find((key) => names[key] === abbr[name]);
 
       // Couldn't find club code based on abbreviation
       // Search using full name instead
       if (!code) {
-        code = Object.keys(names).find(key => names[key] === name);
+        code = Object.keys(names).find((key) => names[key] === name);
       }
 
       if (!code) {
@@ -183,11 +183,11 @@ const BumpsChart = ({ data, size: { width } }) => {
       };
     });
 
-  const startPositions = data.crews.map(crew => crew.values[0].pos);
-  const finishPositions = data.crews.map(crew => crew.values[4].pos);
+  const startPositions = data.crews.map((crew) => crew.values[0].pos);
+  const finishPositions = data.crews.map((crew) => crew.values[4].pos);
 
-  const finishOrder = startPositions.map(x =>
-    finishPositions.findIndex(y => x === y)
+  const finishOrder = startPositions.map((x) =>
+    finishPositions.findIndex((y) => x === y)
   );
 
   const numCrews = data.crews.length;
@@ -201,17 +201,20 @@ const BumpsChart = ({ data, size: { width } }) => {
     .range([0.5 * heightOfOneCrew, heightOfOneCrew * (numCrews - 0.5)]);
 
   const l = line()
-    .x(d => x(d.day))
-    .y(d => y(d.pos));
+    .x((d) => x(d.day))
+    .y((d) => y(d.pos));
 
   const v = voronoi()
-    .x(function(d) {
+    .x(function (d) {
       return x(d.value.day);
     })
-    .y(function(d) {
+    .y(function (d) {
       return y(d.value.pos);
     })
-    .extent([[0, 0], [heightOfOneCrew * 4, heightOfOneCrew * numCrews]]);
+    .extent([
+      [0, 0],
+      [heightOfOneCrew * 4, heightOfOneCrew * numCrews],
+    ]);
 
   const Lines = () => {
     return (
@@ -220,7 +223,7 @@ const BumpsChart = ({ data, size: { width } }) => {
         height={heightOfOneCrew * numCrews}
       >
         <g className="lines">
-          {data.crews.map(crew => (
+          {data.crews.map((crew) => (
             <Line
               key={crew.name}
               d={l(crew.values)}
@@ -234,8 +237,11 @@ const BumpsChart = ({ data, size: { width } }) => {
           {v
             .polygons(
               merge(
-                data.crews.map(crew =>
-                  crew.values.map(value => ({ name: crew.name, value: value }))
+                data.crews.map((crew) =>
+                  crew.values.map((value) => ({
+                    name: crew.name,
+                    value: value,
+                  }))
                 )
               )
             )
@@ -293,7 +299,9 @@ const BumpsChart = ({ data, size: { width } }) => {
   const placeInDivision = useMemo(
     () =>
       merge(
-        data.divisions[0].divisions.map(division => range(1, division.size + 1))
+        data.divisions[0].divisions.map((division) =>
+          range(1, division.size + 1)
+        )
       ),
     [data.divisions[0].divisions]
   );
