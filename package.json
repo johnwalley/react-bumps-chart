@@ -8,6 +8,7 @@
   "scripts": {
     "prepare": "rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -34,6 +35,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
+    "standard-version": "^9.3.2",
     "styled-components": "^5.1.1"
   },
   "dependencies": {
@@ -45,8 +47,8 @@
     "react-sizeme": "^2.6.10"
   },
   "peerDependencies": {
-    "styled-components": "^5.0.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^5.0.0"
   }
 }
