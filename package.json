@@ -22,21 +22,21 @@
   "author": "John Walley",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/react": "^6.4.19",
-    "babel-loader": "^8.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "rollup": "^2.23.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "standard-version": "^9.3.2",
-    "styled-components": "^5.1.1"
+    "@babel/core": "7.17.5",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-react": "7.16.7",
+    "@storybook/addon-essentials": "6.4.19",
+    "@storybook/react": "6.4.19",
+    "babel-loader": "8.2.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rollup": "2.69.0",
+    "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-terser": "7.0.2",
+    "standard-version": "9.3.2",
+    "styled-components": "5.3.3"
   },
   "dependencies": {
     "d3-array": "^2.0.0",
@@ -44,7 +44,7 @@
     "d3-shape": "^2.0.0",
     "d3-voronoi": "^1.1.4",
     "react-rowing-blades": "^2.3.1",
-    "react-sizeme": "^2.6.10"
+    "react-sizeme": "3.0.2"
   },
   "peerDependencies": {
     "react": "^16.8.6",
