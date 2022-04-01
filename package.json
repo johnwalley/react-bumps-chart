@@ -22,7 +22,7 @@
   "author": "John Walley",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.17.5",
+    "@babel/core": "7.17.8",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
     "@storybook/addon-essentials": "6.4.19",
