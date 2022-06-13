@@ -4,7 +4,7 @@ import { line } from 'd3-shape';
 import { voronoi } from 'd3-voronoi';
 import { merge, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
-import { withSize } from 'react-sizeme';
+import useResizeObserver from 'use-resize-observer';
 
 import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
 
@@ -112,7 +112,8 @@ const Line = styled.path`
   opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
 `;
 
-const BumpsChart = ({ data, size: { width } }) => {
+const BumpsChart = ({ data }) => {
+  const { ref, width = 1 } = useResizeObserver();
   const [hover, setHover] = useState('');
 
   const heightOfOneCrew = width < MOBILE_WIDTH ? 12 : 20;
@@ -307,7 +308,7 @@ const BumpsChart = ({ data, size: { width } }) => {
   );
 
   return (
-    <Container width={width}>
+    <Container ref={ref} width={width}>
       <Background />
       <Wrapper>
         <Crews>
@@ -361,4 +362,4 @@ const BumpsChart = ({ data, size: { width } }) => {
   );
 };
 
-export default withSize()(BumpsChart);
+export default BumpsChart;
