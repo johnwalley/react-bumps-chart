@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.2.0...v1.3.0) (2022-06-24)
+
+
+### Features
+
+* support react 18 ([200fa1a](https://github.com/johnwalley/react-bumps-chart/commit/200fa1a0e91e45ba88638406c4085b66e0cc8736))
+
 ## [1.2.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.1.3...v1.2.0) (2022-06-13)
 
 
