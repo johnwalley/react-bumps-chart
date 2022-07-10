@@ -185,7 +185,13 @@ const BumpsChart = ({ data }) => {
     });
 
   const startPositions = data.crews.map((crew) => crew.values[0].pos);
-  const finishPositions = data.crews.map((crew) => crew.values[4].pos);
+
+  const finishPositions = data.crews.map((crew) => {
+    const finishIndex =
+      crew.values.filter((value) => value.pos !== -1).length - 1;
+
+    return crew.values[finishIndex].pos;
+  });
 
   const finishOrder = startPositions.map((x) =>
     finishPositions.findIndex((y) => x === y)
@@ -202,6 +208,7 @@ const BumpsChart = ({ data }) => {
     .range([0.5 * heightOfOneCrew, heightOfOneCrew * (numCrews - 0.5)]);
 
   const l = line()
+    .defined((d) => d.pos !== -1)
     .x((d) => x(d.day))
     .y((d) => y(d.pos));
 

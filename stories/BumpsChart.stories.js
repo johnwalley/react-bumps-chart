@@ -54,3 +54,14 @@ export const LentBumps2019MensDivisions = () => (
 LentBumps2019MensDivisions.story = {
   name: "Lent Bumps 2019 - Men's Divisions",
 };
+
+export const InProgressEvent = () => (
+  <>
+    <h1>In progress event</h1>
+    <BumpsChart data={mockData.in_progress} />
+  </>
+);
+
+InProgressEvent.story = {
+  name: 'In progress event',
+};
