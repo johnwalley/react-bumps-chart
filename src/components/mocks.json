@@ -6767,5 +6767,126 @@
       }
     ],
     "small": "Mays"
+  },
+  "in_progress": {
+    "set": "Town Bumps",
+    "gender": "Men",
+    "crews": [
+      {
+        "name": "Cantabs 1",
+        "values": [
+          { "day": 0, "pos": 1 },
+          { "day": 1, "pos": 2 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cantabs 1",
+            "day": 0,
+            "blades": false,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 1 },
+              { "day": 1, "pos": 2 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Neots 1",
+        "values": [
+          { "day": 0, "pos": 2 },
+          { "day": 1, "pos": 1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Neots 1",
+            "day": 0,
+            "blades": true,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 2 },
+              { "day": 1, "pos": 1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cantabs 2",
+        "values": [
+          { "day": 0, "pos": 3 },
+          { "day": 1, "pos": 4 },
+          { "day": 2, "pos": 4 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Cantabs 1",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 3 },
+              { "day": 1, "pos": 4 },
+              { "day": 2, "pos": 4 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Neots 2",
+        "values": [
+          { "day": 0, "pos": 4 },
+          { "day": 1, "pos": 3 },
+          { "day": 2, "pos": 3 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Neots 1",
+            "day": 0,
+            "blades": false,
+            "spoons": false,
+            "values": [
+              { "day": 0, "pos": 4 },
+              { "day": 1, "pos": 3 },
+              { "day": 2, "pos": 3 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      }
+    ],
+    "startYear": 2018,
+    "endYear": 2018,
+    "maxCrews": 2,
+    "divisions": [
+      {
+        "year": 2018,
+        "divisions": [
+          { "start": 1, "size": 2 },
+          { "start": 3, "size": 2 }
+        ],
+        "startDay": 0,
+        "numDays": 4
+      }
+    ],
+    "small": "Town"
   }
 }
