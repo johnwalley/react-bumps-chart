@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.3.0...v1.4.0) (2022-07-10)
+
+
+### Features
+
+* support incomplete events ([#240](https://github.com/johnwalley/react-bumps-chart/issues/240)) ([73f9dbc](https://github.com/johnwalley/react-bumps-chart/commit/73f9dbc4e4ae5dee4af3d93177f509c0cbc7f1f2))
+
 ## [1.3.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.2.0...v1.3.0) (2022-06-24)
 
 
