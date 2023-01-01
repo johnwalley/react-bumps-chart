@@ -41,7 +41,7 @@
   "dependencies": {
     "d3-array": "^2.0.0",
     "d3-scale": "^3.0.0",
-    "d3-shape": "^2.0.0",
+    "d3-shape": "^3.2.0",
     "d3-voronoi": "^1.1.4",
     "react-rowing-blades": "^2.3.1",
     "use-resize-observer": "^9.0.0"
