@@ -65,3 +65,14 @@ export const InProgressEvent = () => (
 InProgressEvent.story = {
   name: 'In progress event',
 };
+
+export const ThreeDayEvent = () => (
+  <>
+    <h1>Three day event</h1>
+    <BumpsChart data={mockData.three_day_event} />
+  </>
+);
+
+ThreeDayEvent.story = {
+  name: 'Three day event',
+};
