@@ -55,6 +55,17 @@ LentBumps2019MensDivisions.story = {
   name: "Lent Bumps 2019 - Men's Divisions",
 };
 
+export const Eights2023WomensDivisions = () => (
+  <>
+    <h1>Summer Eights 2023 - Women's Divisions</h1>
+    <BumpsChart data={mockData.eights_women_2023} />
+  </>
+);
+
+Eights2023WomensDivisions.story = {
+  name: "Summer Eights 2023 - Women's Divisions",
+};
+
 export const InProgressEvent = () => (
   <>
     <h1>In progress event</h1>

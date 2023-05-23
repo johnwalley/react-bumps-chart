@@ -172,11 +172,13 @@ const BumpsChart = ({ data }) => {
 
       const number = +crew.name.match(/\d+$/);
 
+      const label = code ? names[code] : name;
+
       return {
         code,
         number,
         label:
-          names[code] +
+          label +
           (number
             ? ` ${data.set === 'Town Bumps' ? number : roman[number - 1]}`
             : ''),

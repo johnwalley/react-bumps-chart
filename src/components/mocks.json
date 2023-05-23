@@ -6888,5 +6888,2181 @@
       }
     ],
     "small": "Town"
+  },
+  "eights_women_2023": {
+    "set": "Summer Eights",
+    "gender": "women",
+    "crews": [
+      {
+        "name": "University",
+        "values": [
+          { "day": 0, "pos": 1 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "University",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 1 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Christ Church",
+        "values": [
+          { "day": 0, "pos": 2 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Christ Church",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 2 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wolfson",
+        "values": [
+          { "day": 0, "pos": 3 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wolfson",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 3 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wadham",
+        "values": [
+          { "day": 0, "pos": 4 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wadham",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 4 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "S.E.H.",
+        "values": [
+          { "day": 0, "pos": 5 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "S.E.H.",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 5 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pembroke",
+        "values": [
+          { "day": 0, "pos": 6 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pembroke",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 6 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Oriel",
+        "values": [
+          { "day": 0, "pos": 7 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Oriel",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 7 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Keble",
+        "values": [
+          { "day": 0, "pos": 8 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Keble",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 8 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Magdalen",
+        "values": [
+          { "day": 0, "pos": 9 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Magdalen",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 9 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "New College",
+        "values": [
+          { "day": 0, "pos": 10 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "New College",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 10 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Jesus",
+        "values": [
+          { "day": 0, "pos": 11 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Jesus",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 11 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Hertford",
+        "values": [
+          { "day": 0, "pos": 12 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Hertford",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 12 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Anne's",
+        "values": [
+          { "day": 0, "pos": 13 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Anne's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 13 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Catherine's",
+        "values": [
+          { "day": 0, "pos": 14 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Catherine's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 14 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Balliol",
+        "values": [
+          { "day": 0, "pos": 15 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Balliol",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 15 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St John's",
+        "values": [
+          { "day": 0, "pos": 16 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St John's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 16 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Green Templeton",
+        "values": [
+          { "day": 0, "pos": 17 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Green Templeton",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 17 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Linacre",
+        "values": [
+          { "day": 0, "pos": 18 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Linacre",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 18 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Lincoln",
+        "values": [
+          { "day": 0, "pos": 19 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Lincoln",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 19 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Somerville",
+        "values": [
+          { "day": 0, "pos": 20 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Somerville",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 20 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "L.M.H.",
+        "values": [
+          { "day": 0, "pos": 21 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "L.M.H.",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 21 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Trinity",
+        "values": [
+          { "day": 0, "pos": 22 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Trinity",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 22 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wolfson 2",
+        "values": [
+          { "day": 0, "pos": 23 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wolfson 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 23 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Mansfield",
+        "values": [
+          { "day": 0, "pos": 24 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Mansfield",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 24 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Exeter",
+        "values": [
+          { "day": 0, "pos": 25 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Exeter",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 25 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Merton",
+        "values": [
+          { "day": 0, "pos": 26 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Merton",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 26 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Peter's",
+        "values": [
+          { "day": 0, "pos": 27 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Peter's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 27 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Brasenose",
+        "values": [
+          { "day": 0, "pos": 28 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Brasenose",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 28 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Corpus Christi",
+        "values": [
+          { "day": 0, "pos": 29 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Corpus Christi",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 29 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Hugh's",
+        "values": [
+          { "day": 0, "pos": 30 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Hugh's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 30 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Worcester",
+        "values": [
+          { "day": 0, "pos": 31 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Worcester",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 31 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "University 2",
+        "values": [
+          { "day": 0, "pos": 32 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "University 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 32 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Antony's",
+        "values": [
+          { "day": 0, "pos": 33 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Antony's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 33 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Osler House",
+        "values": [
+          { "day": 0, "pos": 34 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Osler House",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 34 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Queen's",
+        "values": [
+          { "day": 0, "pos": 35 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Queen's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 35 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Hilda's",
+        "values": [
+          { "day": 0, "pos": 36 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Hilda's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 36 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Christ Church 2",
+        "values": [
+          { "day": 0, "pos": 37 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Christ Church 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 37 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pembroke 2",
+        "values": [
+          { "day": 0, "pos": 38 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pembroke 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 38 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Lincoln 2",
+        "values": [
+          { "day": 0, "pos": 39 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Lincoln 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 39 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wadham 2",
+        "values": [
+          { "day": 0, "pos": 40 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wadham 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 40 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Magdalen 2",
+        "values": [
+          { "day": 0, "pos": 41 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Magdalen 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 41 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Linacre 2",
+        "values": [
+          { "day": 0, "pos": 42 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Linacre 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 42 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St John's 2",
+        "values": [
+          { "day": 0, "pos": 43 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St John's 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 43 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Green Templeton 2",
+        "values": [
+          { "day": 0, "pos": 44 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Green Templeton 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 44 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wolfson 3",
+        "values": [
+          { "day": 0, "pos": 45 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wolfson 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 45 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Oriel 2",
+        "values": [
+          { "day": 0, "pos": 46 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Oriel 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 46 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Regent's Park",
+        "values": [
+          { "day": 0, "pos": 47 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Regent's Park",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 47 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Brasenose 2",
+        "values": [
+          { "day": 0, "pos": 48 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Brasenose 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 48 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "New College 2",
+        "values": [
+          { "day": 0, "pos": 49 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "New College 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 49 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Hugh's 2",
+        "values": [
+          { "day": 0, "pos": 50 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Hugh's 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 50 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Hertford 2",
+        "values": [
+          { "day": 0, "pos": 51 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Hertford 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 51 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Worcester 2",
+        "values": [
+          { "day": 0, "pos": 52 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Worcester 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 52 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Somerville 2",
+        "values": [
+          { "day": 0, "pos": 53 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Somerville 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 53 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Balliol 2",
+        "values": [
+          { "day": 0, "pos": 54 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Balliol 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 54 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Trinity 2",
+        "values": [
+          { "day": 0, "pos": 55 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Trinity 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 55 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Lincoln 3",
+        "values": [
+          { "day": 0, "pos": 56 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Lincoln 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 56 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Jesus 2",
+        "values": [
+          { "day": 0, "pos": 57 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Jesus 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 57 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "S.E.H. 2",
+        "values": [
+          { "day": 0, "pos": 58 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "S.E.H. 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 58 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Catherine;'s 2",
+        "values": [
+          { "day": 0, "pos": 59 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Catherine;'s 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 59 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Keble 2",
+        "values": [
+          { "day": 0, "pos": 60 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Keble 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 60 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Anthony's 2",
+        "values": [
+          { "day": 0, "pos": 61 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Anthony's 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 61 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Mansfield 2",
+        "values": [
+          { "day": 0, "pos": 62 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Mansfield 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 62 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Christ Church 3",
+        "values": [
+          { "day": 0, "pos": 63 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Christ Church 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 63 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Corpus Christi 2",
+        "values": [
+          { "day": 0, "pos": 64 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Corpus Christi 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 64 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "University 3",
+        "values": [
+          { "day": 0, "pos": 65 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "University 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 65 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Oriel 3",
+        "values": [
+          { "day": 0, "pos": 66 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Oriel 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 66 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Peter's 2",
+        "values": [
+          { "day": 0, "pos": 67 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Peter's 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 67 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Exeter 2",
+        "values": [
+          { "day": 0, "pos": 68 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Exeter 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 68 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Merton 2",
+        "values": [
+          { "day": 0, "pos": 69 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Merton 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 69 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wolfson 4",
+        "values": [
+          { "day": 0, "pos": 70 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wolfson 4",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 70 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Osler House 2",
+        "values": [
+          { "day": 0, "pos": 71 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Osler House 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 71 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Queen's 2",
+        "values": [
+          { "day": 0, "pos": 72 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Queen's 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 72 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Linacre 3",
+        "values": [
+          { "day": 0, "pos": 73 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Linacre 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 73 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Magdalen 3",
+        "values": [
+          { "day": 0, "pos": 74 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Magdalen 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 74 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pembroke 3",
+        "values": [
+          { "day": 0, "pos": 75 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Pembroke 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 75 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Peter's 3",
+        "values": [
+          { "day": 0, "pos": 76 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Peter's 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 76 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "L.M.H. 2",
+        "values": [
+          { "day": 0, "pos": 77 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "L.M.H. 2",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 77 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wadham 3",
+        "values": [
+          { "day": 0, "pos": 78 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Wadham 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 78 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Brasenose/St Peter's",
+        "values": [
+          { "day": 0, "pos": 79 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Brasenose/St Peter's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 79 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Oriel 4",
+        "values": [
+          { "day": 0, "pos": 80 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Oriel 4",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 80 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Worcester 3",
+        "values": [
+          { "day": 0, "pos": 81 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Worcester 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 81 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Queen's 3",
+        "values": [
+          { "day": 0, "pos": 82 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Queen's 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 82 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "St Anne's/St Hilda's",
+        "values": [
+          { "day": 0, "pos": 83 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "St Anne's/St Hilda's",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 83 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Exeter 3",
+        "values": [
+          { "day": 0, "pos": 84 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Exeter 3",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 84 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Lincoln 4",
+        "values": [
+          { "day": 0, "pos": 85 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Lincoln 4",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 85 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Lincoln 5",
+        "values": [
+          { "day": 0, "pos": 86 },
+          { "day": 1, "pos": -1 },
+          { "day": 2, "pos": -1 },
+          { "day": 3, "pos": -1 },
+          { "day": 4, "pos": -1 }
+        ],
+        "valuesSplit": [
+          {
+            "name": "Lincoln 5",
+            "day": 0,
+            "blades": true,
+            "spoons": true,
+            "values": [
+              { "day": 0, "pos": 86 },
+              { "day": 1, "pos": -1 },
+              { "day": 2, "pos": -1 },
+              { "day": 3, "pos": -1 },
+              { "day": 4, "pos": -1 }
+            ]
+          }
+        ]
+      }
+    ],
+    "startYear": 2023,
+    "endYear": 2023,
+    "maxCrews": 86,
+    "divisions": [
+      {
+        "year": 2023,
+        "divisions": [
+          { "start": 1, "size": 12 },
+          { "start": 13, "size": 12 },
+          { "start": 25, "size": 12 },
+          { "start": 37, "size": 12 },
+          { "start": 49, "size": 12 },
+          { "start": 61, "size": 12 },
+          { "start": 73, "size": 14 }
+        ],
+        "startDay": 0,
+        "numDays": 4
+      }
+    ],
+    "small": "eights"
   }
 }
