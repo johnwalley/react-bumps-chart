@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.5.0...v1.6.0) (2023-07-05)
+
+
+### Features
+
+* highlight blades and spoons ([52007ba](https://github.com/johnwalley/react-bumps-chart/commit/52007ba80a1626f00533824aa1eb1a7118892d64))
+
 ## [1.5.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.4.0...v1.5.0) (2023-05-23)
 
 
