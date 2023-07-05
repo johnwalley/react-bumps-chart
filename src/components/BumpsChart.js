@@ -69,7 +69,7 @@ const Results = styled.div`
 
 const Crew = styled.div`
   display: flex;
-  height: ${(props) => props.height}px;
+  height: ${(props) => props.crewHeight}px;
   justify-content: space-between;
   align-items: center;
   opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
@@ -112,7 +112,7 @@ const Line = styled.path`
   opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
 `;
 
-const BumpsChart = ({ data }) => {
+const BumpsChart = ({ data, blades = false, spoons = false }) => {
   const { ref, width = 1 } = useResizeObserver();
   const [hover, setHover] = useState('');
 
@@ -183,6 +183,8 @@ const BumpsChart = ({ data }) => {
             ? ` ${data.set === 'Town Bumps' ? number : roman[number - 1]}`
             : ''),
         name: crew.name,
+        values: crew.values,
+        valuesSplit: crew.valuesSplit,
       };
     });
 
@@ -226,50 +228,49 @@ const BumpsChart = ({ data }) => {
       [heightOfOneCrew * 4, heightOfOneCrew * numCrews],
     ]);
 
-  const Lines = () => {
-    return (
-      <StyledSvg
-        width={heightOfOneCrew * 4}
-        height={heightOfOneCrew * numCrews}
-      >
-        <g className="lines">
-          {data.crews.map((crew) => (
-            <Line
-              key={crew.name}
-              d={l(crew.values)}
-              active={hover === '' || hover === crew.name}
-              blades={crew.valuesSplit[0].blades}
-              spoons={crew.valuesSplit[0].spoons}
-            />
-          ))}
-        </g>
-        <g className="touch-areas">
-          {v
-            .polygons(
-              merge(
-                data.crews.map((crew) =>
-                  crew.values.map((value) => ({
-                    name: crew.name,
-                    value: value,
-                  }))
-                )
+  const Lines = () => (
+    <StyledSvg width={heightOfOneCrew * 4} height={heightOfOneCrew * numCrews}>
+      <g className="lines">
+        {crews.map((crew) => (
+          <Line
+            key={crew.name}
+            d={l(crew.values)}
+            active={
+              (blades && crew.valuesSplit[0].blades) ||
+              (spoons && crew.valuesSplit[0].spoons) ||
+              (!blades && !spoons && (hover === '' || hover === crew.name))
+            }
+            blades={crew.valuesSplit[0].blades}
+            spoons={crew.valuesSplit[0].spoons}
+          />
+        ))}
+      </g>
+      <g className="touch-areas">
+        {v
+          .polygons(
+            merge(
+              data.crews.map((crew) =>
+                crew.values.map((value) => ({
+                  name: crew.name,
+                  value: value,
+                }))
               )
             )
-            .map((polygon, i) => (
-              <path
-                key={i}
-                d={polygon ? 'M' + polygon.join('L') + 'Z' : null}
-                fill="none"
-                stroke="none"
-                pointerEvents="all"
-                onMouseEnter={() => setHover(polygon.data.name)}
-                onMouseLeave={() => setHover('')}
-              />
-            ))}
-        </g>
-      </StyledSvg>
-    );
-  };
+          )
+          .map((polygon, i) => (
+            <path
+              key={i}
+              d={polygon ? 'M' + polygon.join('L') + 'Z' : null}
+              fill="none"
+              stroke="none"
+              pointerEvents="all"
+              onMouseEnter={() => setHover(polygon.data.name)}
+              onMouseLeave={() => setHover('')}
+            />
+          ))}
+      </g>
+    </StyledSvg>
+  );
 
   const Background = () => {
     return (
@@ -326,16 +327,34 @@ const BumpsChart = ({ data }) => {
               key={i}
               onMouseEnter={() => setHover(d.name)}
               onMouseLeave={() => setHover('')}
-              active={hover === '' || hover === d.name}
-              height={heightOfOneCrew}
+              active={
+                (blades && d.valuesSplit[0].blades) ||
+                (spoons && d.valuesSplit[0].spoons) ||
+                (!blades && !spoons && (hover === '' || hover === d.name))
+              }
+              crewHeight={heightOfOneCrew}
             >
               <BladeWrapper width={bladeWrapperWidth}>
-                <Position active={hover === d.name}>
+                <Position
+                  active={
+                    (blades && d.valuesSplit[0].blades) ||
+                    (spoons && d.valuesSplit[0].spoons) ||
+                    (!blades && !spoons && hover === d.name)
+                  }
+                >
                   {placeInDivision[i]}
                 </Position>
                 <StyledBlade club={d.code} size={bladeSize} reverse />
               </BladeWrapper>
-              <Label active={hover === d.name}>{d.label}</Label>
+              <Label
+                active={
+                  (blades && d.valuesSplit[0].blades) ||
+                  (spoons && d.valuesSplit[0].spoons) ||
+                  (!blades && !spoons && hover === d.name)
+                }
+              >
+                {d.label}
+              </Label>
             </Crew>
           ))}
         </Crews>
@@ -343,28 +362,45 @@ const BumpsChart = ({ data }) => {
           <Lines />
         </Results>
         <Crews>
-          {crews.map((d, i) => (
-            <Crew
-              key={i}
-              onMouseEnter={() => setHover(crews[finishOrder[i]].name)}
-              onMouseLeave={() => setHover('')}
-              active={hover === '' || hover === crews[finishOrder[i]].name}
-              height={heightOfOneCrew}
-            >
-              <Label active={hover === crews[finishOrder[i]].name}>
-                {crews[finishOrder[i]].label}
-              </Label>
-              <BladeWrapper width={bladeWrapperWidth}>
-                <StyledBlade
-                  club={crews[finishOrder[i]].code}
-                  size={bladeSize}
-                />
-                <Position active={hover === crews[finishOrder[i]].name}>
-                  {i + 1}
-                </Position>
-              </BladeWrapper>
-            </Crew>
-          ))}
+          {crews.map((d, i) => {
+            const crew = crews[finishOrder[i]];
+
+            return (
+              <Crew
+                key={i}
+                onMouseEnter={() => setHover(crew.name)}
+                onMouseLeave={() => setHover('')}
+                active={
+                  (blades && crew.valuesSplit[0].blades) ||
+                  (spoons && crew.valuesSplit[0].spoons) ||
+                  (!blades && !spoons && (hover === '' || hover === crew.name))
+                }
+                crewHeight={heightOfOneCrew}
+              >
+                <Label
+                  active={
+                    (blades && crew.valuesSplit[0].blades) ||
+                    (spoons && crew.valuesSplit[0].spoons) ||
+                    (!blades && !spoons && hover === crew.name)
+                  }
+                >
+                  {crew.label}
+                </Label>
+                <BladeWrapper width={bladeWrapperWidth}>
+                  <StyledBlade club={crew.code} size={bladeSize} />
+                  <Position
+                    active={
+                      (blades && crew.valuesSplit[0].blades) ||
+                      (spoons && crew.valuesSplit[0].spoons) ||
+                      (!blades && !spoons && hover === crew.name)
+                    }
+                  >
+                    {i + 1}
+                  </Position>
+                </BladeWrapper>
+              </Crew>
+            );
+          })}
         </Crews>
       </Wrapper>
     </Container>

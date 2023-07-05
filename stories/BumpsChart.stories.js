@@ -1,12 +1,23 @@
 import React from 'react';
 
-import { action } from '@storybook/addon-actions';
 import BumpsChart from '../src/components/BumpsChart';
 import mockData from '../src/components/mocks.json';
 
 export default {
   title: 'BumpsChart',
   component: BumpsChart,
+  argTypes: {
+    blades: {
+      control: 'boolean',
+    },
+    spoons: {
+      control: 'boolean',
+    },
+  },
+  args: {
+    blades: true,
+    spoons: true,
+  },
 };
 
 export const MayBumps2018WomensDivisions = () => (
@@ -75,4 +86,17 @@ export const InProgressEvent = () => (
 
 InProgressEvent.story = {
   name: 'In progress event',
+};
+
+export const Blades = (args) => (
+  <>
+    <h1>May Bumps 2018 - Women's Divisions</h1>
+    <div style={{ width: '320px' }}>
+      <BumpsChart data={mockData.mays_women_2018} {...args} />
+    </div>
+  </>
+);
+
+Blades.story = {
+  name: "May Bumps 2018 - Women's Divisions",
 };
