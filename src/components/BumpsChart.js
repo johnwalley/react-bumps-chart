@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { line } from 'd3-shape';
 import { voronoi } from 'd3-voronoi';
 import { merge, range } from 'd3-array';
@@ -8,7 +8,6 @@ import useResizeObserver from 'use-resize-observer';
 
 import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
 
-const UNSELECTED_OPACITY = 0.7;
 const MOBILE_WIDTH = 440;
 
 const roman = [
@@ -38,12 +37,20 @@ const calculateFontSize = (width) => {
   return width < MOBILE_WIDTH ? 10 : 14;
 };
 
+const GlobalStyle = createGlobalStyle`
+  :root {
+    --react-bumps-chart-unselected-opacity: 0.3;
+    --react-bumps-chart-stroke-width: 1px;
+    --react-bumps-chart-stroke-width-active: 2px;
+  }
+`;
+
 const Container = styled.div`
   position: relative;
   max-width: 520px;
   min-width: 320px;
   font-family: sans-serif;
-  font-size: ${(props) => calculateFontSize(props.width)}px;
+  font-size: ${(props) => calculateFontSize(props.containerWidth)}px;
 `;
 
 const BackgroundContainer = styled.div`
@@ -72,7 +79,8 @@ const Crew = styled.div`
   height: ${(props) => props.crewHeight}px;
   justify-content: space-between;
   align-items: center;
-  opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
+  opacity: ${(props) =>
+    props.active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
   padding: 0 6px 0 6px;
 `;
 
@@ -106,10 +114,14 @@ const StyledSvg = styled.svg`
 const Line = styled.path`
   fill: none;
   stroke: black;
-  stroke-width: ${(props) => (props.active ? '1.5px' : '1px')};
+  stroke-width: ${(props) =>
+    props.active
+      ? 'var(--react-bumps-chart-stroke-width-active)'
+      : 'var(--react-bumps-chart-stroke-width)'};
   stroke-dasharray: ${(props) =>
     props.blades ? '10,5' : props.spoons ? '5,5' : null};
-  opacity: ${(props) => (props.active ? 1 : UNSELECTED_OPACITY)};
+  opacity: ${(props) =>
+    props.active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
 `;
 
 const BumpsChart = ({ data, blades = false, spoons = false }) => {
@@ -318,92 +330,97 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
   );
 
   return (
-    <Container ref={ref} width={width}>
-      <Background />
-      <Wrapper>
-        <Crews>
-          {crews.map((d, i) => (
-            <Crew
-              key={i}
-              onMouseEnter={() => setHover(d.name)}
-              onMouseLeave={() => setHover('')}
-              active={
-                (blades && d.valuesSplit[0].blades) ||
-                (spoons && d.valuesSplit[0].spoons) ||
-                (!blades && !spoons && (hover === '' || hover === d.name))
-              }
-              crewHeight={heightOfOneCrew}
-            >
-              <BladeWrapper width={bladeWrapperWidth}>
-                <Position
+    <>
+      <GlobalStyle />
+      <Container ref={ref} containerWidth={width}>
+        <Background />
+        <Wrapper>
+          <Crews>
+            {crews.map((d, i) => (
+              <Crew
+                key={i}
+                onMouseEnter={() => setHover(d.name)}
+                onMouseLeave={() => setHover('')}
+                active={
+                  (blades && d.valuesSplit[0].blades) ||
+                  (spoons && d.valuesSplit[0].spoons) ||
+                  (!blades && !spoons && (hover === '' || hover === d.name))
+                }
+                crewHeight={heightOfOneCrew}
+              >
+                <BladeWrapper width={bladeWrapperWidth}>
+                  <Position
+                    active={
+                      (blades && d.valuesSplit[0].blades) ||
+                      (spoons && d.valuesSplit[0].spoons) ||
+                      (!blades && !spoons && hover === d.name)
+                    }
+                  >
+                    {placeInDivision[i]}
+                  </Position>
+                  <StyledBlade club={d.code} size={bladeSize} reverse />
+                </BladeWrapper>
+                <Label
                   active={
                     (blades && d.valuesSplit[0].blades) ||
                     (spoons && d.valuesSplit[0].spoons) ||
                     (!blades && !spoons && hover === d.name)
                   }
                 >
-                  {placeInDivision[i]}
-                </Position>
-                <StyledBlade club={d.code} size={bladeSize} reverse />
-              </BladeWrapper>
-              <Label
-                active={
-                  (blades && d.valuesSplit[0].blades) ||
-                  (spoons && d.valuesSplit[0].spoons) ||
-                  (!blades && !spoons && hover === d.name)
-                }
-              >
-                {d.label}
-              </Label>
-            </Crew>
-          ))}
-        </Crews>
-        <Results>
-          <Lines />
-        </Results>
-        <Crews>
-          {crews.map((d, i) => {
-            const crew = crews[finishOrder[i]];
+                  {d.label}
+                </Label>
+              </Crew>
+            ))}
+          </Crews>
+          <Results>
+            <Lines />
+          </Results>
+          <Crews>
+            {crews.map((d, i) => {
+              const crew = crews[finishOrder[i]];
 
-            return (
-              <Crew
-                key={i}
-                onMouseEnter={() => setHover(crew.name)}
-                onMouseLeave={() => setHover('')}
-                active={
-                  (blades && crew.valuesSplit[0].blades) ||
-                  (spoons && crew.valuesSplit[0].spoons) ||
-                  (!blades && !spoons && (hover === '' || hover === crew.name))
-                }
-                crewHeight={heightOfOneCrew}
-              >
-                <Label
+              return (
+                <Crew
+                  key={i}
+                  onMouseEnter={() => setHover(crew.name)}
+                  onMouseLeave={() => setHover('')}
                   active={
                     (blades && crew.valuesSplit[0].blades) ||
                     (spoons && crew.valuesSplit[0].spoons) ||
-                    (!blades && !spoons && hover === crew.name)
+                    (!blades &&
+                      !spoons &&
+                      (hover === '' || hover === crew.name))
                   }
+                  crewHeight={heightOfOneCrew}
                 >
-                  {crew.label}
-                </Label>
-                <BladeWrapper width={bladeWrapperWidth}>
-                  <StyledBlade club={crew.code} size={bladeSize} />
-                  <Position
+                  <Label
                     active={
                       (blades && crew.valuesSplit[0].blades) ||
                       (spoons && crew.valuesSplit[0].spoons) ||
                       (!blades && !spoons && hover === crew.name)
                     }
                   >
-                    {i + 1}
-                  </Position>
-                </BladeWrapper>
-              </Crew>
-            );
-          })}
-        </Crews>
-      </Wrapper>
-    </Container>
+                    {crew.label}
+                  </Label>
+                  <BladeWrapper width={bladeWrapperWidth}>
+                    <StyledBlade club={crew.code} size={bladeSize} />
+                    <Position
+                      active={
+                        (blades && crew.valuesSplit[0].blades) ||
+                        (spoons && crew.valuesSplit[0].spoons) ||
+                        (!blades && !spoons && hover === crew.name)
+                      }
+                    >
+                      {i + 1}
+                    </Position>
+                  </BladeWrapper>
+                </Crew>
+              );
+            })}
+          </Crews>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 
