@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.6.0...v1.7.0) (2023-07-06)
+
+
+### Features
+
+* use css variables for customisation ([fd2ae45](https://github.com/johnwalley/react-bumps-chart/commit/fd2ae450f9d141ff1089409497d3248f9257f4f8))
+
 ## [1.6.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.5.0...v1.6.0) (2023-07-05)
 
 
