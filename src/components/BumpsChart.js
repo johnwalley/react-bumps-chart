@@ -50,7 +50,7 @@ const Container = styled.div`
   max-width: 520px;
   min-width: 320px;
   font-family: sans-serif;
-  font-size: ${(props) => calculateFontSize(props.containerWidth)}px;
+  font-size: ${(props) => calculateFontSize(props.$width)}px;
 `;
 
 const BackgroundContainer = styled.div`
@@ -76,33 +76,33 @@ const Results = styled.div`
 
 const Crew = styled.div`
   display: flex;
-  height: ${(props) => props.crewHeight}px;
+  height: ${(props) => props.$height}px;
   justify-content: space-between;
   align-items: center;
   opacity: ${(props) =>
-    props.active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
+    props.$active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
   padding: 0 6px 0 6px;
 `;
 
 const BladeWrapper = styled.div`
-  flex: 0 0 ${(props) => props.width}px;
+  flex: 0 0 ${(props) => props.$width}px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Position = styled.div`
-  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
+  font-weight: ${(props) => (props.$active ? 'bold' : 'normal')};
 `;
 
 const Label = styled.div`
   flex: 0 0 auto;
-  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
+  font-weight: ${(props) => (props.$active ? 'bold' : 'normal')};
 `;
 
 const StyledBlade = styled(Blade)`
   flex: 0 0 auto;
-  transform: ${(props) => (props.reverse ? 'scale(-1, 1)' : null)};
+  transform: ${(props) => (props.$reverse ? 'scale(-1, 1)' : null)};
 `;
 
 const StyledSvg = styled.svg`
@@ -115,13 +115,13 @@ const Line = styled.path`
   fill: none;
   stroke: black;
   stroke-width: ${(props) =>
-    props.active
+    props.$active
       ? 'var(--react-bumps-chart-stroke-width-active)'
       : 'var(--react-bumps-chart-stroke-width)'};
   stroke-dasharray: ${(props) =>
-    props.blades ? '10,5' : props.spoons ? '5,5' : null};
+    props.$blades ? '10,5' : props.$spoons ? '5,5' : null};
   opacity: ${(props) =>
-    props.active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
+    props.$active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
 `;
 
 const BumpsChart = ({ data, blades = false, spoons = false }) => {
@@ -247,13 +247,13 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
           <Line
             key={crew.name}
             d={l(crew.values)}
-            active={
+            $active={
               (blades && crew.valuesSplit[0].blades) ||
               (spoons && crew.valuesSplit[0].spoons) ||
               (!blades && !spoons && (hover === '' || hover === crew.name))
             }
-            blades={crew.valuesSplit[0].blades}
-            spoons={crew.valuesSplit[0].spoons}
+            $blades={crew.valuesSplit[0].blades}
+            $spoons={crew.valuesSplit[0].spoons}
           />
         ))}
       </g>
@@ -332,7 +332,7 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
   return (
     <>
       <GlobalStyle />
-      <Container ref={ref} containerWidth={width}>
+      <Container ref={ref} $width={width}>
         <Background />
         <Wrapper>
           <Crews>
@@ -341,16 +341,16 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
                 key={i}
                 onMouseEnter={() => setHover(d.name)}
                 onMouseLeave={() => setHover('')}
-                active={
+                $active={
                   (blades && d.valuesSplit[0].blades) ||
                   (spoons && d.valuesSplit[0].spoons) ||
                   (!blades && !spoons && (hover === '' || hover === d.name))
                 }
-                crewHeight={heightOfOneCrew}
+                $height={heightOfOneCrew}
               >
-                <BladeWrapper width={bladeWrapperWidth}>
+                <BladeWrapper $width={bladeWrapperWidth}>
                   <Position
-                    active={
+                    $active={
                       (blades && d.valuesSplit[0].blades) ||
                       (spoons && d.valuesSplit[0].spoons) ||
                       (!blades && !spoons && hover === d.name)
@@ -358,10 +358,10 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
                   >
                     {placeInDivision[i]}
                   </Position>
-                  <StyledBlade club={d.code} size={bladeSize} reverse />
+                  <StyledBlade club={d.code} size={bladeSize} $reverse />
                 </BladeWrapper>
                 <Label
-                  active={
+                  $active={
                     (blades && d.valuesSplit[0].blades) ||
                     (spoons && d.valuesSplit[0].spoons) ||
                     (!blades && !spoons && hover === d.name)
@@ -384,17 +384,17 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
                   key={i}
                   onMouseEnter={() => setHover(crew.name)}
                   onMouseLeave={() => setHover('')}
-                  active={
+                  $active={
                     (blades && crew.valuesSplit[0].blades) ||
                     (spoons && crew.valuesSplit[0].spoons) ||
                     (!blades &&
                       !spoons &&
                       (hover === '' || hover === crew.name))
                   }
-                  crewHeight={heightOfOneCrew}
+                  $height={heightOfOneCrew}
                 >
                   <Label
-                    active={
+                    $active={
                       (blades && crew.valuesSplit[0].blades) ||
                       (spoons && crew.valuesSplit[0].spoons) ||
                       (!blades && !spoons && hover === crew.name)
@@ -402,10 +402,10 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
                   >
                     {crew.label}
                   </Label>
-                  <BladeWrapper width={bladeWrapperWidth}>
+                  <BladeWrapper $width={bladeWrapperWidth}>
                     <StyledBlade club={crew.code} size={bladeSize} />
                     <Position
-                      active={
+                      $active={
                         (blades && crew.valuesSplit[0].blades) ||
                         (spoons && crew.valuesSplit[0].spoons) ||
                         (!blades && !spoons && hover === crew.name)
