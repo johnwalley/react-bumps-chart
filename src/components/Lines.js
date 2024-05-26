@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { merge } from 'd3-array';
 import { line } from 'd3-shape';
