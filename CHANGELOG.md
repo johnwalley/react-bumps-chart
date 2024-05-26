@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.7.0...v1.7.1) (2024-05-26)
+
+
+### Bug Fixes
+
+* do not re-render components unnecessarily ([b8d52fc](https://github.com/johnwalley/react-bumps-chart/commit/b8d52fc4f7e6e3e82060391541938d8f8fe588f1))
+
 ## [1.7.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.6.0...v1.7.0) (2023-07-06)
 
 
