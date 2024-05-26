@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.2](https://github.com/johnwalley/react-bumps-chart/compare/v1.7.1...v1.7.2) (2024-05-26)
+
+
+### Bug Fixes
+
+* add React imports ([addbdf4](https://github.com/johnwalley/react-bumps-chart/commit/addbdf4cd86b248023027cb791e26bd6ebec5e2a))
+
 ### [1.7.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.7.0...v1.7.1) (2024-05-26)
 
 
