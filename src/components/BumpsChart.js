@@ -1,14 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { line } from 'd3-shape';
-import { voronoi } from 'd3-voronoi';
 import { merge, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import useResizeObserver from 'use-resize-observer';
 
 import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
 
-const MOBILE_WIDTH = 440;
+import { Background } from './Background';
+import { Lines } from './Lines';
 
 const roman = [
   'I',
@@ -33,29 +32,35 @@ const roman = [
   'XX',
 ];
 
-const calculateFontSize = (width) => {
-  return width < MOBILE_WIDTH ? 10 : 14;
-};
+const heightOfOneCrewScale = scaleLinear()
+  .domain([320, 520])
+  .range([12, 20])
+  .clamp(true);
+
+const bladeSizeScale = scaleLinear()
+  .domain([320, 520])
+  .range([22, 36])
+  .clamp(true);
+
+const bladeWrapperWidthScale = scaleLinear()
+  .domain([320, 520])
+  .range([32, 52])
+  .clamp(true);
 
 const GlobalStyle = createGlobalStyle`
   :root {
     --react-bumps-chart-unselected-opacity: 0.3;
-    --react-bumps-chart-stroke-width: 1px;
-    --react-bumps-chart-stroke-width-active: 2px;
+    --react-bumps-chart-stroke-width: 1.5px;
+    --react-bumps-chart-stroke-width-active: 1.5px;
   }
 `;
 
 const Container = styled.div`
+  container-type: inline-size;
   position: relative;
   max-width: 520px;
   min-width: 320px;
   font-family: sans-serif;
-  font-size: ${(props) => calculateFontSize(props.$width)}px;
-`;
-
-const BackgroundContainer = styled.div`
-  position: absolute;
-  width: 100%;
 `;
 
 const Wrapper = styled.div`
@@ -63,6 +68,11 @@ const Wrapper = styled.div`
   top: -100%;
   display: flex;
   justify-content: flex-start;
+  font-size: 10px;
+
+  @container (min-width: 320px) {
+    font-size: clamp(10px, 2cqw + 3.6px, 14px);
+  }
 `;
 
 const Crews = styled.div`
@@ -82,6 +92,7 @@ const Crew = styled.div`
   opacity: ${(props) =>
     props.$active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
   padding: 0 6px 0 6px;
+  overflow: hidden;
 `;
 
 const BladeWrapper = styled.div`
@@ -91,13 +102,10 @@ const BladeWrapper = styled.div`
   align-items: center;
 `;
 
-const Position = styled.div`
-  font-weight: ${(props) => (props.$active ? 'bold' : 'normal')};
-`;
+const Position = styled.div``;
 
 const Label = styled.div`
   flex: 0 0 auto;
-  font-weight: ${(props) => (props.$active ? 'bold' : 'normal')};
 `;
 
 const StyledBlade = styled(Blade)`
@@ -105,32 +113,13 @@ const StyledBlade = styled(Blade)`
   transform: ${(props) => (props.$reverse ? 'scale(-1, 1)' : null)};
 `;
 
-const StyledSvg = styled.svg`
-  position: relative;
-  cursor: pointer;
-  pointer-events: all;
-`;
-
-const Line = styled.path`
-  fill: none;
-  stroke: black;
-  stroke-width: ${(props) =>
-    props.$active
-      ? 'var(--react-bumps-chart-stroke-width-active)'
-      : 'var(--react-bumps-chart-stroke-width)'};
-  stroke-dasharray: ${(props) =>
-    props.$blades ? '10,5' : props.$spoons ? '5,5' : null};
-  opacity: ${(props) =>
-    props.$active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
-`;
-
 const BumpsChart = ({ data, blades = false, spoons = false }) => {
   const { ref, width = 1 } = useResizeObserver();
   const [hover, setHover] = useState('');
 
-  const heightOfOneCrew = width < MOBILE_WIDTH ? 12 : 20;
-  const bladeSize = width < MOBILE_WIDTH ? 22 : 36;
-  const bladeWrapperWidth = width < MOBILE_WIDTH ? 32 : 52;
+  const heightOfOneCrew = heightOfOneCrewScale(width);
+  const bladeSize = bladeSizeScale(width);
+  const bladeWrapperWidth = bladeWrapperWidthScale(width);
 
   let names;
   let abbr;
@@ -223,102 +212,6 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
     .domain([1, numCrews])
     .range([0.5 * heightOfOneCrew, heightOfOneCrew * (numCrews - 0.5)]);
 
-  const l = line()
-    .defined((d) => d.pos !== -1)
-    .x((d) => x(d.day))
-    .y((d) => y(d.pos));
-
-  const v = voronoi()
-    .x(function (d) {
-      return x(d.value.day);
-    })
-    .y(function (d) {
-      return y(d.value.pos);
-    })
-    .extent([
-      [0, 0],
-      [heightOfOneCrew * 4, heightOfOneCrew * numCrews],
-    ]);
-
-  const Lines = () => (
-    <StyledSvg width={heightOfOneCrew * 4} height={heightOfOneCrew * numCrews}>
-      <g className="lines">
-        {crews.map((crew) => (
-          <Line
-            key={crew.name}
-            d={l(crew.values)}
-            $active={
-              (blades && crew.valuesSplit[0].blades) ||
-              (spoons && crew.valuesSplit[0].spoons) ||
-              (!blades && !spoons && (hover === '' || hover === crew.name))
-            }
-            $blades={crew.valuesSplit[0].blades}
-            $spoons={crew.valuesSplit[0].spoons}
-          />
-        ))}
-      </g>
-      <g className="touch-areas">
-        {v
-          .polygons(
-            merge(
-              data.crews.map((crew) =>
-                crew.values.map((value) => ({
-                  name: crew.name,
-                  value: value,
-                }))
-              )
-            )
-          )
-          .map((polygon, i) => (
-            <path
-              key={i}
-              d={polygon ? 'M' + polygon.join('L') + 'Z' : null}
-              fill="none"
-              stroke="none"
-              pointerEvents="all"
-              onMouseEnter={() => setHover(polygon.data.name)}
-              onMouseLeave={() => setHover('')}
-            />
-          ))}
-      </g>
-    </StyledSvg>
-  );
-
-  const Background = () => {
-    return (
-      <BackgroundContainer>
-        <svg height={heightOfOneCrew * numCrews} width="100%">
-          <g className="zebra-stripes">
-            {data.crews.map((d, i) => (
-              <rect
-                key={i}
-                x={0}
-                y={i * heightOfOneCrew - 0.5}
-                width="100%"
-                height={heightOfOneCrew}
-                fill={i % 2 ? '#f2f2f2' : 'none'}
-                stroke="none"
-              />
-            ))}
-          </g>
-          <g className="divisions">
-            {data.divisions[0].divisions.slice(1).map((division, i) => (
-              <line
-                key={i}
-                x1={0}
-                y1={y(division.start - 0.5) - 0.5}
-                x2="100%"
-                y2={y(division.start - 0.5) - 0.5}
-                stroke="grey"
-                strokeWidth={1}
-              />
-            ))}
-          </g>
-        </svg>
-      </BackgroundContainer>
-    );
-  };
-
   const placeInDivision = useMemo(
     () =>
       merge(
@@ -333,7 +226,12 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
     <>
       <GlobalStyle />
       <Container ref={ref} $width={width}>
-        <Background />
+        <Background
+          data={data}
+          heightOfOneCrew={heightOfOneCrew}
+          numCrews={numCrews}
+          y={y}
+        />
         <Wrapper>
           <Crews>
             {crews.map((d, i) => (
@@ -373,17 +271,32 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
             ))}
           </Crews>
           <Results>
-            <Lines />
+            <Lines
+              data={data}
+              crews={crews}
+              heightOfOneCrew={heightOfOneCrew}
+              numCrews={numCrews}
+              x={x}
+              y={y}
+              blades={blades}
+              spoons={spoons}
+              hover={hover}
+              onHoverChange={setHover}
+            />
           </Results>
           <Crews>
-            {crews.map((d, i) => {
+            {crews.map((_d, i) => {
               const crew = crews[finishOrder[i]];
 
               return (
                 <Crew
                   key={i}
-                  onMouseEnter={() => setHover(crew.name)}
-                  onMouseLeave={() => setHover('')}
+                  onMouseEnter={() => {
+                    setHover(crew.name);
+                  }}
+                  onMouseLeave={() => {
+                    setHover('');
+                  }}
                   $active={
                     (blades && crew.valuesSplit[0].blades) ||
                     (spoons && crew.valuesSplit[0].spoons) ||

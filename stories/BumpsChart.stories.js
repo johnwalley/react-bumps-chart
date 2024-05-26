@@ -23,7 +23,7 @@ export default {
 export const MayBumps2018WomensDivisions = () => (
   <>
     <h1>May Bumps 2018 - Women's Divisions</h1>
-    <div style={{ width: '320px' }}>
+    <div>
       <BumpsChart data={mockData.mays_women_2018} />
     </div>
   </>

@@ -38,7 +38,7 @@
     "rollup-plugin-terser": "7.0.2",
     "standard-version": "9.5.0",
     "storybook": "^7.2.1",
-    "styled-components": "6.0.5"
+    "styled-components": "6.1.11"
   },
   "dependencies": {
     "d3-array": "^2.0.0",
@@ -51,6 +51,6 @@
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0",
-    "styled-components": "^5.1.0 || ^6.0.0"
+    "styled-components": "^6.0.0"
   }
 }
