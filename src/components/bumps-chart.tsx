@@ -83,12 +83,15 @@ const Crews = styled.div`
 `;
 
 const Results = styled.div`
-  flex: 0 0 auto;
+  flex: 0 0 48px;
+
+  @container (min-width: 320px) {
+    flex: 0 0 clamp(20px, 20cqw + 9.6px, 80px);
+  }
 `;
 
-const Crew = styled.div<{ readonly $height: number; $active: boolean }>`
+const Crew = styled.div<{ $active: boolean }>`
   display: flex;
-  height: ${(props) => props.$height}px;
   justify-content: space-between;
   align-items: center;
   opacity: ${(props) =>
@@ -97,8 +100,8 @@ const Crew = styled.div<{ readonly $height: number; $active: boolean }>`
   overflow: hidden;
 `;
 
-const BladeWrapper = styled.div<{ $width: number }>`
-  flex: 0 0 ${(props) => props.$width}px;
+const BladeWrapper = styled.div<{}>`
+  flex: 0 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,12 +127,7 @@ const BumpsChart = ({
   blades = false,
   spoons = false,
 }: BumpsChartProps) => {
-  const { ref, width = 1 } = useResizeObserver();
   const [hover, setHover] = useState('');
-
-  const heightOfOneCrew = heightOfOneCrewScale(width);
-  const bladeSize = bladeSizeScale(width);
-  const bladeWrapperWidth = bladeWrapperWidthScale(width);
 
   let names;
   let abbr;
@@ -216,13 +214,11 @@ const BumpsChart = ({
 
   const numCrews = data.crews.length;
 
-  const x = scaleLinear()
-    .domain([0, 4])
-    .range([0, heightOfOneCrew * 4]);
+  const x = scaleLinear().domain([0, 4]).range([0, 4]);
 
   const y = scaleLinear()
     .domain([1, numCrews])
-    .range([0.5 * heightOfOneCrew, heightOfOneCrew * (numCrews - 0.5)]);
+    .range([0.5, numCrews - 0.5]);
 
   const placeInDivision = useMemo(
     () =>
@@ -237,13 +233,8 @@ const BumpsChart = ({
   return (
     <>
       <GlobalStyle />
-      <Container ref={ref}>
-        <Background
-          data={data}
-          heightOfOneCrew={heightOfOneCrew}
-          numCrews={numCrews}
-          y={y}
-        />
+      <Container>
+        <Background data={data} numCrews={numCrews} y={y} />
         <Wrapper>
           <Crews>
             {crews.map((d, i) => (
@@ -256,11 +247,10 @@ const BumpsChart = ({
                   (spoons && d.valuesSplit[0].spoons) ||
                   (!blades && !spoons && (hover === '' || hover === d.name))
                 }
-                $height={heightOfOneCrew}
               >
-                <BladeWrapper $width={bladeWrapperWidth}>
+                <BladeWrapper>
                   <div>{placeInDivision[i] as any}</div>
-                  <StyledBlade club={d.code} size={bladeSize} $reverse />
+                  <StyledBlade club={d.code} $reverse />
                 </BladeWrapper>
                 <Label>{d.label}</Label>
               </Crew>
@@ -270,7 +260,6 @@ const BumpsChart = ({
             <Lines
               data={data}
               crews={crews}
-              heightOfOneCrew={heightOfOneCrew}
               numCrews={numCrews}
               x={x}
               y={y}
@@ -300,11 +289,10 @@ const BumpsChart = ({
                       !spoons &&
                       (hover === '' || hover === crew.name))
                   }
-                  $height={heightOfOneCrew}
                 >
                   <Label>{crew.label}</Label>
-                  <BladeWrapper $width={bladeWrapperWidth}>
-                    <StyledBlade club={crew.code} size={bladeSize} />
+                  <BladeWrapper>
+                    <StyledBlade club={crew.code} />
                     <div>{i + 1}</div>
                   </BladeWrapper>
                 </Crew>

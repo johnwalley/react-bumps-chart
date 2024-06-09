@@ -7,28 +7,27 @@ const BackgroundContainer = styled.div`
 
 export type BackgroundProps = {
   data: { crews: any[]; divisions: { divisions: any[] }[] };
-  heightOfOneCrew: number;
   numCrews: number;
   y: any;
 };
 
-export const Background = ({
-  data,
-  heightOfOneCrew,
-  numCrews,
-  y,
-}: BackgroundProps) => {
+export const Background = ({ data, numCrews, y }: BackgroundProps) => {
   return (
     <BackgroundContainer>
-      <svg height={heightOfOneCrew * numCrews} width="100%">
+      <svg
+        viewBox={`0 0 4 ${numCrews}`}
+        height="100%"
+        width="100%"
+        preserveAspectRatio="xMidYMin slice"
+      >
         <g className="zebra-stripes">
           {data.crews.map((_d, i) => (
             <rect
               key={i}
               x={0}
-              y={i * heightOfOneCrew - 0.5}
-              width="100%"
-              height={heightOfOneCrew}
+              y={i - 0.5}
+              width="4"
+              height="1"
               fill={i % 2 ? '#f2f2f2' : 'none'}
               stroke="none"
             />

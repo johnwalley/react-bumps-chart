@@ -24,12 +24,12 @@ const Line = styled.path<{
     props.$blades ? '10,5' : props.$spoons ? '5,5' : null};
   opacity: ${(props) =>
     props.$active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
+  vector-effect: non-scaling-stroke;
 `;
 
 export type LinesProps = {
   data: { crews: any[] };
   crews: any[];
-  heightOfOneCrew: number;
   numCrews: number;
   x: any;
   y: any;
@@ -42,7 +42,6 @@ export type LinesProps = {
 export const Lines = ({
   data,
   crews,
-  heightOfOneCrew,
   numCrews,
   x,
   y,
@@ -65,11 +64,11 @@ export const Lines = ({
     })
     .extent([
       [0, 0],
-      [heightOfOneCrew * 4, heightOfOneCrew * numCrews],
+      [4, numCrews],
     ]);
 
   return (
-    <StyledSvg width={heightOfOneCrew * 4} height={heightOfOneCrew * numCrews}>
+    <StyledSvg viewBox={`0 0 4 ${1.2*numCrews}`} width="100%" height="100%">
       <g className="lines">
         {crews.map((crew) => (
           <Line
