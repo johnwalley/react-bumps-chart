@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.0...v1.8.1) (2024-06-09)
+
+
+### Bug Fixes
+
+* remove top level div ([4cf2a28](https://github.com/johnwalley/react-bumps-chart/commit/4cf2a28c23ee395d2455e8262fd3546cc6c8d607))
+
 ## [1.8.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.7.2...v1.8.0) (2024-06-09)
 
 
