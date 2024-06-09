@@ -1,0 +1,71 @@
+:root {
+  --react-bumps-chart-unselected-opacity: 0.3;
+  --react-bumps-chart-stroke-width: 1.5px;
+  --react-bumps-chart-stroke-width-active: 1.5px;
+}
+
+.temp {
+  width: 355px;
+  resize: horizontal;
+  overflow: auto;
+}
+
+.root {
+  width: 100%;
+}
+
+.container {
+  fill: none;
+  stroke: #000;
+}
+
+.zebraStripe {
+  fill: lightgray;
+  fill-opacity: 0.35;
+}
+
+.crewStart {
+  text-anchor: end;
+}
+
+.crewStart.blades {
+  fill: red;
+}
+
+.numberStart {
+  fill: gray;
+  text-anchor: start;
+}
+
+.crewFinish {
+  text-anchor: start;
+}
+
+.crewFinish.blades {
+  fill: red;
+}
+
+.numberFinish {
+  fill: gray;
+  text-anchor: end;
+}
+
+.division {
+  fill: darkred;
+}
+
+.lines {
+  fill: none;
+  stroke: gray;
+  stroke-width: 1px;
+}
+
+.lines .blades {
+  stroke: red;
+  stroke-width: 2px;
+}
+
+text {
+  font-family: Arial;
+  font-size: 12.8px;
+}

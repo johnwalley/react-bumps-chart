@@ -30,31 +30,31 @@
     "@storybook/react": "^8.1.6",
     "@storybook/react-vite": "^8.1.6",
     "@types/d3-array": "^3.2.1",
+    "@types/d3-delaunay": "^6.0.4",
     "@types/d3-scale": "^4.0.8",
     "@types/d3-shape": "^3.1.6",
-    "@types/d3-voronoi": "^1.1.12",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "i": "^0.3.7",
+    "npm": "^10.8.1",
     "prettier": "^3.3.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "standard-version": "9.5.0",
     "storybook": "^8.1.6",
-    "styled-components": "6.1.11",
     "typescript": "^5.4.5",
     "vite": "^5.2.13",
     "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
     "d3-array": "^2.0.0",
+    "d3-delaunay": "^6.0.4",
     "d3-scale": "^3.0.0",
     "d3-shape": "^2.0.0",
-    "d3-voronoi": "^1.1.4",
-    "react-rowing-blades": "^2.4.1",
-    "use-resize-observer": "^9.0.0"
+    "lodash": "^4.17.21",
+    "react-rowing-blades": "^2.4.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "styled-components": "^6.0.0"
+    "react-dom": "^18.0.0"
   }
 }
