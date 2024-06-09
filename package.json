@@ -51,10 +51,10 @@
     "d3-scale": "^3.0.0",
     "d3-shape": "^2.0.0",
     "lodash": "^4.17.21",
-    "react-rowing-blades": "^2.4.1"
+    "react-rowing-blades": "^2.4.2"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   }
 }
