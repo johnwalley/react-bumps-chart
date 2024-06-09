@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { merge } from 'd3-array';
 import { line } from 'd3-shape';
@@ -10,7 +9,11 @@ const StyledSvg = styled.svg`
   pointer-events: all;
 `;
 
-const Line = styled.path`
+const Line = styled.path<{
+  $active: boolean;
+  $blades: boolean;
+  $spoons: boolean;
+}>`
   fill: none;
   stroke: black;
   stroke-width: ${(props) =>
@@ -23,6 +26,19 @@ const Line = styled.path`
     props.$active ? 1 : 'var(--react-bumps-chart-unselected-opacity)'};
 `;
 
+export type LinesProps = {
+  data: { crews: any[] };
+  crews: any[];
+  heightOfOneCrew: number;
+  numCrews: number;
+  x: any;
+  y: any;
+  blades?: boolean;
+  spoons?: boolean;
+  hover: string;
+  onHoverChange: (hover: string) => void;
+};
+
 export const Lines = ({
   data,
   crews,
@@ -34,17 +50,17 @@ export const Lines = ({
   spoons,
   hover,
   onHoverChange,
-}) => {
+}: LinesProps) => {
   const l = line()
-    .defined((d) => d.pos !== -1)
-    .x((d) => x(d.day))
-    .y((d) => y(d.pos));
+    .defined((d: any) => d.pos !== -1)
+    .x((d: any) => x(d.day))
+    .y((d: any) => y(d.pos));
 
   const v = voronoi()
-    .x(function (d) {
+    .x(function (d: any) {
       return x(d.value.day);
     })
-    .y(function (d) {
+    .y(function (d: any) {
       return y(d.value.pos);
     })
     .extent([
@@ -58,7 +74,7 @@ export const Lines = ({
         {crews.map((crew) => (
           <Line
             key={crew.name}
-            d={l(crew.values)}
+            d={l(crew.values) ?? undefined}
             $active={
               (blades && crew.valuesSplit[0].blades) ||
               (spoons && crew.valuesSplit[0].spoons) ||
@@ -74,7 +90,7 @@ export const Lines = ({
           .polygons(
             merge(
               data.crews.map((crew) =>
-                crew.values.map((value) => ({
+                crew.values.map((value: any) => ({
                   name: crew.name,
                   value: value,
                 }))
@@ -84,11 +100,11 @@ export const Lines = ({
           .map((polygon, i) => (
             <path
               key={i}
-              d={polygon ? 'M' + polygon.join('L') + 'Z' : null}
+              d={polygon ? 'M' + polygon.join('L') + 'Z' : undefined}
               fill="none"
               stroke="none"
               pointerEvents="all"
-              onMouseEnter={() => onHoverChange(polygon.data.name)}
+              onMouseEnter={() => onHoverChange((polygon.data as any).name)}
               onMouseLeave={() => onHoverChange('')}
             />
           ))}

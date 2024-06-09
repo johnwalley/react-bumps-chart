@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { merge, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
@@ -6,8 +6,10 @@ import useResizeObserver from 'use-resize-observer';
 
 import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
 
-import { Background } from './Background';
-import { Lines } from './Lines';
+import { Background } from './background';
+import { Lines } from './lines';
+
+import { JoinedInternalEvents } from '../types';
 
 const roman = [
   'I',
@@ -84,7 +86,7 @@ const Results = styled.div`
   flex: 0 0 auto;
 `;
 
-const Crew = styled.div`
+const Crew = styled.div<{ readonly $height: number; $active: boolean }>`
   display: flex;
   height: ${(props) => props.$height}px;
   justify-content: space-between;
@@ -95,14 +97,12 @@ const Crew = styled.div`
   overflow: hidden;
 `;
 
-const BladeWrapper = styled.div`
+const BladeWrapper = styled.div<{ $width: number }>`
   flex: 0 0 ${(props) => props.$width}px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-
-const Position = styled.div``;
 
 const Label = styled.div`
   flex: 0 0 auto;
@@ -113,7 +113,17 @@ const StyledBlade = styled(Blade)`
   transform: ${(props) => (props.$reverse ? 'scale(-1, 1)' : null)};
 `;
 
-const BumpsChart = ({ data, blades = false, spoons = false }) => {
+export type BumpsChartProps = {
+  data: JoinedInternalEvents;
+  blades?: boolean;
+  spoons?: boolean;
+};
+
+const BumpsChart = ({
+  data,
+  blades = false,
+  spoons = false,
+}: BumpsChartProps) => {
   const { ref, width = 1 } = useResizeObserver();
   const [hover, setHover] = useState('');
 
@@ -139,7 +149,7 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
       names = shortShortNames.uk;
       abbr = Object.assign(
         {},
-        ...Object.values(abbreviations.uk).map((x) => ({ [x]: x }))
+        ...Object.values(abbreviations.uk).map((x: any) => ({ [x]: x }))
       );
       break;
     default:
@@ -171,7 +181,9 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
         }
       }
 
-      const number = +crew.name.match(/\d+$/);
+      const match = crew.name.match(/\d+$/);
+
+      const number = match ? +match[0] : null;
 
       const label = code ? names[code] : name;
 
@@ -193,7 +205,7 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
 
   const finishPositions = data.crews.map((crew) => {
     const finishIndex =
-      crew.values.filter((value) => value.pos !== -1).length - 1;
+      crew.values.filter((value: any) => value.pos !== -1).length - 1;
 
     return crew.values[finishIndex].pos;
   });
@@ -225,7 +237,7 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
   return (
     <>
       <GlobalStyle />
-      <Container ref={ref} $width={width}>
+      <Container ref={ref}>
         <Background
           data={data}
           heightOfOneCrew={heightOfOneCrew}
@@ -247,26 +259,10 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
                 $height={heightOfOneCrew}
               >
                 <BladeWrapper $width={bladeWrapperWidth}>
-                  <Position
-                    $active={
-                      (blades && d.valuesSplit[0].blades) ||
-                      (spoons && d.valuesSplit[0].spoons) ||
-                      (!blades && !spoons && hover === d.name)
-                    }
-                  >
-                    {placeInDivision[i]}
-                  </Position>
+                  <div>{placeInDivision[i] as any}</div>
                   <StyledBlade club={d.code} size={bladeSize} $reverse />
                 </BladeWrapper>
-                <Label
-                  $active={
-                    (blades && d.valuesSplit[0].blades) ||
-                    (spoons && d.valuesSplit[0].spoons) ||
-                    (!blades && !spoons && hover === d.name)
-                  }
-                >
-                  {d.label}
-                </Label>
+                <Label>{d.label}</Label>
               </Crew>
             ))}
           </Crews>
@@ -306,26 +302,10 @@ const BumpsChart = ({ data, blades = false, spoons = false }) => {
                   }
                   $height={heightOfOneCrew}
                 >
-                  <Label
-                    $active={
-                      (blades && crew.valuesSplit[0].blades) ||
-                      (spoons && crew.valuesSplit[0].spoons) ||
-                      (!blades && !spoons && hover === crew.name)
-                    }
-                  >
-                    {crew.label}
-                  </Label>
+                  <Label>{crew.label}</Label>
                   <BladeWrapper $width={bladeWrapperWidth}>
                     <StyledBlade club={crew.code} size={bladeSize} />
-                    <Position
-                      $active={
-                        (blades && crew.valuesSplit[0].blades) ||
-                        (spoons && crew.valuesSplit[0].spoons) ||
-                        (!blades && !spoons && hover === crew.name)
-                      }
-                    >
-                      {i + 1}
-                    </Position>
+                    <div>{i + 1}</div>
                   </BladeWrapper>
                 </Crew>
               );

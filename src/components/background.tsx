@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const BackgroundContainer = styled.div`
@@ -6,12 +5,24 @@ const BackgroundContainer = styled.div`
   width: 100%;
 `;
 
-export const Background = ({ data, heightOfOneCrew, numCrews, y }) => {
+export type BackgroundProps = {
+  data: { crews: any[]; divisions: { divisions: any[] }[] };
+  heightOfOneCrew: number;
+  numCrews: number;
+  y: any;
+};
+
+export const Background = ({
+  data,
+  heightOfOneCrew,
+  numCrews,
+  y,
+}: BackgroundProps) => {
   return (
     <BackgroundContainer>
       <svg height={heightOfOneCrew * numCrews} width="100%">
         <g className="zebra-stripes">
-          {data.crews.map((d, i) => (
+          {data.crews.map((_d, i) => (
             <rect
               key={i}
               x={0}

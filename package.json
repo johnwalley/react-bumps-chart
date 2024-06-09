@@ -1,19 +1,20 @@
 {
   "name": "react-bumps-chart",
   "version": "1.7.2",
+  "type": "module",
   "description": "React Bumps Chart is a library for drawing rowing bumps charts.",
-  "main": "dist/umd/react-bumps-chart.js",
-  "module": "dist/esm/index.js",
-  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "prepare": "rollup --config",
+    "build": "tsc && vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "files": [
-    "dist/*"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -22,35 +23,38 @@
   "author": "John Walley",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.22.0",
-    "@babel/preset-env": "7.22.9",
-    "@babel/preset-react": "7.16.7",
-    "@storybook/addon-essentials": "7.2.1",
-    "@storybook/react": "7.2.1",
-    "@storybook/react-webpack5": "7.2.1",
-    "babel-loader": "8.2.5",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "rollup": "2.75.7",
-    "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-terser": "7.0.2",
+    "@storybook/addon-essentials": "^8.1.6",
+    "@storybook/addon-interactions": "^8.1.6",
+    "@storybook/addon-links": "^8.1.6",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.3",
+    "@storybook/react": "^8.1.6",
+    "@storybook/react-vite": "^8.1.6",
+    "@types/d3-array": "^3.2.1",
+    "@types/d3-scale": "^4.0.8",
+    "@types/d3-shape": "^3.1.6",
+    "@types/d3-voronoi": "^1.1.12",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "prettier": "^3.3.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "standard-version": "9.5.0",
-    "storybook": "^7.2.1",
-    "styled-components": "6.1.11"
+    "storybook": "^8.1.6",
+    "styled-components": "6.1.11",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13",
+    "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
     "d3-array": "^2.0.0",
     "d3-scale": "^3.0.0",
     "d3-shape": "^2.0.0",
     "d3-voronoi": "^1.1.4",
-    "react-rowing-blades": "^2.4.0",
+    "react-rowing-blades": "^2.4.1",
     "use-resize-observer": "^9.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "styled-components": "^6.0.0"
   }
 }
