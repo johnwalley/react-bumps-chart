@@ -1,7 +1,5 @@
 :root {
-  --react-bumps-chart-unselected-opacity: 0.3;
-  --react-bumps-chart-stroke-width: 1.5px;
-  --react-bumps-chart-stroke-width-active: 1.5px;
+  --react-bumps-chart-divisions-text-fill: hsl(149 21% 61%);
 }
 
 .root {
@@ -10,7 +8,7 @@
 
 .container {
   fill: none;
-  stroke: #000;
+  stroke: lightgrey;
 }
 
 .zebraStripe {
@@ -45,7 +43,8 @@
 }
 
 .division {
-  fill: darkred;
+  fill: var(--react-bumps-chart-divisions-text-fill);
+  text-anchor: middle;
 }
 
 .lines {
@@ -61,5 +60,5 @@
 
 text {
   font-family: Arial;
-  font-size: 12.8px;
+  font-size: 11.2px;
 }

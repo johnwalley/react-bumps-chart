@@ -149,6 +149,16 @@ const BumpsChart = ({
   const maxNumberLength =
     Math.max(...crews.map((_crew, i) => getStringWidth(`${i}`)!)) + 3;
 
+  const divisionLabelFits = data.divisions[0].divisions.map((division, i) => {
+    const length = getStringWidth(`Division ${i + 1}`)!;
+
+    if (division.size * scale > length) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   const xOffset = 1;
   const yOffset = 1;
 
@@ -240,7 +250,7 @@ const BumpsChart = ({
       <g>
         {crews.map(
           (_crew, i) =>
-            i % 2 === 0 && (
+            i % 2 === 1 && (
               <rect
                 className={classes.zebraStripe}
                 x={spaceLeft}
@@ -269,9 +279,11 @@ const BumpsChart = ({
           <text
             key={i}
             x={spaceLeft / 2}
-            y={(division.start + division.size / 2) * scale}
-            transform={`rotate(-90 ${spaceLeft / 2} ${(division.start + division.size / 2) * scale})`}
-          >{`Division ${i + 1}`}</text>
+            y={(division.start + division.size / 2 - 1) * scale}
+            transform={`rotate(-90 ${spaceLeft / 2} ${(division.start + division.size / 2 - 1) * scale})`}
+          >
+            {divisionLabelFits[i] ? `Division ${i + 1}` : `${i + 1}`}
+          </text>
         ))}
       </g>
       <g>
@@ -279,7 +291,7 @@ const BumpsChart = ({
           <text
             className={classes.numberStart}
             x={xOffset + spaceLeft + gap}
-            y={yOffset + (i + 0.8) * scale}
+            y={yOffset + (i + 0.72) * scale}
           >
             {placeInDivision[i]}
           </text>
@@ -290,7 +302,7 @@ const BumpsChart = ({
           <text
             className={classes.numberFinish}
             x={width - spaceRight - gap}
-            y={yOffset + (i + 0.8) * scale}
+            y={yOffset + (i + 0.72) * scale}
           >
             {i}
           </text>
@@ -313,7 +325,7 @@ const BumpsChart = ({
               bladeWidth +
               6
             }
-            y={yOffset + (i + 0.8) * scale}
+            y={yOffset + (i + 0.72) * scale}
           >
             {crew.label}
           </text>
@@ -323,7 +335,7 @@ const BumpsChart = ({
         {crews.map((crew, i) => (
           <g
             key={crew.name}
-            transform={`translate(${xOffset + spaceLeft + maxNumberLength + 3 + bladeWidth} ${(i + 0.25) * scale}) scale(-1 1)`}
+            transform={`translate(${xOffset + spaceLeft + maxNumberLength + 3 + bladeWidth} ${(i + 0.2) * scale}) scale(-1 1)`}
           >
             <Blade club={crew.code} size={bladeWidth} />
           </g>
@@ -333,7 +345,7 @@ const BumpsChart = ({
         {crews.map((crew, i) => (
           <g
             key={crew.name}
-            transform={`translate(${width - spaceRight - maxNumberLength - 3 - bladeWidth} ${(i + 0.25) * scale})`}
+            transform={`translate(${width - spaceRight - maxNumberLength - 3 - bladeWidth} ${(i + 0.2) * scale})`}
           >
             <Blade club={crew.code} size={bladeWidth} />
           </g>
@@ -352,7 +364,7 @@ const BumpsChart = ({
                   : ''
               }`}
               x={width - maxNumberLength - maxCrewLength - bladeWidth - 6}
-              y={yOffset + (i + 0.8) * scale}
+              y={yOffset + (i + 0.72) * scale}
             >
               {crew.label}
             </text>
