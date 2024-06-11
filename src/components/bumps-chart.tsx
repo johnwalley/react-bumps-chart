@@ -144,13 +144,32 @@ const BumpsChart = ({
   const scale = 16;
 
   const maxCrewLength =
-    Math.max(...crews.map((crew) => getStringWidth(crew.label)!)) + scale;
+    Math.max(
+      ...crews.map(
+        (crew) =>
+          getStringWidth(crew.label, {
+            fontFamily: 'Arial',
+            fontSize: '11.2px',
+          })!
+      )
+    ) + scale;
 
   const maxNumberLength =
-    Math.max(...crews.map((_crew, i) => getStringWidth(`${i}`)!)) + 3;
+    Math.max(
+      ...crews.map(
+        (_crew, i) =>
+          getStringWidth(`${i}`, {
+            fontFamily: 'Arial',
+            fontSize: '11.2px',
+          })!
+      )
+    ) + 3;
 
   const divisionLabelFits = data.divisions[0].divisions.map((division, i) => {
-    const length = getStringWidth(`Division ${i + 1}`)!;
+    const length = getStringWidth(`Division ${i + 1}`, {
+      fontFamily: 'Arial',
+      fontSize: '11.2px',
+    })!;
 
     if (division.size * scale > length) {
       return true;
