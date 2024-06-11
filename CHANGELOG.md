@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.4](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.3...v1.8.4) (2024-06-11)
+
+
+### Bug Fixes
+
+* use styles when calculating string width ([4272999](https://github.com/johnwalley/react-bumps-chart/commit/427299935c4f99331fe39b801790f960cc5c72e1))
+
 ### [1.8.3](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.2...v1.8.3) (2024-06-11)
 
 
