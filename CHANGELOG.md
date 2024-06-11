@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.3](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.2...v1.8.3) (2024-06-11)
+
+
+### Bug Fixes
+
+* small ui improvements ([120df76](https://github.com/johnwalley/react-bumps-chart/commit/120df76d7d08c5d1d2227bd7cd4525a3bda46bf4))
+
 ### [1.8.2](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.1...v1.8.2) (2024-06-09)
 
 ### [1.8.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.0...v1.8.1) (2024-06-09)
