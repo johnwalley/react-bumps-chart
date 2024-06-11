@@ -271,6 +271,7 @@ const BumpsChart = ({
           (_crew, i) =>
             i % 2 === 1 && (
               <rect
+                key={i}
                 className={classes.zebraStripe}
                 x={spaceLeft}
                 y={scale * i}
