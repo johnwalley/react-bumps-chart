@@ -324,7 +324,7 @@ const BumpsChart = ({
             x={width - spaceRight - gap}
             y={yOffset + (i + 0.72) * scale}
           >
-            {i}
+            {i + 1}
           </text>
         ))}
       </g>
@@ -362,14 +362,18 @@ const BumpsChart = ({
         ))}
       </g>
       <g>
-        {crews.map((crew, i) => (
-          <g
-            key={crew.name}
-            transform={`translate(${width - spaceRight - maxNumberLength - 3 - bladeWidth} ${(i + 0.2) * scale})`}
-          >
-            <Blade club={crew.code} size={bladeWidth} />
-          </g>
-        ))}
+        {crews.map((_crew, i) => {
+          const crew = crews[finishOrder[i]];
+
+          return (
+            <g
+              key={crew.name}
+              transform={`translate(${width - spaceRight - maxNumberLength - 3 - bladeWidth} ${(i + 0.2) * scale})`}
+            >
+              <Blade club={crew.code} size={bladeWidth} />
+            </g>
+          );
+        })}
       </g>
       <g>
         {crews.map((_crew, i) => {
