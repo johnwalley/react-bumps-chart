@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.5](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.4...v1.8.5) (2024-06-14)
+
+
+### Bug Fixes
+
+* wrong finish numbers and blades ([4ec978c](https://github.com/johnwalley/react-bumps-chart/commit/4ec978cf361410c628505f6af45663d48cbdf39e))
+
 ### [1.8.4](https://github.com/johnwalley/react-bumps-chart/compare/v1.8.3...v1.8.4) (2024-06-11)
 
 
