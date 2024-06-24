@@ -5,6 +5,8 @@ import mays2024_men from './mays2024_men.json';
 
 import mays18451_men from './mays1845.1_men.json';
 import mays18452_men from './mays1845.2_men.json';
+import mays18461_men from './mays1846.1_men.json';
+import mays18462_men from './mays1846.2_men.json';
 
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -39,7 +41,7 @@ export const MayBumps1845MensDivisions: Story = {
   name: "May Bumps - Men's Divisions",
 
   args: {
-    data: [mays18451_men, mays18452_men],
+    data: [mays18451_men, mays18452_men, mays18461_men, mays18462_men],
   },
   decorators: [
     (Story) => (

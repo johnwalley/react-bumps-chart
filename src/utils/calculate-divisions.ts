@@ -2,131 +2,138 @@ import { range } from 'lodash';
 import { Event } from '../types';
 
 export function calculateDivisions(event: Event, scale: number) {
+  let top = 0;
+
+  const polylines: number[][][] = [];
+  const skippedLines: number[][][] = [];
+  const circles = [];
+
+  for (let crewNum = 0; crewNum < event.crews.length; crewNum++) {
+    let yPos = top + scale / 2;
+    let xPos = 0;
+    let c = crewNum;
+
+    let lines = [];
+    let skipped = [];
+    let points = [];
+    let last = [xPos, yPos];
+
+    for (let day = 0; day < event.days; day++) {
+      let t = event.move[day];
+      let up = t[c];
+
+      let tmp = c;
+      let raceDay = true;
+      let divRaced = true;
+
+      for (let d = 0; d < event.div_size[day].length; d++) {
+        if (tmp < event.div_size[day][d]) {
+          if (!event.completed[day][d]) {
+            divRaced = false;
+          }
+
+          if (
+            !divRaced &&
+            d > 0 &&
+            event.completed[day][d - 1] &&
+            up !== null &&
+            tmp === 0
+          ) {
+            divRaced = true;
+          }
+          break;
+        }
+
+        tmp -= event.div_size[day][d];
+      }
+
+      if (event.skip[day][c]) {
+        raceDay = false;
+      }
+
+      if (up === null) {
+        if (divRaced) {
+          circles.push(last);
+        }
+        break;
+      }
+
+      xPos = xPos + scale;
+      yPos = yPos - up * scale;
+
+      if (divRaced && raceDay) {
+        if (points.length === 0) {
+          points.push(last);
+        }
+
+        points.push([xPos, yPos]);
+      } else {
+        if (points.length > 0) {
+          lines.push(points);
+          points = [];
+        }
+
+        skipped.push([last, [xPos, yPos]]);
+      }
+
+      last = [xPos, yPos];
+
+      c = c - up;
+    }
+
+    if (points.length > 0) {
+      lines.push(points);
+    }
+
+    for (const line of lines) {
+      polylines.push(line);
+    }
+
+    for (const line of skipped) {
+      skippedLines.push(line);
+    }
+
+    top = top + scale;
+  }
+
+  const rect = [
+    [0, 0],
+    [event.days * scale, event.crews.length * scale],
+  ];
+
+  let left = 0;
+  let right = scale;
+  let prevDivHeight = null;
+
+  for (const day of range(event.days)) {
+    const divHeight = [];
     let top = 0;
 
-    const polylines: number[][][] = [];
-    const skippedLines: number[][][] = [];
-    const circles = [];
-
-    for (let crewNum = 0; crewNum < event.crews.length; crewNum++) {
-        let yPos = top + scale / 2;
-        let xPos = 0;
-        let c = crewNum;
-
-        let lines = [];
-        let skipped = [];
-        let points = [];
-        let last = [xPos, yPos];
-
-        for (let day = 0; day < event.days; day++) {
-            let t = event.move[day];
-            let up = t[c];
-
-            let tmp = c;
-            let raceDay = true;
-            let divRaced = true;
-
-            for (let d = 0; d < event.div_size[day].length; d++) {
-                if (tmp < event.div_size[day][d]) {
-                    if (!event.completed[day][d]) {
-                        divRaced = false;
-                    }
-
-                    if (
-                        !divRaced &&
-                        d > 0 &&
-                        event.completed[day][d - 1] &&
-                        up !== null &&
-                        tmp === 0
-                    ) {
-                        divRaced = true;
-                    }
-                    break;
-                }
-
-                tmp -= event.div_size[day][d];
-            }
-
-            if (event.skip[day][c]) {
-                raceDay = false;
-            }
-
-            if (up === null) {
-                if (divRaced) {
-                    circles.push(last);
-                }
-                break;
-            }
-
-            xPos = xPos + scale;
-            yPos = yPos - up * scale;
-
-            if (divRaced && raceDay) {
-                if (points.length === 0) {
-                    points.push(last);
-                }
-
-                points.push([xPos, yPos]);
-            } else {
-                if (points.length > 0) {
-                    lines.push(points);
-                    points = [];
-                }
-
-                skipped.push([last, [xPos, yPos]]);
-            }
-
-            last = [xPos, yPos];
-
-            c = c - up;
-        }
-
-        if (points.length > 0) {
-            lines.push(points);
-        }
-
-        for (const line of lines) {
-            polylines.push(line);
-        }
-
-        for (const line of skipped) {
-            skippedLines.push(line)
-        }
-
-        top = top + scale;
+    if (day === event.days - 1) {
+      right += 0;
     }
 
-    const rect = [
-        [0, 0],
-        [event.days * scale, event.crews.length * scale],
-    ];
+    for (const div of range(event.div_size[day].length - 1)) {
+      top += event.div_size[day][div] * scale;
+      divHeight.push(top);
 
-    let left = 0;
-    let right = scale;
-    let prevDivHeight = null;
+      polylines.push([
+        [left, top],
+        [right, top],
+      ]);
 
-    for (const day of range(event.days)) {
-        const divHeight = [];
-        let top = 0;
-
-        if (day === event.days - 1) {
-            right += 0;
-        }
-
-        for (const div of range(event.div_size[day].length - 1)) {
-            top += event.div_size[day][div] * scale;
-            divHeight.push(top);
-
-            polylines.push([
-                [left, top],
-                [right, top],
-            ]);
-        }
-
-        prevDivHeight = divHeight;
-        left = right;
-        right += scale;
+      if (prevDivHeight !== null && prevDivHeight[div] !== divHeight[div]) {
+        polylines.push([
+          [left, prevDivHeight[div]],
+          [left, divHeight[div]],
+        ]);
+      }
     }
 
-    return { polylines, circles, rect, skipped: skippedLines };
+    prevDivHeight = divHeight;
+    left = right;
+    right += scale;
+  }
+
+  return { polylines, circles, rect, skipped: skippedLines };
 }

@@ -14,14 +14,15 @@ import { Delaunay } from 'd3-delaunay';
 import { calculateDivisions } from '@/utils/calculate-divisions';
 import { Numbers } from './numbers';
 import { calculateNumbers } from '@/utils/calculate-numbers';
-import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
-import { Join } from './join';
 import { Division } from './division';
 import { Crews } from './crews';
 import { ExtraText } from './extra-text';
 import { calculateExtraText } from '@/utils/calculate-extra-text';
+import { calculateStripes } from '@/utils/calculate-stripes';
+import { Stripes } from './stripes';
 
 const scale = 16;
+const sep = 32;
 const gap = 3;
 const xOffset = 0;
 
@@ -40,17 +41,15 @@ export const BumpsChart = ({
 }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
 
-  const widthNumbersLeft = Math.max(
+  const widthCrews = Math.max(
     ...data.crews.map(
-      (crew, index) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
+      (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
     )
   );
 
-  const tRight = Math.max(
-    ...data.crews.map(
-      (crew, index) => getStringWidth(`${crew.end}`, { fontSize: 12.8 })!
-    )
-  );
+  const widthNumbers = 32;
+
+  const widthDivisions = data.days * scale;
 
   const startNumbers = data.div_size[0].flatMap((size) =>
     Array.from({ length: size }, (_, i) => String(i + 1))
@@ -64,14 +63,24 @@ export const BumpsChart = ({
 
   const extraText = calculateExtraText(data, scale);
 
+  const stripes = calculateStripes(
+    data,
+    null,
+    scale,
+    widthCrews - widthNumbers - gap,
+    widthDivisions + gap + widthCrews + widthNumbers,
+    sep
+  );
+
   return (
     <svg
       className={classes.root}
       width="800"
-      viewBox={`0 0 ${left + 32 + widthNumbersLeft + gap + data.days * scale + gap + tRight + 32} ${32 + data.crews.length * scale}`}
+      viewBox={`0 0 ${left + widthNumbers + widthCrews + gap + widthDivisions + gap + widthCrews + widthNumbers} ${32 + data.crews.length * scale}`}
       preserveAspectRatio="none"
     >
       <g transform="translate(0 20)">
+        <Stripes stripes={stripes} x={0} />
         <Numbers align="start" numbers={startNumbers} scale={scale} x={left} />
         <Numbers
           align="end"
@@ -79,33 +88,33 @@ export const BumpsChart = ({
           scale={scale}
           x={
             left +
-            32 +
-            widthNumbersLeft +
+            widthNumbers +
+            widthCrews +
             gap +
-            data.days * scale +
+            widthDivisions +
             gap +
-            tRight +
-            32
+            widthCrews +
+            widthNumbers
           }
         />
         <Crews
           align="end"
           crews={data.crews.map((crew) => crew.start)}
           scale={scale}
-          x={left + 32 + widthNumbersLeft}
+          x={left + widthNumbers + widthCrews}
         />
         <Crews
           align="start"
           crews={data.crews.map((crew) => crew.end)}
           scale={scale}
-          x={left + 32 + widthNumbersLeft + gap + data.days * scale + gap}
+          x={left + widthNumbers + widthCrews + gap + widthDivisions + gap}
         />
         <Division
           lines={division.polylines}
           circles={division.circles}
           skipped={[]}
           rect={division.rect}
-          x={left + 32 + widthNumbersLeft + gap}
+          x={left + widthNumbers + widthCrews + gap}
         />
         <ExtraText text={extraText} x={10} />
       </g>
