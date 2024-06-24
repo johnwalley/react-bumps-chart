@@ -1,9 +1,9 @@
-import { BumpsChart } from '../src/components/bumps-chart';
+import { BumpsChart } from '../src/components/pdf/bumps-chart';
 import mays2023_men from './mays2023_men.json';
-import mays2023_men_incomplete from './mays2023_men_incomplete.json';
 import torpids1858_men from './torpids1858_men.json';
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { PDFViewer, usePDF } from '@react-pdf/renderer';
 
 const meta: Meta<typeof BumpsChart> = {
   component: BumpsChart,
@@ -20,32 +20,28 @@ export const MayBumps2023MensDivisions: Story = {
     data: mays2023_men,
   },
   decorators: [
-    (Story) => (
-      <>
-        <h1>May Bumps 2023 - Men's Divisions</h1>
-        <div>
-          <Story />
-        </div>
-      </>
-    ),
-  ],
-};
+    (Story) => {
+      const [instance, updateInstance] = usePDF({
+        document: <BumpsChart data={mays2023_men} />,
+      });
 
-export const MayBumps2023MensDivisionsIncomplete: Story = {
-  name: "May Bumps 2023 - Men's Divisions (Incomplete)",
+      if (instance.loading) return <div>Loading ...</div>;
 
-  args: {
-    data: mays2023_men_incomplete,
-  },
-  decorators: [
-    (Story) => (
-      <>
-        <h1>May Bumps 2023 - Men's Divisions</h1>
-        <div>
-          <Story />
-        </div>
-      </>
-    ),
+      if (instance.error)
+        return <div>Something went wrong: {instance.error}</div>;
+
+      return (
+        <>
+          <h1>May Bumps 2023 - Men's Divisions</h1>
+          <a href={instance.url!} download="test.pdf">
+            Download
+          </a>
+          {/*    <PDFViewer>
+            <Story />
+          </PDFViewer> */}
+        </>
+      );
+    },
   ],
 };
 
