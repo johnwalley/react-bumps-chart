@@ -21,24 +21,15 @@ export const MayBumps2023MensDivisions: Story = {
   },
   decorators: [
     (Story) => {
-      const [instance, updateInstance] = usePDF({
-        document: <BumpsChart data={mays2023_men} />,
-      });
-
-      if (instance.loading) return <div>Loading ...</div>;
-
-      if (instance.error)
-        return <div>Something went wrong: {instance.error}</div>;
-
       return (
         <>
           <h1>May Bumps 2023 - Men's Divisions</h1>
-          <a href={instance.url!} download="test.pdf">
+          {/*   <a href={instance.url!} download="test.pdf">
             Download
-          </a>
-          {/*    <PDFViewer>
+          </a> */}
+          <PDFViewer width={'100%'} height={600}>
             <Story />
-          </PDFViewer> */}
+          </PDFViewer>
         </>
       );
     },

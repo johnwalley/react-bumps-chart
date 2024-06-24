@@ -12,7 +12,7 @@ import getStringWidth from '@/utils/get-string-width';
 import { line } from 'd3-shape';
 import { Delaunay } from 'd3-delaunay';
 import { calculateDivisions } from '@/utils/calculate-divisions';
-import { Numbers } from '../numbers';
+import { Numbers } from './numbers';
 import { calculateNumbers } from '@/utils/calculate-numbers';
 import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
 import { Join } from './join';
@@ -26,41 +26,20 @@ import {
   Document,
   StyleSheet,
   Svg,
+  G,
 } from '@react-pdf/renderer';
-
-const roman = [
-  'I',
-  'II',
-  'III',
-  'IV',
-  'V',
-  'VI',
-  'VII',
-  'VIII',
-  'IX',
-  'X',
-  'XI',
-  'XII',
-  'XIII',
-  'XIV',
-  'XV',
-  'XVI',
-  'XVII',
-  'XVIII',
-  'XIX',
-  'XX',
-];
+import { calculateExtraText } from '@/utils/calculate-extra-text';
+import { calculateStripes } from '@/utils/calculate-stripes';
+import { ExtraText } from './extra-text';
+import { Stripes } from './stripes';
 
 const scale = 16;
-const xOffset = 10;
+const sep = 32;
+const gap = 3;
+const xOffset = 0;
 
 const styles = StyleSheet.create({
   page: {},
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
 });
 
 namespace BumpsChart {
@@ -77,8 +56,16 @@ export const BumpsChart = ({
   spoons = false,
 }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
-  const tLeft = 100;
-  const tRight = 100;
+
+  const widthCrews = Math.max(
+    ...data.crews.map(
+      (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
+    )
+  );
+
+  const widthNumbers = 32;
+
+  const widthDivisions = data.days * scale;
 
   const startNumbers = data.div_size[0].flatMap((size) =>
     Array.from({ length: size }, (_, i) => String(i + 1))
@@ -90,23 +77,82 @@ export const BumpsChart = ({
 
   const division = calculateDivisions(data, scale);
 
+  const extraText = calculateExtraText(data, scale);
+
+  const stripes = calculateStripes(
+    data,
+    null,
+    scale,
+    widthCrews - widthNumbers - gap,
+    widthDivisions + gap + widthCrews + widthNumbers,
+    sep
+  );
+
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
-        <Svg width="400" height="1200" style={{ width: 400, height: 1200 }}>
-          <Crews
-            align="end"
-            crews={data.crews.map((crew) => crew.start)}
-            scale={scale}
-            x={left + 32 + tLeft}
-          />
-          <Crews
-            align="start"
-            crews={data.crews.map((crew) => crew.end)}
-            scale={scale}
-            x={left + 32 + tLeft + 3 + data.days * scale + 3}
-          />
-          <Division lines={division.polylines} x={left + 32 + tLeft + 3} />
+      <Page
+        size={{
+          width:
+            left +
+            widthNumbers +
+            widthCrews +
+            gap +
+            widthDivisions +
+            gap +
+            widthCrews +
+            widthNumbers,
+          height: 32 + data.crews.length * scale,
+        }}
+        style={styles.page}
+      >
+        <Svg
+          viewBox={`0 0 ${left + widthNumbers + widthCrews + gap + widthDivisions + gap + widthCrews + widthNumbers} ${32 + data.crews.length * scale}`}
+          preserveAspectRatio="none"
+        >
+          <G transform="translate(0 20)">
+            <Stripes stripes={stripes} x={0} />
+            <Numbers
+              align="start"
+              numbers={startNumbers}
+              scale={scale}
+              x={left}
+            />
+            <Numbers
+              align="end"
+              numbers={endNumbers}
+              scale={scale}
+              x={
+                left +
+                widthNumbers +
+                widthCrews +
+                gap +
+                widthDivisions +
+                gap +
+                widthCrews +
+                widthNumbers
+              }
+            />
+            <Crews
+              align="end"
+              crews={data.crews.map((crew) => crew.start)}
+              scale={scale}
+              x={left + widthNumbers + widthCrews}
+            />
+            <Crews
+              align="start"
+              crews={data.crews.map((crew) => crew.end)}
+              scale={scale}
+              x={left + widthNumbers + widthCrews + gap + widthDivisions + gap}
+            />
+            <Division
+              lines={division.polylines}
+              circles={division.circles}
+              skipped={[]}
+              rect={division.rect}
+              x={left + widthNumbers + widthCrews + gap}
+            />
+            <ExtraText text={extraText} x={10} />
+          </G>
         </Svg>
       </Page>
     </Document>
