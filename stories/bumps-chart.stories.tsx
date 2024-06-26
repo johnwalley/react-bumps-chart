@@ -32,6 +32,24 @@ export const MayBumps2023MensDivisions: Story = {
   ],
 };
 
+export const DarkMode: Story = {
+  name: "May Bumps 2023 - Men's Divisions (Dark mode)",
+
+  args: {
+    data: mays2023_men,
+  },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ backgroundColor: 'black' }}>
+        <h1>May Bumps 2023 - Men's Divisions</h1>
+        <div>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+};
+
 export const MayBumps2023MensDivisionsIncomplete: Story = {
   name: "May Bumps 2023 - Men's Divisions (Incomplete)",
 

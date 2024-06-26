@@ -1,7 +1,3 @@
-import { useMemo } from 'react';
-import { merge, range } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
-
 import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
 
 // @ts-ignore - This import is not working
@@ -19,15 +15,7 @@ import { Join } from './join';
 import { Division } from './division';
 import { Crews } from './crews';
 
-import {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  Svg,
-  G,
-} from '@react-pdf/renderer';
+import { Page, Document, StyleSheet, Svg, G } from '@react-pdf/renderer';
 import { calculateExtraText } from '@/utils/calculate-extra-text';
 import { calculateStripes } from '@/utils/calculate-stripes';
 import { ExtraText } from './extra-text';

@@ -1,21 +1,25 @@
+// @ts-ignore - This import is not working
+import classes from './numbers.module.css';
+
 export type NumbersProps = {
   align: string;
-  crews: string[];
+  numbers: string[];
   scale: number;
   x: number;
 };
 
-export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
+export const Numbers = ({ align, numbers, scale, x }: NumbersProps) => {
   return (
     <g
       transform={`translate(${x} 0)`}
       textAnchor={align}
       fontSize="12.8"
       dominantBaseline="central"
+      className={classes.root}
     >
-      {crews.map((crews, index) => (
+      {numbers.map((number, index) => (
         <text key={index} y={(index + 0.5) * scale}>
-          {crews}
+          {number}
         </text>
       ))}
     </g>

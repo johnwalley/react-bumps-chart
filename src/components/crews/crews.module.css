@@ -1,0 +1,3 @@
+.root {
+  fill: hsl(var(--react-bumps-chart-foreground));
+}

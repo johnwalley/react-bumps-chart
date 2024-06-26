@@ -1,3 +1,6 @@
+// @ts-ignore - This import is not working
+import classes from './extra-text.module.css';
+
 export type DivisionProps = {
   text: { label: string; pos: number[] }[];
   x: number;
@@ -17,6 +20,7 @@ export const ExtraText = ({ text, x }: DivisionProps) => {
           dominantBaseline="central"
           fontSize="12.8"
           transform={`rotate(-90 ${text.pos[0]} ${text.pos[1]})`}
+          className={classes.text}
         >
           {text.label}
         </text>

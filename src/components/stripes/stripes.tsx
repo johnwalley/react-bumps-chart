@@ -1,3 +1,6 @@
+// @ts-ignore - This import is not working
+import classes from './stripes.module.css';
+
 export type StripesProps = {
   stripes: number[][][];
   x: number;
@@ -5,7 +8,11 @@ export type StripesProps = {
 
 export const Stripes = ({ stripes, x }: StripesProps) => {
   return (
-    <g transform={`translate(${x} 0)`} opacity="0.35" fill="lightgrey">
+    <g
+      transform={`translate(${x} 0)`}
+      fill="lightgrey"
+      className={classes.root}
+    >
       {stripes.map((stripe, index) => (
         <rect
           key={index}

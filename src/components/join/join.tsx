@@ -1,3 +1,6 @@
+// @ts-ignore - This import is not working
+import classes from './join.module.css';
+
 export type JoinProps = {
   lines: number[][][];
   joins: number[][][];
@@ -18,6 +21,7 @@ export const Join = ({ lines, joins, text, x }: JoinProps) => {
           stroke="lightgrey"
           fill="none"
           strokeWidth="1"
+          className={classes.line}
         />
       ))}
       {joins.map((line, index) => (
@@ -37,6 +41,7 @@ export const Join = ({ lines, joins, text, x }: JoinProps) => {
           fill="black"
           stroke="none"
           textAnchor="end"
+          className={classes.text}
         >
           {text.label}
         </text>

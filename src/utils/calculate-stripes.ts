@@ -23,7 +23,7 @@ export function calculateStripes(
 
   let cn = 0;
 
-  for (const crew of event.crews) {
+  for (const _crew of event.crews) {
     let swidth = width;
 
     if (cn < num) {

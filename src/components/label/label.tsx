@@ -1,3 +1,6 @@
+// @ts-ignore - This import is not working
+import classes from './label.module.css';
+
 namespace Label {
   export type Props = {
     label: { label: { label: string; pos: number[] }; lines: number[][][] };
@@ -13,7 +16,11 @@ export const Label = ({ label, x }: Label.Props) => {
       textAnchor="middle"
       fontSize="12.8px"
     >
-      <text x={label.label.pos[0]} y={label.label.pos[1]}>
+      <text
+        x={label.label.pos[0]}
+        y={label.label.pos[1]}
+        className={classes.text}
+      >
         {label.label.label}
       </text>
       {label.lines.map((line, index) => (
@@ -26,6 +33,7 @@ export const Label = ({ label, x }: Label.Props) => {
           stroke="black"
           strokeWidth="1"
           dominantBaseline="central"
+          className={classes.line}
         />
       ))}
     </g>

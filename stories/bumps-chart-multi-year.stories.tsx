@@ -54,3 +54,21 @@ export const MayBumps1845MensDivisions: Story = {
     ),
   ],
 };
+
+export const DarkMode: Story = {
+  name: "May Bumps - Men's Divisions",
+
+  args: {
+    data: [mays18451_men, mays18452_men, mays18461_men, mays18462_men],
+  },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ backgroundColor: 'black' }}>
+        <h1>May Bumps - 1845- Men's Divisions</h1>
+        <div>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+};

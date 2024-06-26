@@ -1,3 +1,6 @@
+// @ts-ignore - This import is not working
+import classes from './division.module.css';
+
 export type DivisionProps = {
   lines: number[][][];
   skipped: number[][][];
@@ -22,6 +25,8 @@ export const Division = ({
           fill="none"
           stroke="grey"
           strokeWidth="1"
+          className={classes.line}
+
         />
       ))}
       {skipped.map((line, index) => (
@@ -31,10 +36,18 @@ export const Division = ({
           fill="none"
           stroke="lightgrey"
           strokeWidth="1"
+          className={classes.skipped}
         />
       ))}
       {circles.map((circle, index) => (
-        <circle key={index} cx={circle[0]} cy={circle[1]} r="3" fill="grey" />
+        <circle
+          key={index}
+          cx={circle[0]}
+          cy={circle[1]}
+          r="3"
+          fill="grey"
+          className={classes.withdrawn}
+        />
       ))}
       <rect
         x={rect[0][0]}
@@ -44,6 +57,7 @@ export const Division = ({
         fill="none"
         stroke="black"
         strokeWidth="1"
+        className={classes.border}
       />
     </g>
   );

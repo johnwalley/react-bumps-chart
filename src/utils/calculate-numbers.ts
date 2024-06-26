@@ -5,7 +5,7 @@ export function calculateNumbers(event: Event, reset = false) {
   let number = 1;
   let divNum = 0;
 
-  for (const crew of event.crews) {
+  for (const _crew of event.crews) {
     out.push(`${number}`);
     number = number + 1;
 

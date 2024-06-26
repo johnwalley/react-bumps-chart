@@ -9,17 +9,18 @@ import classes from './bumps-chart.module.css';
 
 import { Event } from '../types';
 import getStringWidth from '@/utils/get-string-width';
-import { line } from 'd3-shape';
 import { Delaunay } from 'd3-delaunay';
 import { calculateDivisions } from '@/utils/calculate-divisions';
-import { Numbers } from './numbers';
+import { Numbers } from './numbers/numbers';
 import { calculateNumbers } from '@/utils/calculate-numbers';
-import { Division } from './division';
-import { Crews } from './crews';
-import { ExtraText } from './extra-text';
+import { Division } from './division/division';
+import { Crews } from './crews/crews';
+import { ExtraText } from './extra-text/extra-text';
 import { calculateExtraText } from '@/utils/calculate-extra-text';
 import { calculateStripes } from '@/utils/calculate-stripes';
-import { Stripes } from './stripes';
+import { Stripes } from './stripes/stripes';
+
+import './globals.css';
 
 const scale = 16;
 const sep = 32;
@@ -40,26 +41,42 @@ export const BumpsChart = ({
   spoons = false,
 }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
-
-  const widthCrews = Math.max(
-    ...data.crews.map(
-      (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
-    )
-  );
-
-  const widthNumbers = 32;
+  const right = gap;
 
   const widthDivisions = data.days * scale;
 
-  const startNumbers = data.div_size[0].flatMap((size) =>
-    Array.from({ length: size }, (_, i) => String(i + 1))
-  );
+  // TODO: Crews who start are not necessarily the same as crews who end
+  const widthCrews =
+    Math.max(
+      ...data.crews.map(
+        (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
+      )
+    ) +
+    2 * gap;
 
-  const endNumbers = Array.from({ length: data.crews.length }, (_, i) =>
-    String(i + 1)
-  );
+  const startNumbers = calculateNumbers(data, true);
+  const endNumbers = calculateNumbers(data, false);
 
-  const division = calculateDivisions(data, scale);
+  const widthStartNumbers =
+    Math.max(
+      ...startNumbers.map(
+        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+      )
+    ) + gap;
+
+  const widthEndNumbers =
+    Math.max(
+      ...endNumbers.map(
+        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+      )
+    ) + gap;
+
+  const division = calculateDivisions(
+    data,
+    scale,
+    widthStartNumbers + widthCrews,
+    widthEndNumbers + widthCrews
+  );
 
   const extraText = calculateExtraText(data, scale);
 
@@ -67,8 +84,12 @@ export const BumpsChart = ({
     data,
     null,
     scale,
-    widthCrews - widthNumbers - gap,
-    widthDivisions + gap + widthCrews + widthNumbers,
+    left,
+    widthStartNumbers +
+      widthCrews +
+      widthDivisions +
+      widthCrews +
+      widthEndNumbers,
     sep
   );
 
@@ -76,47 +97,59 @@ export const BumpsChart = ({
     <svg
       className={classes.root}
       width="800"
-      viewBox={`0 0 ${left + widthNumbers + widthCrews + gap + widthDivisions + gap + widthCrews + widthNumbers} ${32 + data.crews.length * scale}`}
+      viewBox={`0 0 ${
+        left +
+        widthStartNumbers +
+        widthCrews +
+        widthDivisions +
+        widthCrews +
+        widthEndNumbers +
+        right
+      } ${2 * gap + data.crews.length * scale}`}
       preserveAspectRatio="none"
     >
-      <g transform="translate(0 20)">
+      <g transform={`translate(0 ${gap})`}>
         <Stripes stripes={stripes} x={0} />
-        <Numbers align="start" numbers={startNumbers} scale={scale} x={left} />
+        <Numbers
+          align="start"
+          numbers={startNumbers}
+          scale={scale}
+          x={left + gap}
+        />
         <Numbers
           align="end"
           numbers={endNumbers}
           scale={scale}
           x={
             left +
-            widthNumbers +
+            widthStartNumbers +
             widthCrews +
-            gap +
             widthDivisions +
-            gap +
             widthCrews +
-            widthNumbers
+            widthEndNumbers -
+            gap
           }
         />
         <Crews
           align="end"
           crews={data.crews.map((crew) => crew.start)}
           scale={scale}
-          x={left + widthNumbers + widthCrews}
+          x={left + widthStartNumbers + widthCrews - gap}
         />
         <Crews
           align="start"
           crews={data.crews.map((crew) => crew.end)}
           scale={scale}
-          x={left + widthNumbers + widthCrews + gap + widthDivisions + gap}
+          x={left + widthStartNumbers + widthCrews + widthDivisions + gap}
         />
         <Division
           lines={division.polylines}
           circles={division.circles}
           skipped={[]}
           rect={division.rect}
-          x={left + widthNumbers + widthCrews + gap}
+          x={left + widthStartNumbers + widthCrews}
         />
-        <ExtraText text={extraText} x={10} />
+        <ExtraText text={extraText} x={16} />
       </g>
     </svg>
   );

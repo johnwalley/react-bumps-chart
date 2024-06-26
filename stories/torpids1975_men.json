@@ -1,5 +1,8 @@
 {
-  "title": "Set name",
+  "set": "Torpids",
+  "short": "Torpids",
+  "gender": "Men",
+  "year": "1975",
   "days": 4,
   "distance": 2500,
   "flags": [],
@@ -648,10 +651,6 @@
     "rw2ur re2e-1e-1o3uur re2e-1e-1urrru rrrrrrrrrrr rue2e-1e-1rrru rrw2rrrrrr"
   ],
   "pace": [],
-  "set": "Torpids",
-  "short": "Torpids",
-  "gender": "Men",
-  "year": "1975",
   "move": [
     [
       0, -1, 1, 0, 0, -1, 1, 0, -2, 1, 1, 0, 0, 0, 0, -1, 1, 0, 0, -1, -2, 2, 1,

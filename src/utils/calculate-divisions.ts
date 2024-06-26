@@ -1,7 +1,12 @@
 import { range } from 'lodash';
 import { Event } from '../types';
 
-export function calculateDivisions(event: Event, scale: number) {
+export function calculateDivisions(
+  event: Event,
+  scale: number,
+  spaceLeft: number,
+  spaceRight: number
+) {
   let top = 0;
 
   const polylines: number[][][] = [];
@@ -97,11 +102,11 @@ export function calculateDivisions(event: Event, scale: number) {
   }
 
   const rect = [
-    [0, 0],
-    [event.days * scale, event.crews.length * scale],
+    [-spaceLeft, 0],
+    [spaceLeft + event.days * scale + spaceRight, event.crews.length * scale],
   ];
 
-  let left = 0;
+  let left = -spaceLeft;
   let right = scale;
   let prevDivHeight = null;
 
@@ -110,7 +115,7 @@ export function calculateDivisions(event: Event, scale: number) {
     let top = 0;
 
     if (day === event.days - 1) {
-      right += 0;
+      right += spaceRight;
     }
 
     for (const div of range(event.div_size[day].length - 1)) {
