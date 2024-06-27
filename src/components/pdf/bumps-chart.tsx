@@ -1,17 +1,10 @@
-import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
-
 // @ts-ignore - This import is not working
 import classes from './bumps-chart.module.css';
 
 import { Event } from '../../types';
 import getStringWidth from '@/utils/get-string-width';
-import { line } from 'd3-shape';
-import { Delaunay } from 'd3-delaunay';
 import { calculateDivisions } from '@/utils/calculate-divisions';
 import { Numbers } from './numbers';
-import { calculateNumbers } from '@/utils/calculate-numbers';
-import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
-import { Join } from './join';
 import { Division } from './division';
 import { Crews } from './crews';
 
@@ -38,11 +31,7 @@ namespace BumpsChart {
   };
 }
 
-export const BumpsChart = ({
-  data,
-  blades = false,
-  spoons = false,
-}: BumpsChart.Props) => {
+export const BumpsChart = ({ data }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
 
   const widthCrews = Math.max(
@@ -63,7 +52,7 @@ export const BumpsChart = ({
     String(i + 1)
   );
 
-  const division = calculateDivisions(data, scale);
+  const division = calculateDivisions(data, scale, 0, 0);
 
   const extraText = calculateExtraText(data, scale);
 

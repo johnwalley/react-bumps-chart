@@ -1,16 +1,9 @@
-import { useMemo } from 'react';
-import { cumsum, merge, range, sum } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
-
-import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
-
 // @ts-ignore - This import is not working
 import classes from './bumps-chart.module.css';
 
 import { Event } from '../types';
 import getStringWidth from '@/utils/get-string-width';
-import { line } from 'd3-shape';
-import { Delaunay } from 'd3-delaunay';
+
 import { calculateDivisions } from '@/utils/calculate-divisions';
 import { Numbers } from './numbers/numbers';
 import { calculateNumbers } from '@/utils/calculate-numbers';
@@ -37,11 +30,7 @@ namespace BumpsChartMultiYear {
   };
 }
 
-export const BumpsChartMultiYear = ({
-  data,
-  blades = false,
-  spoons = false,
-}: BumpsChartMultiYear.Props) => {
+export const BumpsChartMultiYear = ({ data }: BumpsChartMultiYear.Props) => {
   const fontSize = 12;
   const left = xOffset + scale * 2;
 
@@ -72,7 +61,6 @@ export const BumpsChartMultiYear = ({
     ) + gap;
 
   let top = 0;
-  let right = 100;
 
   let xPos = 0;
   let skipFirst = false;
@@ -88,12 +76,12 @@ export const BumpsChartMultiYear = ({
   for (let eventNum = 0; eventNum < data.length; eventNum++) {
     const event = data[eventNum];
     let event2 = null;
-    let extra = sep;
+    //let extra = sep;
 
     if (eventNum < data.length - 1) {
       event2 = data[eventNum + 1];
     } else {
-      extra = right;
+      //extra = right;
     }
 
     const p = event.year.split(' ');
@@ -176,7 +164,7 @@ export const BumpsChartMultiYear = ({
     );
 
     if (eventNum < data.length - 1) {
-      joins.push(calculateJoin(event, event2, top, scale, sep, skipFirst));
+      joins.push(calculateJoin(event, event2!, top, scale, sep, skipFirst));
     }
 
     xPos = xPos + scale * event.days + sep;
@@ -199,12 +187,12 @@ export const BumpsChartMultiYear = ({
       preserveAspectRatio="none"
     >
       <g transform="translate(0 20)">
-        {labels.map((label, index) => (
+        {labels.map((label) => (
           <Label label={label} x={widthStartNumbers + widthCrews + gap} />
         ))}
       </g>
       <g transform="translate(0 30)">
-        {stripes.map((stripe, index) => (
+        {stripes.map((stripe) => (
           <Stripes stripes={stripe} x={widthStartNumbers + widthCrews + gap} />
         ))}
         <Numbers align="start" numbers={startNumbers} scale={scale} x={gap} />

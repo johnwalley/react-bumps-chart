@@ -1,3 +1,4 @@
-import BumpsChart from './components/bumps-chart';
+import { BumpsChart } from './components/bumps-chart';
+import { BumpsChartMultiYear } from './components/bumps-chart-multi-year';
 
-export default BumpsChart;
+export { BumpsChart, BumpsChartMultiYear };

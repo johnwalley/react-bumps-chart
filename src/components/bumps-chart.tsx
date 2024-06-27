@@ -1,15 +1,8 @@
-import { useMemo } from 'react';
-import { merge, range } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
-
-import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
-
 // @ts-ignore - This import is not working
 import classes from './bumps-chart.module.css';
 
 import { Event } from '../types';
 import getStringWidth from '@/utils/get-string-width';
-import { Delaunay } from 'd3-delaunay';
 import { calculateDivisions } from '@/utils/calculate-divisions';
 import { Numbers } from './numbers/numbers';
 import { calculateNumbers } from '@/utils/calculate-numbers';
@@ -35,11 +28,7 @@ namespace BumpsChart {
   };
 }
 
-export const BumpsChart = ({
-  data,
-  blades = false,
-  spoons = false,
-}: BumpsChart.Props) => {
+export const BumpsChart = ({ data }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
   const right = gap;
 

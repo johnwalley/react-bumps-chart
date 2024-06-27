@@ -1,4 +1,3 @@
-import { range } from 'lodash';
 import { Event } from '../types';
 
 export function calculateStripes(

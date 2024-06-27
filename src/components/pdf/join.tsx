@@ -1,4 +1,4 @@
-import { G, Text, Polyline, Line } from "@react-pdf/renderer";
+import { G, Text, Polyline, Line } from '@react-pdf/renderer';
 
 export type JoinProps = {
   lines: number[][][];
@@ -9,7 +9,10 @@ export type JoinProps = {
 
 export const Join = ({ lines, joins, text, x }: JoinProps) => {
   return (
-    <G transform={`translate(${x} 0)`} fontSize="9px">
+    <G
+      transform={`translate(${x} 0)`}
+      //fontSize="9px"
+    >
       {lines.map((line, index) => (
         <Line
           key={index}

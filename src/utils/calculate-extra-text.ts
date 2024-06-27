@@ -8,9 +8,9 @@ export function calculateExtraText(event: Event, scale: number) {
 
   for (const divNum of range(event.div_size[0].length)) {
     let label = null;
-    let fontScale = 0.8;
-    let fontSize = scale * fontScale;
-    let color = 'black';
+    //let fontScale = 0.8;
+    //let fontSize = scale * fontScale;
+    //let color = 'black';
     let height = event.div_size[0][divNum] * scale;
 
     label = `Division ${divNum + 1}`;
