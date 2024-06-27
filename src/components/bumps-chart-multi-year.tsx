@@ -51,7 +51,8 @@ export const BumpsChartMultiYear = ({
       ...data[0].crews.map(
         (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
       )
-    ) + gap;
+    ) +
+    2 * gap;
 
   const startNumbers = calculateNumbers(data[0]);
   const endNumbers = calculateNumbers(data[data.length - 1]);

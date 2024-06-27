@@ -7,7 +7,7 @@
 }
 
 .skipped {
-  stroke: hsl(var(--react-bumps-chart-muted));
+  stroke: hsl(var(--react-bumps-chart-muted-foreground));
 }
 
 .withdrawn {
