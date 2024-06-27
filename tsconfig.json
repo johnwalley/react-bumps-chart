@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/components/mocks.d.json.mts", "stories/react-rowing-blades.d.ts"],
+  "include": ["src", "stories/react-rowing-blades.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

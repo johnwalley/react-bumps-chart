@@ -1,0 +1,65 @@
+:root {
+  --react-bumps-chart-background: 0 0% 100%;
+  --react-bumps-chart-foreground: 240 10% 3.9%;
+
+  --react-bumps-chart-card: 0 0% 100%;
+  --react-bumps-chart-card-foreground: 240 10% 3.9%;
+
+  --react-bumps-chart-popover: 0 0% 100%;
+  --react-bumps-chart-popover-foreground: 240 10% 3.9%;
+
+  --react-bumps-chart-primary: 240 5.9% 10%;
+  --react-bumps-chart-primary-foreground: 0 0% 98%;
+
+  --react-bumps-chart-secondary: 240 4.8% 95.9%;
+  --react-bumps-chart-secondary-foreground: 240 5.9% 10%;
+
+  --react-bumps-chart-muted: 240 4.8% 90%;
+  --react-bumps-chart-muted-foreground: 240 3.8% 46.1%;
+
+  --react-bumps-chart-accent: 240 4.8% 95.9%;
+  --react-bumps-chart-accent-foreground: 240 5.9% 10%;
+
+  --react-bumps-chart-destructive: 0 72.22% 50.59%;
+  --react-bumps-chart-destructive-foreground: 0 0% 98%;
+
+  --react-bumps-chart-border: 240 5.9% 90%;
+  --react-bumps-chart-input: 240 5.9% 90%;
+
+  --react-bumps-chart-ring: 240 5% 64.9%;
+
+  --react-bumps-chart-radius: 0.5rem;
+}
+
+.dark {
+  --react-bumps-chart-background: 224 71% 4%;
+  --react-bumps-chart-foreground: 213 31% 91%;
+
+  --react-bumps-chart-muted: 223 0% 20%;
+  --react-bumps-chart-muted-foreground: 215.4 0% 56.9%;
+
+  --react-bumps-chart-accent: 216 34% 17%;
+  --react-bumps-chart-accent-foreground: 210 40% 98%;
+
+  --react-bumps-chart-popover: 224 71% 4%;
+  --react-bumps-chart-popover-foreground: 215 20.2% 65.1%;
+
+  --react-bumps-chart-border: 216 34% 17%;
+  --react-bumps-chart-input: 216 34% 17%;
+
+  --react-bumps-chart-card: 224 71% 4%;
+  --react-bumps-chart-card-foreground: 213 31% 91%;
+
+  --react-bumps-chart-primary: 210 40% 98%;
+  --react-bumps-chart-primary-foreground: 222.2 47.4% 1.2%;
+
+  --react-bumps-chart-secondary: 222.2 47.4% 11.2%;
+  --react-bumps-chart-secondary-foreground: 210 40% 98%;
+
+  --react-bumps-chart-destructive: 0 63% 31%;
+  --react-bumps-chart-destructive-foreground: 210 40% 98%;
+
+  --react-bumps-chart-ring: 216 34% 17%;
+
+  --react-bumps-chart-radius: 0.5rem;
+}

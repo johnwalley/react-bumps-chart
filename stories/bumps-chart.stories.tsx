@@ -1,8 +1,10 @@
-import BumpsChart from '../src/components/bumps-chart';
-import mockData from '../src/components/mocks.json';
+import { BumpsChart } from '../src/components/bumps-chart';
+import mays2023_men from './mays2023_men.json';
+import mays2023_men_incomplete from './mays2023_men_incomplete.json';
+import torpids1858_men from './torpids1858_men.json';
+import torpids1975_men from './torpids1975_men.json';
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { JoinedInternalEvents } from '../src/types';
 
 const meta: Meta<typeof BumpsChart> = {
   component: BumpsChart,
@@ -12,16 +14,16 @@ export default meta;
 
 type Story = StoryObj<typeof BumpsChart>;
 
-export const MayBumps2018WomensDivisions: Story = {
-  name: "May Bumps 2018 - Women's Divisions",
+export const MayBumps2023MensDivisions: Story = {
+  name: "May Bumps 2023 - Men's Divisions",
 
   args: {
-    data: mockData.mays_women_2018 as JoinedInternalEvents,
+    data: mays2023_men,
   },
   decorators: [
     (Story) => (
       <>
-        <h1>May Bumps 2018 - Women's Divisions</h1>
+        <h1>May Bumps 2023 - Men's Divisions</h1>
         <div>
           <Story />
         </div>
@@ -30,16 +32,34 @@ export const MayBumps2018WomensDivisions: Story = {
   ],
 };
 
-export const Torpids2017MensDivisions: Story = {
-  name: "Torpids 2017 - Men's Divisionss",
+export const DarkMode: Story = {
+  name: "May Bumps 2023 - Men's Divisions (Dark mode)",
 
   args: {
-    data: mockData.torpids_men_2017 as JoinedInternalEvents,
+    data: mays2023_men,
+  },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ backgroundColor: 'black' }}>
+        <h1>May Bumps 2023 - Men's Divisions</h1>
+        <div>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+};
+
+export const MayBumps2023MensDivisionsIncomplete: Story = {
+  name: "May Bumps 2023 - Men's Divisions (Incomplete)",
+
+  args: {
+    data: mays2023_men_incomplete,
   },
   decorators: [
     (Story) => (
       <>
-        <h1>Torpids 2017 - Men's Divisions</h1>
+        <h1>May Bumps 2023 - Men's Divisions</h1>
         <div>
           <Story />
         </div>
@@ -48,16 +68,16 @@ export const Torpids2017MensDivisions: Story = {
   ],
 };
 
-export const TownBumps2018MensDivisions: Story = {
-  name: "Town Bumps 2018 - Men's Divisions",
+export const Torpids1858MensDivisions: Story = {
+  name: "Torpids 1858 - Men's Divisions",
 
   args: {
-    data: mockData.town_men_2018 as JoinedInternalEvents,
+    data: torpids1858_men,
   },
   decorators: [
     (Story) => (
       <>
-        <h1>Town Bumps 2018 - Men's Divisions</h1>
+        <h1>Torpids 1858 - Men's Divisions</h1>
         <div>
           <Story />
         </div>
@@ -66,70 +86,16 @@ export const TownBumps2018MensDivisions: Story = {
   ],
 };
 
-export const LentBumps2019MensDivisions: Story = {
-  name: "Lent Bumps 2019 - Men's Divisions",
+export const Torpids1975MensDivisions: Story = {
+  name: "Torpids 1975 - Men's Divisions",
 
   args: {
-    data: mockData.lents_men_2019 as JoinedInternalEvents,
+    data: torpids1975_men,
   },
   decorators: [
     (Story) => (
       <>
-        <h1>Lent Bumps 2019 - Men's Divisions</h1>
-        <div>
-          <Story />
-        </div>
-      </>
-    ),
-  ],
-};
-
-export const Eights2023WomensDivisions: Story = {
-  name: "Summer Eights 2023 - Women's Divisions",
-
-  args: {
-    data: mockData.eights_women_2023 as JoinedInternalEvents,
-  },
-  decorators: [
-    (Story) => (
-      <>
-        <h1>Summer Eights 2023 - Women's Divisions</h1>
-        <div>
-          <Story />
-        </div>
-      </>
-    ),
-  ],
-};
-
-export const InProgressEvent: Story = {
-  name: 'In progress event',
-
-  args: {
-    data: mockData.in_progress as JoinedInternalEvents,
-  },
-  decorators: [
-    (Story) => (
-      <>
-        <h1>In progress event</h1>
-        <div>
-          <Story />
-        </div>
-      </>
-    ),
-  ],
-};
-
-export const Blades: Story = {
-  name: 'Blades',
-  args: {
-    blades: true,
-    data: mockData.mays_women_2018 as JoinedInternalEvents,
-  },
-  decorators: [
-    (Story) => (
-      <>
-        <h1>May Bumps 2018 - Women's Divisions</h1>
+        <h1>Torpids 1975 - Men's Divisions</h1>
         <div>
           <Story />
         </div>

@@ -1,77 +1,48 @@
-export type JoinedInternalEvents = {
-    crews: {
-        name: string;
-        values: { day: number; pos: number }[];
-        valuesSplit: {
-            blades: boolean;
-            day: number;
-            name: string;
-            spoons: boolean;
-            values: { day: number; pos: number }[];
-        }[];
-    }[];
-    divisions: {
-        divisions: { size: number; start: number }[];
-        year: number;
-        startDay: number;
-        numDays: number;
-    }[];
-    set: Set;
-    gender: Gender;
-    endYear: number;
-    maxCrews: number;
-    startYear: number;
-};
+export interface Event {
+  set: string;
+  short: string;
+  gender: string;
+  year: string;
+  days: number;
+  distance: number;
+  flags: string[];
+  div_size: number[][];
+  results: string[];
+  pace: unknown[];
+  move: any[];
+  back: any[];
+  completed: any[];
+  skip: any[];
+  crews_withdrawn: number;
+  crews: Crew[];
+  full_set: boolean;
+}
 
-export type InternalEvent = {
-    crews: {
-        name: string;
-        values: {
-            day: number;
-            pos: number;
-        }[];
-        valuesSplit: {
-            blades: boolean;
-            day: number;
-            name: string;
-            spoons: boolean;
-            values: { day: number; pos: number }[];
-        }[];
-    }[];
-    divisions: {
-        start: number;
-        size: number;
-    }[];
-    year: number;
-};
-
-export type Event = {
-    completed: boolean[][];
-    days: number;
-    divisions: string[][];
-    finish: string[][];
-    gender: Gender;
-    move: number[][][];
-    result: string;
-    results: string;
-    set: Set;
-    small: string;
-    year: number;
-};
+interface Crew {
+  gain: number | null;
+  blades: boolean;
+  highlight: boolean;
+  withdrawn: boolean;
+  start: string;
+  num_name: string;
+  club: string;
+  number: number;
+  end: string;
+}
 
 export const Gender = {
-    MEN: "Men",
-    WOMEN: "Women",
+  MEN: 'Men',
+  WOMEN: 'Women',
 } as const;
 
 export type Gender = (typeof Gender)[keyof typeof Gender];
 
 export const Set = {
-    EIGHTS: "Summer Eights",
-    TORPIDS: "Torpids",
-    LENTS: "Lent Bumps",
-    MAYS: "May Bumps",
-    TOWN: "Town Bumps",
+  EIGHTS: 'Summer Eights',
+  TORPIDS: 'Torpids',
+  LENTS: 'Lent Bumps',
+  MAYS: 'May Bumps',
+  TOWN: 'Town Bumps',
 } as const;
 
 export type Set = (typeof Set)[keyof typeof Set];

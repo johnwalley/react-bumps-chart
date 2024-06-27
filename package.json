@@ -46,6 +46,7 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.4.4",
     "d3-array": "^2.0.0",
     "d3-delaunay": "^6.0.4",
     "d3-scale": "^3.0.0",

@@ -1,430 +1,145 @@
-import { useMemo } from 'react';
-import { merge, range } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
-
-import { Blade, shortShortNames, abbreviations } from 'react-rowing-blades';
-
 // @ts-ignore - This import is not working
 import classes from './bumps-chart.module.css';
 
-import { JoinedInternalEvents } from '../types';
+import { Event } from '../types';
 import getStringWidth from '@/utils/get-string-width';
-import { line } from 'd3-shape';
-import { Delaunay } from 'd3-delaunay';
+import { calculateDivisions } from '@/utils/calculate-divisions';
+import { Numbers } from './numbers/numbers';
+import { calculateNumbers } from '@/utils/calculate-numbers';
+import { Division } from './division/division';
+import { Crews } from './crews/crews';
+import { ExtraText } from './extra-text/extra-text';
+import { calculateExtraText } from '@/utils/calculate-extra-text';
+import { calculateStripes } from '@/utils/calculate-stripes';
+import { Stripes } from './stripes/stripes';
 
-const roman = [
-  'I',
-  'II',
-  'III',
-  'IV',
-  'V',
-  'VI',
-  'VII',
-  'VIII',
-  'IX',
-  'X',
-  'XI',
-  'XII',
-  'XIII',
-  'XIV',
-  'XV',
-  'XVI',
-  'XVII',
-  'XVIII',
-  'XIX',
-  'XX',
-];
+import './globals.css';
 
-export type BumpsChartProps = {
-  data: JoinedInternalEvents;
-  blades?: boolean;
-  spoons?: boolean;
-};
+const scale = 16;
+const sep = 32;
+const gap = 3;
+const xOffset = 0;
 
-const BumpsChart = ({
-  data,
-  blades = false,
-  spoons = false,
-}: BumpsChartProps) => {
-  let names;
-  let abbr;
+namespace BumpsChart {
+  export type Props = {
+    data: Event;
+    blades?: boolean;
+    spoons?: boolean;
+  };
+}
 
-  switch (data.set) {
-    case 'May Bumps':
-    case 'Lent Bumps':
-      names = shortShortNames.cambridge;
-      abbr = abbreviations.cambridge;
-      break;
-    case 'Summer Eights':
-    case 'Torpids':
-      names = shortShortNames.oxford;
-      abbr = abbreviations.oxford;
-      break;
-    case 'Town Bumps':
-      names = shortShortNames.uk;
-      abbr = Object.assign(
-        {},
-        ...Object.values(abbreviations.uk).map((x: any) => ({ [x]: x }))
-      );
-      break;
-    default:
-      throw new Error(`${data.set} not recognised as a set`);
-  }
+export const BumpsChart = ({ data }: BumpsChart.Props) => {
+  const left = xOffset + scale * 2;
+  const right = gap;
 
-  const crews = data.crews
-    .sort((a, b) => a.values[0].pos - b.values[0].pos)
-    .map((crew) => {
-      const name = crew.name.replace(/ ?\d+$/g, '');
+  const widthDivisions = data.days * scale;
 
-      let code = Object.keys(names).find((key) => names[key] === abbr[name]);
-
-      // Couldn't find club code based on abbreviation
-      // Search using full name instead
-      if (!code) {
-        code = Object.keys(names).find((key) => names[key] === name);
-      }
-
-      if (!code) {
-        if (name === 'LMBC') {
-          code = 'lmb';
-        } else if (name === '1st and 3rd') {
-          code = 'ftt';
-        } else if (name === "St Catharine's") {
-          code = 'scc';
-        } else if (name === "St Edmund's") {
-          code = 'sec';
-        }
-      }
-
-      const match = crew.name.match(/\d+$/);
-
-      const number = match ? +match[0] : null;
-
-      const label = code ? names[code] : name;
-
-      return {
-        code,
-        number,
-        label:
-          label +
-          (number
-            ? ` ${data.set === 'Town Bumps' ? number : roman[number - 1]}`
-            : ''),
-        name: crew.name,
-        values: crew.values,
-        valuesSplit: crew.valuesSplit,
-      };
-    });
-
-  const startPositions = data.crews.map((crew) => crew.values[0].pos);
-
-  const finishPositions = data.crews.map((crew) => {
-    const finishIndex =
-      crew.values.filter((value: any) => value.pos !== -1).length - 1;
-
-    return crew.values[finishIndex].pos;
-  });
-
-  const finishOrder = startPositions.map((x) =>
-    finishPositions.findIndex((y) => x === y)
-  );
-
-  const numCrews = data.crews.length;
-
-  const placeInDivision: number[] = useMemo(
-    () =>
-      merge(
-        data.divisions[0].divisions.map((division) =>
-          range(1, division.size + 1)
-        )
-      ),
-    [data.divisions[0].divisions]
-  );
-
-  const scale = 16;
-
-  const maxCrewLength =
+  // TODO: Crews who start are not necessarily the same as crews who end
+  const widthCrews =
     Math.max(
-      ...crews.map(
-        (crew) =>
-          getStringWidth(crew.label, {
-            fontFamily: 'Arial',
-            fontSize: '11.2px',
-          })!
+      ...data.crews.map(
+        (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
       )
-    ) + scale;
+    ) +
+    2 * gap;
 
-  const maxNumberLength =
+  const startNumbers = calculateNumbers(data, true);
+  const endNumbers = calculateNumbers(data, false);
+
+  const widthStartNumbers =
     Math.max(
-      ...crews.map(
-        (_crew, i) =>
-          getStringWidth(`${i}`, {
-            fontFamily: 'Arial',
-            fontSize: '11.2px',
-          })!
+      ...startNumbers.map(
+        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
       )
-    ) + 3;
+    ) + gap;
 
-  const divisionLabelFits = data.divisions[0].divisions.map((division, i) => {
-    const length = getStringWidth(`Division ${i + 1}`, {
-      fontFamily: 'Arial',
-      fontSize: '11.2px',
-    })!;
+  const widthEndNumbers =
+    Math.max(
+      ...endNumbers.map(
+        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+      )
+    ) + gap;
 
-    if (division.size * scale > length) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-
-  const xOffset = 1;
-  const yOffset = 1;
-
-  const spaceLeft = 20;
-  const spaceRight = 0;
-
-  const gap = 3;
-
-  const bladeWidth = 24;
-
-  const width =
-    spaceLeft +
-    spaceRight +
-    2 * maxCrewLength +
-    2 * maxNumberLength +
-    4 * scale +
-    2 * bladeWidth +
-    18;
-
-  const height = crews.length * scale + yOffset;
-
-  const x = scaleLinear()
-    .domain([0, 4])
-    .range([
-      xOffset + maxNumberLength + spaceLeft + maxCrewLength + bladeWidth + 9,
-      xOffset +
-        maxNumberLength +
-        spaceLeft +
-        maxCrewLength +
-        bladeWidth +
-        9 +
-        4 * scale,
-    ]);
-
-  const y = scaleLinear()
-    .domain([1, numCrews])
-    .range([0.5 * scale + 0.5, (numCrews - 0.5) * scale + 0.5]);
-
-  const l = line<{ day: number; pos: number }>()
-    .defined((d) => d.pos !== -1)
-    .x((d) => x(d.day))
-    .y((d) => y(d.pos));
-
-  const points: any[] = merge(
-    data.crews.map((crew) =>
-      crew.values.map((value) => ({
-        name: crew.name,
-        value: value,
-      }))
-    )
+  const division = calculateDivisions(
+    data,
+    scale,
+    widthStartNumbers + widthCrews,
+    widthEndNumbers + widthCrews
   );
 
-  const delaunay = Delaunay.from(
-    points.map((d: any) => [x(d.value.day), y(d.value.pos)])
+  const extraText = calculateExtraText(data, scale);
+
+  const stripes = calculateStripes(
+    data,
+    null,
+    scale,
+    left,
+    widthStartNumbers +
+      widthCrews +
+      widthDivisions +
+      widthCrews +
+      widthEndNumbers,
+    sep
   );
-
-  const voronoi = delaunay.voronoi([
-    xOffset + maxNumberLength + spaceLeft + maxCrewLength + bladeWidth + 9,
-    0,
-    xOffset +
-      maxNumberLength +
-      spaceLeft +
-      maxCrewLength +
-      bladeWidth +
-      9 +
-      4 * scale,
-    height,
-  ]);
-
-  const polygons = points.map((point, index) => [
-    point,
-    voronoi.cellPolygon(index),
-  ]);
 
   return (
     <svg
       className={classes.root}
-      viewBox={`0 0 ${width + 2} ${height + 2}`}
+      width="800"
+      viewBox={`0 0 ${
+        left +
+        widthStartNumbers +
+        widthCrews +
+        widthDivisions +
+        widthCrews +
+        widthEndNumbers +
+        right
+      } ${2 * gap + data.crews.length * scale}`}
       preserveAspectRatio="none"
     >
-      <rect
-        className={classes.container}
-        x={xOffset + spaceLeft}
-        y={yOffset}
-        width={width - (spaceLeft + spaceRight)}
-        height={crews.length * scale}
-        vectorEffect="non-scaling-stroke"
-      />
-      <g>
-        {crews.map(
-          (_crew, i) =>
-            i % 2 === 1 && (
-              <rect
-                key={i}
-                className={classes.zebraStripe}
-                x={spaceLeft}
-                y={scale * i}
-                width={width}
-                height={scale}
-              />
-            )
-        )}
-      </g>
-      <g>
-        {data.divisions[0].divisions.slice(1).map((division, i) => (
-          <line
-            key={i}
-            x1={xOffset + spaceLeft}
-            y1={(division.start - 1) * scale}
-            x2={width}
-            y2={(division.start - 1) * scale}
-            stroke="black"
-            strokeWidth={1}
-          />
-        ))}
-      </g>
-      <g className={classes.division}>
-        {data.divisions[0].divisions.map((division, i) => (
-          <text
-            key={i}
-            x={spaceLeft / 2}
-            y={(division.start + division.size / 2 - 1) * scale}
-            transform={`rotate(-90 ${spaceLeft / 2} ${(division.start + division.size / 2 - 1) * scale})`}
-          >
-            {divisionLabelFits[i] ? `Division ${i + 1}` : `${i + 1}`}
-          </text>
-        ))}
-      </g>
-      <g>
-        {crews.map((_crew, i) => (
-          <text
-            className={classes.numberStart}
-            x={xOffset + spaceLeft + gap}
-            y={yOffset + (i + 0.72) * scale}
-          >
-            {placeInDivision[i]}
-          </text>
-        ))}
-      </g>
-      <g>
-        {crews.map((_crew, i) => (
-          <text
-            className={classes.numberFinish}
-            x={width - spaceRight - gap}
-            y={yOffset + (i + 0.72) * scale}
-          >
-            {i + 1}
-          </text>
-        ))}
-      </g>
-      <g>
-        {crews.map((crew, i) => (
-          <text
-            className={`${classes.crewStart} ${
-              (blades && crew.valuesSplit[0].blades) ||
-              (spoons && crew.valuesSplit[0].spoons)
-                ? classes.blades
-                : ''
-            }`}
-            x={
-              xOffset +
-              spaceLeft +
-              maxNumberLength +
-              maxCrewLength +
-              bladeWidth +
-              6
-            }
-            y={yOffset + (i + 0.72) * scale}
-          >
-            {crew.label}
-          </text>
-        ))}
-      </g>
-      <g>
-        {crews.map((crew, i) => (
-          <g
-            key={crew.name}
-            transform={`translate(${xOffset + spaceLeft + maxNumberLength + 3 + bladeWidth} ${(i + 0.2) * scale}) scale(-1 1)`}
-          >
-            <Blade club={crew.code} size={bladeWidth} />
-          </g>
-        ))}
-      </g>
-      <g>
-        {crews.map((_crew, i) => {
-          const crew = crews[finishOrder[i]];
-
-          return (
-            <g
-              key={crew.name}
-              transform={`translate(${width - spaceRight - maxNumberLength - 3 - bladeWidth} ${(i + 0.2) * scale})`}
-            >
-              <Blade club={crew.code} size={bladeWidth} />
-            </g>
-          );
-        })}
-      </g>
-      <g>
-        {crews.map((_crew, i) => {
-          const crew = crews[finishOrder[i]];
-
-          return (
-            <text
-              className={`${classes.crewFinish} ${
-                (blades && crew.valuesSplit[0].blades) ||
-                (spoons && crew.valuesSplit[0].spoons)
-                  ? classes.blades
-                  : ''
-              }`}
-              x={width - maxNumberLength - maxCrewLength - bladeWidth - 6}
-              y={yOffset + (i + 0.72) * scale}
-            >
-              {crew.label}
-            </text>
-          );
-        })}
-      </g>
-      <g className={classes.lines}>
-        {crews.map((crew) => (
-          <path
-            key={crew.name}
-            className={
-              (blades && crew.valuesSplit[0].blades) ||
-              (spoons && crew.valuesSplit[0].spoons)
-                ? classes.blades
-                : ''
-            }
-            d={l(crew.values) ?? undefined}
-            vectorEffect="non-scaling-stroke"
-          />
-        ))}
-      </g>
-      <g>
-        {polygons.map((polygon, i) => (
-          <path
-            key={i}
-            d={voronoi.renderCell(i)}
-            fill="none"
-            stroke="none"
-            pointerEvents="all"
-            onMouseEnter={() => console.log(polygon[0].name)}
-            onMouseLeave={() => console.log('')}
-          />
-        ))}
+      <g transform={`translate(0 ${gap})`}>
+        <Stripes stripes={stripes} x={0} />
+        <Numbers
+          align="start"
+          numbers={startNumbers}
+          scale={scale}
+          x={left + gap}
+        />
+        <Numbers
+          align="end"
+          numbers={endNumbers}
+          scale={scale}
+          x={
+            left +
+            widthStartNumbers +
+            widthCrews +
+            widthDivisions +
+            widthCrews +
+            widthEndNumbers -
+            gap
+          }
+        />
+        <Crews
+          align="end"
+          crews={data.crews.map((crew) => crew.start)}
+          scale={scale}
+          x={left + widthStartNumbers + widthCrews - gap}
+        />
+        <Crews
+          align="start"
+          crews={data.crews.map((crew) => crew.end)}
+          scale={scale}
+          x={left + widthStartNumbers + widthCrews + widthDivisions + gap}
+        />
+        <Division
+          lines={division.polylines}
+          circles={division.circles}
+          skipped={[]}
+          rect={division.rect}
+          x={left + widthStartNumbers + widthCrews}
+        />
+        <ExtraText text={extraText} x={16} />
       </g>
     </svg>
   );
 };
-
-export default BumpsChart;
