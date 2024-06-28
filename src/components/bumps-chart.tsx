@@ -12,8 +12,12 @@ import { ExtraText } from './extra-text/extra-text';
 import { calculateExtraText } from '@/utils/calculate-extra-text';
 import { calculateStripes } from '@/utils/calculate-stripes';
 import { Stripes } from './stripes/stripes';
+import { Blades } from './blades/blades';
 
 import './globals.css';
+
+import { shortShortNames, abbreviations } from 'react-rowing-blades';
+import { useMemo } from 'react';
 
 const scale = 16;
 const sep = 32;
@@ -29,10 +33,67 @@ namespace BumpsChart {
 }
 
 export const BumpsChart = ({ data }: BumpsChart.Props) => {
+  let names;
+  let abbr;
+
+  switch (data.set) {
+    case 'May Bumps':
+    case 'Lent Bumps':
+      names = shortShortNames.cambridge;
+      abbr = abbreviations.cambridge;
+      break;
+    case 'Summer Eights':
+    case 'Torpids':
+      names = shortShortNames.oxford;
+      abbr = abbreviations.oxford;
+      break;
+    case 'Town Bumps':
+      names = shortShortNames.uk;
+      abbr = Object.assign(
+        {},
+        ...Object.values(abbreviations.uk).map((x: any) => ({ [x]: x }))
+      );
+      break;
+    default:
+      throw new Error(`${data.set} not recognised as a set`);
+  }
+
+  const crews = useMemo(
+    () =>
+      data.crews.map((crew) => {
+        const name = crew.club;
+
+        let code = Object.keys(names).find((key) => names[key] === abbr[name]);
+
+        // Couldn't find club code based on abbreviation
+        // Search using full name instead
+        if (!code) {
+          code = Object.keys(names).find((key) => names[key] === name);
+        }
+
+        if (!code) {
+          if (name === 'LMBC') {
+            code = 'lmb';
+          } else if (name === '1st and 3rd') {
+            code = 'ftt';
+          } else if (name === "St Catharine's") {
+            code = 'scc';
+          } else if (name === "St Edmund's") {
+            code = 'sec';
+          }
+        }
+
+        return { ...crew, code };
+      }),
+    [data.crews]
+  );
+
   const left = xOffset + scale * 2;
   const right = gap;
 
   const widthDivisions = data.days * scale;
+
+  const widthBlades = 32;
 
   // TODO: Crews who start are not necessarily the same as crews who end
   const widthCrews =
@@ -63,8 +124,8 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
   const division = calculateDivisions(
     data,
     scale,
-    widthStartNumbers + widthCrews,
-    widthEndNumbers + widthCrews
+    widthStartNumbers + widthBlades + widthCrews,
+    widthEndNumbers + widthBlades + widthCrews
   );
 
   const extraText = calculateExtraText(data, scale);
@@ -75,9 +136,11 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
     scale,
     left,
     widthStartNumbers +
+      widthBlades +
       widthCrews +
       widthDivisions +
       widthCrews +
+      widthBlades +
       widthEndNumbers,
     sep
   );
@@ -89,9 +152,11 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
       viewBox={`0 0 ${
         left +
         widthStartNumbers +
+        widthBlades +
         widthCrews +
         widthDivisions +
         widthCrews +
+        widthBlades +
         widthEndNumbers +
         right
       } ${2 * gap + data.crews.length * scale}`}
@@ -112,10 +177,31 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
           x={
             left +
             widthStartNumbers +
+            widthBlades +
             widthCrews +
             widthDivisions +
             widthCrews +
+            widthBlades +
             widthEndNumbers -
+            gap
+          }
+        />
+        <Blades
+          flip
+          crews={crews.map((crew) => crew.code)}
+          scale={scale}
+          x={left + widthStartNumbers + widthBlades - gap}
+        />
+        <Blades
+          crews={crews.map((crew) => crew.code)}
+          scale={scale}
+          x={
+            left +
+            widthStartNumbers +
+            widthBlades +
+            widthCrews +
+            widthDivisions +
+            widthCrews +
             gap
           }
         />
@@ -123,20 +209,27 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
           align="end"
           crews={data.crews.map((crew) => crew.start)}
           scale={scale}
-          x={left + widthStartNumbers + widthCrews - gap}
+          x={left + widthStartNumbers + widthBlades + widthCrews - gap}
         />
         <Crews
           align="start"
           crews={data.crews.map((crew) => crew.end)}
           scale={scale}
-          x={left + widthStartNumbers + widthCrews + widthDivisions + gap}
+          x={
+            left +
+            widthStartNumbers +
+            widthBlades +
+            widthCrews +
+            widthDivisions +
+            gap
+          }
         />
         <Division
           lines={division.polylines}
           circles={division.circles}
           skipped={[]}
           rect={division.rect}
-          x={left + widthStartNumbers + widthCrews}
+          x={left + widthStartNumbers + widthBlades + widthCrews}
         />
         <ExtraText text={extraText} x={16} />
       </g>
