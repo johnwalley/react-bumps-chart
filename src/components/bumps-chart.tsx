@@ -58,10 +58,10 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
       throw new Error(`${data.set} not recognised as a set`);
   }
 
-  const crews = useMemo(
+  const startCodes = useMemo(
     () =>
       data.crews.map((crew) => {
-        const name = crew.club;
+        const name = crew.start.replace(/ ?\d+$/g, '');
 
         let code = Object.keys(names).find((key) => names[key] === abbr[name]);
 
@@ -80,10 +80,52 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
             code = 'scc';
           } else if (name === "St Edmund's") {
             code = 'sec';
+          } else if (name === 'Town') {
+            code = 'cam';
+          } else if (name === 'Old Cantabs') {
+            code = 'cab';
           }
         }
 
-        return { ...crew, code };
+        return code;
+      }),
+    [data.crews]
+  );
+
+  const endCodes = useMemo(
+    () =>
+      data.crews.map((crew) => {
+        if (!crew.end) {
+          return undefined;
+        }
+
+        const name = crew.end.replace(/ ?\d+$/g, '');
+
+        let code = Object.keys(names).find((key) => names[key] === abbr[name]);
+
+        // Couldn't find club code based on abbreviation
+        // Search using full name instead
+        if (!code) {
+          code = Object.keys(names).find((key) => names[key] === name);
+        }
+
+        if (!code) {
+          if (name === 'LMBC') {
+            code = 'lmb';
+          } else if (name === '1st and 3rd') {
+            code = 'ftt';
+          } else if (name === "St Catharine's") {
+            code = 'scc';
+          } else if (name === "St Edmund's") {
+            code = 'sec';
+          } else if (name === 'Town') {
+            code = 'cam';
+          } else if (name === 'Old Cantabs') {
+            code = 'cab';
+          }
+        }
+
+        return code;
       }),
     [data.crews]
   );
@@ -188,12 +230,12 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
         />
         <Blades
           flip
-          crews={crews.map((crew) => crew.code)}
+          crews={startCodes}
           scale={scale}
           x={left + widthStartNumbers + widthBlades - gap}
         />
         <Blades
-          crews={crews.map((crew) => crew.code)}
+          crews={endCodes}
           scale={scale}
           x={
             left +
