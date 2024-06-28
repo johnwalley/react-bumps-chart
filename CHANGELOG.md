@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.10.0...v1.10.1) (2024-06-28)
+
+
+### Bug Fixes
+
+* end blades ([44a3c87](https://github.com/johnwalley/react-bumps-chart/commit/44a3c87c43feff48f3e1560cf270df205939c2f1))
+
 ## [1.10.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.9.0...v1.10.0) (2024-06-28)
 
 
