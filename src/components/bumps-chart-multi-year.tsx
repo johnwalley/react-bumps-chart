@@ -30,7 +30,10 @@ namespace BumpsChartMultiYear {
   };
 }
 
-export const BumpsChartMultiYear = ({ data }: BumpsChartMultiYear.Props) => {
+export const BumpsChartMultiYear = ({
+  data,
+  blades = false,
+}: BumpsChartMultiYear.Props) => {
   const fontSize = 12;
   const left = xOffset + scale * 2;
 
@@ -176,7 +179,7 @@ export const BumpsChartMultiYear = ({ data }: BumpsChartMultiYear.Props) => {
   xPos = left;
 
   for (const event of data) {
-    divisions.push(calculateDivisions(event, scale, 0, 0));
+    divisions.push(calculateDivisions(event, scale, 0, 0, blades));
   }
 
   return (
@@ -214,13 +217,21 @@ export const BumpsChartMultiYear = ({ data }: BumpsChartMultiYear.Props) => {
         />
         <Crews
           align="end"
-          crews={data[0].crews.map((crew) => crew.start)}
+          crews={data[0].crews.map((crew, index) => ({
+            crew: crew.start,
+            highlight: blades && crew.blades,
+            y: index,
+          }))}
           scale={scale}
           x={widthStartNumbers + widthCrews}
         />
         <Crews
           align="start"
-          crews={data[data.length - 1].crews.map((crew) => crew.end)}
+          crews={data[data.length - 1].crews.map((crew, index) => ({
+            crew: crew.gain !== null ? crew.start : null,
+            highlight: blades && crew.blades,
+            y: index - (crew.gain ?? 0),
+          }))}
           scale={scale}
           x={
             widthEndNumbers +
@@ -248,6 +259,7 @@ export const BumpsChartMultiYear = ({ data }: BumpsChartMultiYear.Props) => {
         {divisions.map((division, index) => (
           <Division
             lines={division.polylines}
+            divisionLines={division.divisionLines}
             circles={division.circles}
             rect={division.rect}
             skipped={division.skipped}

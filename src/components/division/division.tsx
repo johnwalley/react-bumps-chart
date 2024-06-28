@@ -1,8 +1,11 @@
+import classNames from 'classnames';
+
 // @ts-ignore - This import is not working
 import classes from './division.module.css';
 
 export type DivisionProps = {
-  lines: number[][][];
+  lines: { highlight: boolean; points: number[][] }[];
+  divisionLines: number[][][];
   skipped: number[][][];
   circles: number[][];
   rect: number[][];
@@ -11,6 +14,7 @@ export type DivisionProps = {
 
 export const Division = ({
   lines,
+  divisionLines,
   circles,
   rect,
   skipped,
@@ -21,12 +25,23 @@ export const Division = ({
       {lines.map((line, index) => (
         <polyline
           key={index}
+          points={line.points.map((point) => point.join(',')).join(' ')}
+          fill="none"
+          stroke={line.highlight ? 'red' : 'grey'}
+          strokeWidth="1"
+          className={classNames(classes.line, {
+            [classes.highlight]: line.highlight,
+          })}
+        />
+      ))}
+      {divisionLines.map((line, index) => (
+        <polyline
+          key={index}
           points={line.map((point) => point.join(',')).join(' ')}
           fill="none"
           stroke="grey"
           strokeWidth="1"
           className={classes.line}
-
         />
       ))}
       {skipped.map((line, index) => (

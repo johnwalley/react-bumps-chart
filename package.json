@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.4.4",
+    "classnames": "^2.5.1",
     "d3-array": "^2.0.0",
     "d3-delaunay": "^6.0.4",
     "d3-scale": "^3.0.0",

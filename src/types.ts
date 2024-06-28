@@ -28,6 +28,7 @@ interface Crew {
   club: string;
   number: number;
   end: string;
+  club_end: string;
 }
 
 export const Gender = {

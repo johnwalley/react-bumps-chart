@@ -32,7 +32,7 @@ namespace BumpsChart {
   };
 }
 
-export const BumpsChart = ({ data }: BumpsChart.Props) => {
+export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   let names;
   let abbr;
 
@@ -61,7 +61,7 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
   const startCodes = useMemo(
     () =>
       data.crews.map((crew) => {
-        const name = crew.start.replace(/ ?\d+$/g, '');
+        const name = crew.club;
 
         let code = Object.keys(names).find((key) => names[key] === abbr[name]);
 
@@ -99,7 +99,7 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
           return undefined;
         }
 
-        const name = crew.end.replace(/ ?\d+$/g, '');
+        const name = crew.club_end;
 
         let code = Object.keys(names).find((key) => names[key] === abbr[name]);
 
@@ -167,7 +167,8 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
     data,
     scale,
     widthStartNumbers + widthBlades + widthCrews,
-    widthEndNumbers + widthBlades + widthCrews
+    widthEndNumbers + widthBlades + widthCrews,
+    blades
   );
 
   const extraText = calculateExtraText(data, scale);
@@ -249,13 +250,21 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
         />
         <Crews
           align="end"
-          crews={data.crews.map((crew) => crew.start)}
+          crews={data.crews.map((crew, index) => ({
+            crew: crew.start,
+            highlight: blades && crew.blades,
+            y: index,
+          }))}
           scale={scale}
           x={left + widthStartNumbers + widthBlades + widthCrews - gap}
         />
         <Crews
           align="start"
-          crews={data.crews.map((crew) => crew.end)}
+          crews={data.crews.map((crew, index) => ({
+            crew: crew.gain !== null ? crew.start : null,
+            highlight: blades && crew.blades,
+            y: index - (crew.gain ?? 0),
+          }))}
           scale={scale}
           x={
             left +
@@ -268,6 +277,7 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
         />
         <Division
           lines={division.polylines}
+          divisionLines={division.divisionLines}
           circles={division.circles}
           skipped={[]}
           rect={division.rect}

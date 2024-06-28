@@ -37,6 +37,25 @@ export const MayBumpsMensDivisions: Story = {
   ],
 };
 
+export const Blades: Story = {
+  name: "May Bumps - Men's Divisions",
+
+  args: {
+    data: [mays2022_men, mays2023_men, mays2024_men],
+    blades: true,
+  },
+  decorators: [
+    (Story) => (
+      <>
+        <h1>May Bumps - Men's Divisions</h1>
+        <div>
+          <Story />
+        </div>
+      </>
+    ),
+  ],
+};
+
 export const MayBumps1845MensDivisions: Story = {
   name: "May Bumps - Men's Divisions",
 

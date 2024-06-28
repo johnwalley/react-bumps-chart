@@ -5,11 +5,13 @@ export function calculateDivisions(
   event: Event,
   scale: number,
   spaceLeft: number,
-  spaceRight: number
+  spaceRight: number,
+  blades = false
 ) {
   let top = 0;
 
-  const polylines: number[][][] = [];
+  const polylines: { highlight: boolean; points: number[][] }[] = [];
+  const divisionLines: number[][][] = [];
   const skippedLines: number[][][] = [];
   const circles = [];
 
@@ -91,7 +93,10 @@ export function calculateDivisions(
     }
 
     for (const line of lines) {
-      polylines.push(line);
+      polylines.push({
+        points: line,
+        highlight: blades && event.crews[crewNum].blades,
+      });
     }
 
     for (const line of skipped) {
@@ -122,13 +127,13 @@ export function calculateDivisions(
       top += event.div_size[day][div] * scale;
       divHeight.push(top);
 
-      polylines.push([
+      divisionLines.push([
         [left, top],
         [right, top],
       ]);
 
       if (prevDivHeight !== null && prevDivHeight[div] !== divHeight[div]) {
-        polylines.push([
+        divisionLines.push([
           [left, prevDivHeight[div]],
           [left, divHeight[div]],
         ]);
@@ -140,5 +145,5 @@ export function calculateDivisions(
     right += scale;
   }
 
-  return { polylines, circles, rect, skipped: skippedLines };
+  return { polylines, circles, rect, skipped: skippedLines, divisionLines };
 }

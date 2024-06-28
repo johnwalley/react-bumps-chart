@@ -13,3 +13,8 @@
 .withdrawn {
   fill: hsl(var(--react-bumps-chart-foreground));
 }
+
+.highlight {
+  stroke: red;
+  stroke-width: 2;
+}

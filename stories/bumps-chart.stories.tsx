@@ -50,6 +50,25 @@ export const DarkMode: Story = {
   ],
 };
 
+export const Blades: Story = {
+  name: "May Bumps 2023 - Men's Divisions (Dark mode)",
+
+  args: {
+    data: mays2023_men,
+    blades: true,
+  },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ backgroundColor: 'black' }}>
+        <h1>May Bumps 2023 - Men's Divisions</h1>
+        <div>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+};
+
 export const MayBumps2023MensDivisionsIncomplete: Story = {
   name: "May Bumps 2023 - Men's Divisions (Incomplete)",
 
