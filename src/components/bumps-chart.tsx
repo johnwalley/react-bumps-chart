@@ -281,7 +281,7 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
           lines={division.polylines}
           divisionLines={division.divisionLines}
           circles={division.circles}
-          skipped={[]}
+          skipped={division.skipped}
           rect={division.rect}
           x={left + widthStartNumbers + widthBlades + widthCrews}
         />
