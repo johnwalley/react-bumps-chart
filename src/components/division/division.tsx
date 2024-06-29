@@ -41,7 +41,7 @@ export const Division = ({
           fill="none"
           stroke="grey"
           strokeWidth="1"
-          className={classes.line}
+          className={classes.border}
         />
       ))}
       {skipped.map((line, index) => (

@@ -235,19 +235,21 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
           scale={scale}
           x={left + widthStartNumbers + widthBlades - gap}
         />
-        <Blades
-          crews={endCodes}
-          scale={scale}
-          x={
-            left +
-            widthStartNumbers +
-            widthBlades +
-            widthCrews +
-            widthDivisions +
-            widthCrews +
-            gap
-          }
-        />
+        {data.results.length > 0 && (
+          <Blades
+            crews={endCodes}
+            scale={scale}
+            x={
+              left +
+              widthStartNumbers +
+              widthBlades +
+              widthCrews +
+              widthDivisions +
+              widthCrews +
+              gap
+            }
+          />
+        )}
         <Crews
           align="end"
           crews={data.crews.map((crew, index) => ({
