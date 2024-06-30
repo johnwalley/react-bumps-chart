@@ -16,7 +16,6 @@ export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
       transform={`translate(${x} 0)`}
       textAnchor={align}
       fontSize="12.8"
-      dominantBaseline="central"
       fill="black"
       className={classes.root}
     >
@@ -24,6 +23,7 @@ export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
         <text
           key={index}
           y={(crew.y + 0.5) * scale}
+          dominantBaseline="central"
           className={classNames({ [classes.highlight]: crew.highlight })}
         >
           {crew.crew}

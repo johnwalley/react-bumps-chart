@@ -14,11 +14,10 @@ export const Numbers = ({ align, numbers, scale, x }: NumbersProps) => {
       transform={`translate(${x} 0)`}
       textAnchor={align}
       fontSize="12.8"
-      dominantBaseline="central"
       className={classes.root}
     >
       {numbers.map((number, index) => (
-        <text key={index} y={(index + 0.5) * scale}>
+        <text key={index} y={(index + 0.5) * scale} dominantBaseline="central">
           {number}
         </text>
       ))}
