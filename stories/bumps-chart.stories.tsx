@@ -21,6 +21,7 @@ export const MayBumps2023MensDivisions: Story = {
 
   args: {
     data: mays2023_men,
+    blades: true,
   },
   decorators: [
     (Story) => (
@@ -39,6 +40,7 @@ export const DarkMode: Story = {
 
   args: {
     data: mays2023_men,
+    blades: true,
   },
   decorators: [
     (Story) => (

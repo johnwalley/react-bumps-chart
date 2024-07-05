@@ -141,7 +141,11 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const widthCrews =
     Math.max(
       ...data.crews.map(
-        (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
+        (crew) =>
+          getStringWidth(`${crew.start}`, {
+            fontFamily: 'Roboto Flex',
+            fontSize: 12.8,
+          })!
       )
     ) +
     2 * gap;
@@ -152,14 +156,22 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const widthStartNumbers =
     Math.max(
       ...startNumbers.map(
-        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+        (number) =>
+          getStringWidth(`${number}`, {
+            fontFamily: 'Roboto Flex',
+            fontSize: 12.8,
+          })!
       )
     ) + gap;
 
   const widthEndNumbers =
     Math.max(
       ...endNumbers.map(
-        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+        (number) =>
+          getStringWidth(`${number}`, {
+            fontFamily: 'Roboto Flex',
+            fontSize: 12.8,
+          })!
       )
     ) + gap;
 
@@ -254,7 +266,8 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
           align="end"
           crews={data.crews.map((crew, index) => ({
             crew: crew.start,
-            highlight: blades && crew.blades,
+            blades: blades && crew.blades,
+            highlight: crew.highlight,
             y: index,
           }))}
           scale={scale}
@@ -264,7 +277,8 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
           align="start"
           crews={data.crews.map((crew, index) => ({
             crew: crew.gain !== null ? crew.start : null,
-            highlight: blades && crew.blades,
+            blades: blades && crew.blades,
+            highlight: crew.highlight,
             y: index - (crew.gain ?? 0),
           }))}
           scale={scale}

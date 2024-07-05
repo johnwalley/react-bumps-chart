@@ -10,7 +10,11 @@ export function calculateDivisions(
 ) {
   let top = 0;
 
-  const polylines: { highlight: boolean; points: number[][] }[] = [];
+  const polylines: {
+    blades: boolean;
+    highlight: boolean;
+    points: number[][];
+  }[] = [];
   const divisionLines: number[][][] = [];
   const skippedLines: number[][][] = [];
   const circles = [];
@@ -95,7 +99,8 @@ export function calculateDivisions(
     for (const line of lines) {
       polylines.push({
         points: line,
-        highlight: blades && event.crews[crewNum].blades,
+        blades: blades && event.crews[crewNum].blades,
+        highlight: event.crews[crewNum].highlight,
       });
     }
 
