@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.10.5...v1.11.0) (2024-07-06)
+
+
+### Features
+
+* highlight crews ([#336](https://github.com/johnwalley/react-bumps-chart/issues/336)) ([d3b7c53](https://github.com/johnwalley/react-bumps-chart/commit/d3b7c53f82333da785d592cfde2c3ebc20b5d185))
+
 ### [1.10.5](https://github.com/johnwalley/react-bumps-chart/compare/v1.10.4...v1.10.5) (2024-06-30)
 
 
