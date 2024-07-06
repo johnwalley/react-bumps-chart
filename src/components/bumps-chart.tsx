@@ -143,8 +143,8 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
       ...data.crews.map(
         (crew) =>
           getStringWidth(`${crew.start}`, {
-            fontFamily: var(--react-bumps-chart-font-family),
-            fontSize: 12.8,
+            fontFamily: 'var(--react-bumps-chart-font-family)',
+            fontSize: '12.8px',
           })!
       )
     ) +
