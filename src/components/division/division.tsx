@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import classes from './division.module.css';
 
 export type DivisionProps = {
-  lines: { highlight: boolean; points: number[][] }[];
+  lines: { blades: boolean; highlight: boolean; points: number[][] }[];
   divisionLines: number[][][];
   skipped: number[][][];
   circles: number[][];
@@ -30,6 +30,7 @@ export const Division = ({
           stroke={line.highlight ? 'red' : 'grey'}
           strokeWidth="1"
           className={classNames(classes.line, {
+            [classes.blades]: line.blades,
             [classes.highlight]: line.highlight,
           })}
         />

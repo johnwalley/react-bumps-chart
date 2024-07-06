@@ -3,5 +3,11 @@
 }
 
 .highlight {
-  fill: red;
+  fill: hsl(var(--react-bumps-chart-highlight));
+  font-weight: 600;
+}
+
+.blades {
+  fill: hsl(var(--react-bumps-chart-blades));
+  font-weight: 600;
 }

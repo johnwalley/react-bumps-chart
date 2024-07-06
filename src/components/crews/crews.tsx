@@ -5,7 +5,12 @@ import classes from './crews.module.css';
 
 export type NumbersProps = {
   align: string;
-  crews: { crew: string | null; highlight: boolean; y: number }[];
+  crews: {
+    crew: string | null;
+    blades: boolean;
+    highlight: boolean;
+    y: number;
+  }[];
   scale: number;
   x: number;
 };
@@ -24,7 +29,10 @@ export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
           key={index}
           y={(crew.y + 0.5) * scale}
           dominantBaseline="central"
-          className={classNames({ [classes.highlight]: crew.highlight })}
+          className={classNames({
+            [classes.blades]: crew.blades,
+            [classes.highlight]: crew.highlight,
+          })}
         >
           {crew.crew}
         </text>

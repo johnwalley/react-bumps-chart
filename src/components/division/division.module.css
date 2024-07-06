@@ -15,6 +15,11 @@
 }
 
 .highlight {
+  stroke: blue;
+  stroke-width: 2;
+}
+
+.blades {
   stroke: red;
   stroke-width: 2;
 }
