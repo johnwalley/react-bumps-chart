@@ -3,6 +3,6 @@
 }
 
 text {
-  font-family: , 'Times New Roman';
+  font-family: var(--react-bumps-chart-font-family, Arial);
   font-weight: 400;
 }
