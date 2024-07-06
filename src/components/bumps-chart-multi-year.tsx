@@ -219,7 +219,8 @@ export const BumpsChartMultiYear = ({
           align="end"
           crews={data[0].crews.map((crew, index) => ({
             crew: crew.start,
-            highlight: blades && crew.blades,
+            blades: blades && crew.blades,
+            highlight: crew.highlight,
             y: index,
           }))}
           scale={scale}
@@ -229,7 +230,8 @@ export const BumpsChartMultiYear = ({
           align="start"
           crews={data[data.length - 1].crews.map((crew, index) => ({
             crew: crew.gain !== null ? crew.start : null,
-            highlight: blades && crew.blades,
+            blades: blades && crew.blades,
+            highlight: crew.highlight,
             y: index - (crew.gain ?? 0),
           }))}
           scale={scale}
