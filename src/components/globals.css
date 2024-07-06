@@ -1,4 +1,6 @@
 :root {
+  --react-bumps-chart-font-family: 'Roboto Flex', Arial, sans-serif;
+
   --react-bumps-chart-background: 0 0% 100%;
   --react-bumps-chart-foreground: 240 10% 3.9%;
 

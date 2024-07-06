@@ -143,7 +143,7 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
       ...data.crews.map(
         (crew) =>
           getStringWidth(`${crew.start}`, {
-            fontFamily: 'Roboto Flex',
+            fontFamily: var(--react-bumps-chart-font-family),
             fontSize: 12.8,
           })!
       )
@@ -158,8 +158,8 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
       ...startNumbers.map(
         (number) =>
           getStringWidth(`${number}`, {
-            fontFamily: 'Roboto Flex',
-            fontSize: 12.8,
+            fontFamily: 'var(--react-bumps-chart-font-family)',
+            fontSize: '12.8px',
           })!
       )
     ) + gap;
@@ -169,8 +169,8 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
       ...endNumbers.map(
         (number) =>
           getStringWidth(`${number}`, {
-            fontFamily: 'Roboto Flex',
-            fontSize: 12.8,
+            fontFamily: 'var(--react-bumps-chart-font-family)',
+            fontSize: '12.8px',
           })!
       )
     ) + gap;
