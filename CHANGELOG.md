@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.11.0...v1.11.1) (2024-07-06)
+
+
+### Bug Fixes
+
+* use font css variable ([f11169d](https://github.com/johnwalley/react-bumps-chart/commit/f11169d87908178687f0d6939ae5e0e7146262eb))
+
 ## [1.11.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.10.5...v1.11.0) (2024-07-06)
 
 
