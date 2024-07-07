@@ -4,10 +4,10 @@
 
 .highlight {
   fill: hsl(var(--react-bumps-chart-highlight));
-  font-weight: 600;
+  font-variation-settings: 'GRAD' 150;
 }
 
 .blades {
   fill: hsl(var(--react-bumps-chart-blades));
-  font-weight: 600;
+  font-variation-settings: 'GRAD' 150;
 }
