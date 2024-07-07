@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.4](https://github.com/johnwalley/react-bumps-chart/compare/v1.11.3...v1.11.4) (2024-07-07)
+
+
+### Bug Fixes
+
+* consistent colors ([c2d50b4](https://github.com/johnwalley/react-bumps-chart/commit/c2d50b4568a1e7861a1e496f342c2c07673bd93a))
+
 ### [1.11.3](https://github.com/johnwalley/react-bumps-chart/compare/v1.11.2...v1.11.3) (2024-07-07)
 
 
