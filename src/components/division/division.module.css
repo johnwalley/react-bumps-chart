@@ -15,11 +15,11 @@
 }
 
 .highlight {
-  stroke: blue;
+  stroke: hsl(var(--react-bumps-chart-highlight));
   stroke-width: 2;
 }
 
 .blades {
-  stroke: red;
+  stroke: hsl(var(--react-bumps-chart-blades));
   stroke-width: 2;
 }
