@@ -9,10 +9,7 @@ export type JoinProps = {
 
 export const Join = ({ lines, joins, text, x }: JoinProps) => {
   return (
-    <G
-      transform={`translate(${x} 0)`}
-      //fontSize="9px"
-    >
+    <G transform={`translate(${x} 0)`} style={{ fontSize: 9 }}>
       {lines.map((line, index) => (
         <Line
           key={index}

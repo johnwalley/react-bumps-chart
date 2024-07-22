@@ -1,8 +1,13 @@
-import { G, Text } from "@react-pdf/renderer";
+import { G, Text } from '@react-pdf/renderer';
 
 export type NumbersProps = {
-  align: "start" | "middle" | "end";
-  crews: string[];
+  align: 'start' | 'middle' | 'end';
+  crews: {
+    crew: string | null;
+    blades: boolean;
+    highlight: boolean;
+    y: number;
+  }[];
   scale: number;
   x: number;
 };
@@ -12,12 +17,12 @@ export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
     <G
       transform={`translate(${x} 0)`}
       textAnchor={align}
-      //fontSize="12.8"
       dominantBaseline="central"
+      style={{ fontSize: 12.8 }}
     >
-      {crews.map((crews, index) => (
+      {crews.map((crew, index) => (
         <Text key={index} y={(index + 0.5) * scale}>
-          {crews}
+          {crew.crew}
         </Text>
       ))}
     </G>
