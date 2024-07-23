@@ -1,11 +1,13 @@
 import classes from './extra-text.module.css';
 
-export type DivisionProps = {
-  text: { label: string; pos: number[] }[];
-  x: number;
-};
+namespace ExtraText {
+  export type Props = {
+    text: { label: string; pos: number[] }[];
+    x: number;
+  };
+}
 
-export const ExtraText = ({ text, x }: DivisionProps) => {
+export const ExtraText = ({ text, x }: ExtraText.Props) => {
   return (
     <g transform={`translate(${x} 0)`}>
       {text.map((text, index) => (

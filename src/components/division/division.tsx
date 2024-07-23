@@ -1,14 +1,16 @@
 import classNames from 'classnames';
 import classes from './division.module.css';
 
-export type DivisionProps = {
-  lines: { blades: boolean; highlight: boolean; points: number[][] }[];
-  divisionLines: number[][][];
-  skipped: number[][][];
-  circles: number[][];
-  rect: number[][];
-  x: number;
-};
+namespace Division {
+  export type Props = {
+    lines: { blades: boolean; highlight: boolean; points: number[][] }[];
+    divisionLines: number[][][];
+    skipped: number[][][];
+    circles: number[][];
+    rect: number[][];
+    x: number;
+  };
+}
 
 export const Division = ({
   lines,
@@ -17,7 +19,7 @@ export const Division = ({
   rect,
   skipped,
   x,
-}: DivisionProps) => {
+}: Division.Props) => {
   return (
     <g transform={`translate(${x} 0)`}>
       {lines.map((line, index) => (

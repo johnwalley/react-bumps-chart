@@ -1,14 +1,16 @@
 import { Blade } from 'react-rowing-blades';
 import classes from './blades.module.css';
 
-export type BladesProps = {
-  flip?: boolean;
-  crews: (string | undefined)[];
-  scale: number;
-  x: number;
-};
+namespace Blades {
+  export type Props = {
+    flip?: boolean;
+    crews: (string | undefined)[];
+    scale: number;
+    x: number;
+  };
+}
 
-export const Blades = ({ flip = false, crews, scale, x }: BladesProps) => {
+export const Blades = ({ flip = false, crews, scale, x }: Blades.Props) => {
   return (
     <g transform={`translate(${x} 0)`} className={classes.root}>
       {crews.map((crew, index) => (

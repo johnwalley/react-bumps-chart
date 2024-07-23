@@ -1,19 +1,21 @@
 import classNames from 'classnames';
 import classes from './crews.module.css';
 
-export type NumbersProps = {
-  align: string;
-  crews: {
-    crew: string | null;
-    blades: boolean;
-    highlight: boolean;
-    y: number;
-  }[];
-  scale: number;
-  x: number;
-};
+namespace Crews {
+  export type Props = {
+    align: string;
+    crews: {
+      crew: string | null;
+      blades: boolean;
+      highlight: boolean;
+      y: number;
+    }[];
+    scale: number;
+    x: number;
+  };
+}
 
-export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
+export const Crews = ({ align, crews, scale, x }: Crews.Props) => {
   return (
     <g
       transform={`translate(${x} 0)`}

@@ -1,13 +1,15 @@
 import classes from './numbers.module.css';
 
-export type NumbersProps = {
-  align: string;
-  numbers: string[];
-  scale: number;
-  x: number;
-};
+namespace Numbers {
+  export type Props = {
+    align: string;
+    numbers: string[];
+    scale: number;
+    x: number;
+  };
+}
 
-export const Numbers = ({ align, numbers, scale, x }: NumbersProps) => {
+export const Numbers = ({ align, numbers, scale, x }: Numbers.Props) => {
   return (
     <g
       transform={`translate(${x} 0)`}

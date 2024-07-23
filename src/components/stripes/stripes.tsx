@@ -1,11 +1,13 @@
 import classes from './stripes.module.css';
 
-export type StripesProps = {
-  stripes: number[][][];
-  x: number;
-};
+namespace Stripes {
+  export type Props = {
+    stripes: number[][][];
+    x: number;
+  };
+}
 
-export const Stripes = ({ stripes, x }: StripesProps) => {
+export const Stripes = ({ stripes, x }: Stripes.Props) => {
   return (
     <g
       transform={`translate(${x} 0)`}

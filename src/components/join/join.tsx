@@ -1,13 +1,15 @@
 import classes from './join.module.css';
 
-export type JoinProps = {
-  lines: number[][][];
-  joins: number[][][];
-  text: { label: string; pos: number[] }[];
-  x: number;
-};
+namespace Join {
+  export type Props = {
+    lines: number[][][];
+    joins: number[][][];
+    text: { label: string; pos: number[] }[];
+    x: number;
+  };
+}
 
-export const Join = ({ lines, joins, text, x }: JoinProps) => {
+export const Join = ({ lines, joins, text, x }: Join.Props) => {
   return (
     <g transform={`translate(${x} 0)`} fontSize="9px">
       {lines.map((line, index) => (
