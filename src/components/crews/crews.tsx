@@ -1,6 +1,4 @@
 import classNames from 'classnames';
-
-// @ts-ignore - This import is not working
 import classes from './crews.module.css';
 
 export type NumbersProps = {

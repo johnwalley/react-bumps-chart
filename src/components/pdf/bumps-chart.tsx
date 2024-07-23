@@ -1,18 +1,15 @@
-// @ts-ignore - This import is not working
-import classes from './bumps-chart.module.css';
+import { Document, G, Page, StyleSheet, Svg } from '@react-pdf/renderer';
 
-import { Event } from '../../types';
-import getStringWidth from '@/utils/get-string-width';
-import { calculateDivisions } from '@/utils/calculate-divisions';
-import { Numbers } from './numbers';
-import { Division } from './division';
 import { Crews } from './crews';
-
-import { Page, Document, StyleSheet, Svg, G } from '@react-pdf/renderer';
+import { Division } from './division';
+import { Event } from '../../types';
+import { ExtraText } from './extra-text';
+import { Numbers } from './numbers';
+import { Stripes } from './stripes';
+import { calculateDivisions } from '@/utils/calculate-divisions';
 import { calculateExtraText } from '@/utils/calculate-extra-text';
 import { calculateStripes } from '@/utils/calculate-stripes';
-import { ExtraText } from './extra-text';
-import { Stripes } from './stripes';
+import getStringWidth from '@/utils/get-string-width';
 
 const scale = 16;
 const sep = 32;

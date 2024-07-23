@@ -1,7 +1,5 @@
-// @ts-ignore - This import is not working
-import classes from './blades.module.css';
-
 import { Blade } from 'react-rowing-blades';
+import classes from './blades.module.css';
 
 export type BladesProps = {
   flip?: boolean;

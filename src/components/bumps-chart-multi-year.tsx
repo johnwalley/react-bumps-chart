@@ -1,21 +1,18 @@
-// @ts-ignore - This import is not working
-import classes from './bumps-chart.module.css';
-
-import { Event } from '../types';
-import getStringWidth from '@/utils/get-string-width';
-
-import { calculateDivisions } from '@/utils/calculate-divisions';
-import { Numbers } from './numbers/numbers';
-import { calculateNumbers } from '@/utils/calculate-numbers';
-import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
-import { Join } from './join/join';
-import { Division } from './division/division';
-import { Crews } from './crews/crews';
-import { calculateStripes } from '@/utils/calculate-stripes';
-import { Stripes } from './stripes/stripes';
-import { Label } from './label/label';
-
 import './globals.css';
+
+import { Crews } from './crews/crews';
+import { Division } from './division/division';
+import { Event } from '../types';
+import { Join } from './join/join';
+import { Label } from './label/label';
+import { Numbers } from './numbers/numbers';
+import { Stripes } from './stripes/stripes';
+import { calculateDivisions } from '@/utils/calculate-divisions';
+import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
+import { calculateNumbers } from '@/utils/calculate-numbers';
+import { calculateStripes } from '@/utils/calculate-stripes';
+import classes from './bumps-chart.module.css';
+import getStringWidth from '@/utils/get-string-width';
 
 const scale = 16;
 const sep = 32;
