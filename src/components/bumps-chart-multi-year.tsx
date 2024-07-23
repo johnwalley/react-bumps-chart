@@ -31,6 +31,7 @@ export const BumpsChartMultiYear = ({
   data,
   blades = false,
 }: BumpsChartMultiYear.Props) => {
+  let height = 0;
   const fontSize = 12;
   const left = xOffset + scale * 2;
 
@@ -106,17 +107,17 @@ export const BumpsChartMultiYear = ({
           xPos + scale * event.days + sep + (scale * event2!.days) / 2;
 
         const midp = (mid1 + mid2) / 2;
-        const twidth = getStringWidth(nYear, { fontSize: 12.8 })!;
+        const tWidth = getStringWidth(nYear, { fontSize: 12.8 })!;
 
         labels.push({
           label: { label: nYear, pos: [midp, h] },
           lines: [
             [
               [mid1, h - fontSize / 2],
-              [midp - twidth / 2, h - fontSize / 2],
+              [midp - tWidth / 2, h - fontSize / 2],
             ],
             [
-              [midp + twidth / 2, h - fontSize / 2],
+              [midp + tWidth / 2, h - fontSize / 2],
               [mid2, h - fontSize / 2],
             ],
             [
@@ -164,7 +165,20 @@ export const BumpsChartMultiYear = ({
     );
 
     if (eventNum < data.length - 1) {
-      joins.push(calculateJoin(event, event2!, top, scale, sep, skipFirst));
+      const { height: h, ...join } = calculateJoin(
+        event,
+        event2!,
+        top,
+        scale,
+        sep,
+        skipFirst
+      );
+
+      if (h > height) {
+        height = h;
+      }
+
+      joins.push(join);
     }
 
     xPos = xPos + scale * event.days + sep;
@@ -176,24 +190,43 @@ export const BumpsChartMultiYear = ({
   xPos = left;
 
   for (const event of data) {
-    divisions.push(calculateDivisions(event, scale, 0, 0, blades));
+    const { height: h, ...division } = calculateDivisions(
+      event,
+      scale,
+      0,
+      0,
+      blades
+    );
+
+    if (h > height) {
+      height = h;
+    }
+
+    divisions.push(division);
   }
 
   return (
     <svg
       className={classes.root}
-      width="400"
-      viewBox={`0 0 ${widthStartNumbers + widthCrews + gap + xDivisionOffsets[data.length] - sep + gap + widthCrews + widthEndNumbers} 2000`}
+      viewBox={`0 0 ${widthStartNumbers + widthCrews + gap + xDivisionOffsets[data.length] - sep + gap + widthCrews + widthEndNumbers} ${height + 3 * fontSize}`}
       preserveAspectRatio="none"
     >
       <g transform="translate(0 20)">
         {labels.map((label) => (
-          <Label label={label} x={widthStartNumbers + widthCrews + gap} />
+          <Label
+            key={label.label.label}
+            label={label}
+            x={widthStartNumbers + widthCrews + gap}
+          />
         ))}
       </g>
       <g transform="translate(0 30)">
-        {stripes.map((stripe) => (
-          <Stripes stripes={stripe} x={widthStartNumbers + widthCrews + gap} />
+        {stripes.map((stripe, index) => (
+          <Stripes
+            key={index}
+            stripes={stripe}
+            x={widthStartNumbers + widthCrews + gap}
+          />
         ))}
         <Numbers align="start" numbers={startNumbers} scale={scale} x={gap} />
         <Numbers
@@ -243,6 +276,7 @@ export const BumpsChartMultiYear = ({
         />
         {joins.map((join, index) => (
           <Join
+            key={index}
             lines={join.lines}
             joins={join.polylines}
             text={join.text}
@@ -257,6 +291,7 @@ export const BumpsChartMultiYear = ({
         ))}
         {divisions.map((division, index) => (
           <Division
+            key={index}
             lines={division.polylines}
             divisionLines={division.divisionLines}
             circles={division.circles}

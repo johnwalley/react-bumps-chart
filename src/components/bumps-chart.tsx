@@ -201,7 +201,6 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   return (
     <svg
       className={classes.root}
-      width="800"
       viewBox={`0 0 ${
         left +
         widthStartNumbers +

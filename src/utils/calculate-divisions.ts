@@ -150,5 +150,5 @@ export function calculateDivisions(
     right += scale;
   }
 
-  return { polylines, circles, rect, skipped: skippedLines, divisionLines };
+  return { polylines, circles, rect, skipped: skippedLines, divisionLines, height: event.crews.length * scale };
 }

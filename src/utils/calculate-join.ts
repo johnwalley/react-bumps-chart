@@ -1,5 +1,5 @@
-import { range } from 'lodash';
 import { Event } from '../types';
+import { range } from 'lodash';
 
 export function caluclateJoin(
   event: Event,
@@ -100,5 +100,5 @@ export function caluclateJoin(
     }
   }
 
-  return { lines, polylines, text };
+  return { lines, polylines, text, height: yNext };
 }
