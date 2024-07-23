@@ -1,13 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { PDFViewer, usePDF } from '@react-pdf/renderer';
+
 import { BumpsChartMultiYear } from '../src/components/pdf/bumps-chart-multi-year';
-import mays2023_men from './mays2023_men.json';
-import torpids1858_men from './torpids1858_men.json';
+import React from 'react';
 import mays18451_men from './mays1845.1_men.json';
 import mays18452_men from './mays1845.2_men.json';
 import mays18461_men from './mays1846.1_men.json';
 import mays18462_men from './mays1846.2_men.json';
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { PDFViewer, usePDF } from '@react-pdf/renderer';
 
 const meta: Meta<typeof BumpsChartMultiYear> = {
   component: BumpsChartMultiYear,

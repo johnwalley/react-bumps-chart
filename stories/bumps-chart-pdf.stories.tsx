@@ -1,9 +1,9 @@
-import { BumpsChart } from '../src/components/pdf/bumps-chart';
-import mays2023_men from './mays2023_men.json';
-import torpids1858_men from './torpids1858_men.json';
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { PDFViewer, usePDF } from '@react-pdf/renderer';
+
+import { BumpsChart } from '../src/components/pdf/bumps-chart';
+import { PDFViewer } from '@react-pdf/renderer';
+import React from 'react';
+import mays2023_men from './mays2023_men.json';
 
 const meta: Meta<typeof BumpsChart> = {
   component: BumpsChart,

@@ -1,16 +1,17 @@
-import { Event } from '../../types';
-import getStringWidth from '@/utils/get-string-width';
-import { calculateDivisions } from '@/utils/calculate-divisions';
-import { Numbers } from './numbers';
-import { calculateNumbers } from '@/utils/calculate-numbers';
-import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
-import { Join } from './join';
-import { Division } from './division';
+import { Document, G, Page, StyleSheet, Svg } from '@react-pdf/renderer';
+
 import { Crews } from './crews';
-import { Page, Document, StyleSheet, Svg, G } from '@react-pdf/renderer';
-import { calculateStripes } from '@/utils/calculate-stripes';
-import { Stripes } from './stripes';
+import { Division } from './division';
+import { Event } from '../../types';
+import { Join } from './join';
 import { Label } from './label';
+import { Numbers } from './numbers';
+import { Stripes } from './stripes';
+import { calculateDivisions } from '@/utils/calculate-divisions';
+import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
+import { calculateNumbers } from '@/utils/calculate-numbers';
+import { calculateStripes } from '@/utils/calculate-stripes';
+import getStringWidth from '@/utils/get-string-width';
 
 const scale = 16;
 const sep = 32;
@@ -32,6 +33,7 @@ export const BumpsChartMultiYear = ({
   data,
   blades = false,
 }: BumpsChartMultiYear.Props) => {
+  let height = 0;
   const fontSize = 12;
   const left = xOffset + scale * 2;
 
@@ -107,17 +109,17 @@ export const BumpsChartMultiYear = ({
           xPos + scale * event.days + sep + (scale * event2!.days) / 2;
 
         const midp = (mid1 + mid2) / 2;
-        const twidth = getStringWidth(nYear, { fontSize: 12.8 })!;
+        const tWidth = getStringWidth(nYear, { fontSize: 12.8 })!;
 
         labels.push({
           label: { label: nYear, pos: [midp, h] },
           lines: [
             [
               [mid1, h - fontSize / 2],
-              [midp - twidth / 2, h - fontSize / 2],
+              [midp - tWidth / 2, h - fontSize / 2],
             ],
             [
-              [midp + twidth / 2, h - fontSize / 2],
+              [midp + tWidth / 2, h - fontSize / 2],
               [mid2, h - fontSize / 2],
             ],
             [
@@ -165,7 +167,20 @@ export const BumpsChartMultiYear = ({
     );
 
     if (eventNum < data.length - 1) {
-      joins.push(calculateJoin(event, event2!, top, scale, sep, skipFirst));
+      const { height: h, ...join } = calculateJoin(
+        event,
+        event2!,
+        top,
+        scale,
+        sep,
+        skipFirst
+      );
+
+      if (h > height) {
+        height = h;
+      }
+
+      joins.push(join);
     }
 
     xPos = xPos + scale * event.days + sep;
@@ -177,7 +192,19 @@ export const BumpsChartMultiYear = ({
   xPos = left;
 
   for (const event of data) {
-    divisions.push(calculateDivisions(event, scale, 0, 0, blades));
+    const { height: h, ...division } = calculateDivisions(
+      event,
+      scale,
+      0,
+      0,
+      blades
+    );
+
+    if (h > height) {
+      height = h;
+    }
+
+    divisions.push(division);
   }
 
   return (
@@ -193,12 +220,12 @@ export const BumpsChartMultiYear = ({
             gap +
             widthCrews +
             widthEndNumbers,
-          height: 2000,
+          height: height + 3 * fontSize,
         }}
         style={styles.page}
       >
         <Svg
-          viewBox={`0 0 ${widthStartNumbers + widthCrews + gap + xDivisionOffsets[data.length] - sep + gap + widthCrews + widthEndNumbers} 2000`}
+          viewBox={`0 0 ${widthStartNumbers + widthCrews + gap + xDivisionOffsets[data.length] - sep + gap + widthCrews + widthEndNumbers} ${height + 3 * fontSize}`}
           preserveAspectRatio="none"
         >
           <G transform="translate(0 20)">
