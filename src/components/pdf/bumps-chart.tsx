@@ -30,7 +30,6 @@ namespace BumpsChart {
 
 export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
-  const right = gap;
 
   const widthNumbers = 32;
 
