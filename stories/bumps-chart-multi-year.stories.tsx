@@ -1,15 +1,14 @@
-import { BumpsChartMultiYear } from '../src/components/bumps-chart-multi-year';
-import mays2022_men from './mays2022_men.json';
-import mays2023_men from './mays2023_men.json';
-import mays2024_men from './mays2024_men.json';
+import type { Meta, StoryObj } from '@storybook/react';
 
+import { BumpsChartMultiYear } from '../src/components/bumps-chart-multi-year';
+import React from 'react';
 import mays18451_men from './mays1845.1_men.json';
 import mays18452_men from './mays1845.2_men.json';
 import mays18461_men from './mays1846.1_men.json';
 import mays18462_men from './mays1846.2_men.json';
-
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import mays2022_men from './mays2022_men.json';
+import mays2023_men from './mays2023_men.json';
+import mays2024_men from './mays2024_men.json';
 
 const meta: Meta<typeof BumpsChartMultiYear> = {
   component: BumpsChartMultiYear,

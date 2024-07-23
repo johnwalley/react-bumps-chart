@@ -13,7 +13,7 @@ export const Label = ({ label, x }: Label.Props) => {
       transform={`translate(${x} 10)`}
       fill="black"
       textAnchor="middle"
-      //fontSize="12.8px"
+      style={{ fontSize: 12.8 }}
     >
       <Text x={label.label.pos[0]} y={label.label.pos[1]}>
         {label.label.label}

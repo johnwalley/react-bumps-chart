@@ -8,6 +8,7 @@ import { Numbers } from './numbers';
 import { Stripes } from './stripes';
 import { calculateDivisions } from '@/utils/calculate-divisions';
 import { calculateExtraText } from '@/utils/calculate-extra-text';
+import { calculateNumbers } from '@/utils/calculate-numbers';
 import { calculateStripes } from '@/utils/calculate-stripes';
 import getStringWidth from '@/utils/get-string-width';
 
@@ -24,41 +25,74 @@ namespace BumpsChart {
   export type Props = {
     data: Event;
     blades?: boolean;
-    spoons?: boolean;
   };
 }
 
-export const BumpsChart = ({ data }: BumpsChart.Props) => {
+export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
-
-  const widthCrews = Math.max(
-    ...data.crews.map(
-      (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
-    )
-  );
+  const right = gap;
 
   const widthNumbers = 32;
 
   const widthDivisions = data.days * scale;
 
-  const startNumbers = data.div_size[0].flatMap((size) =>
-    Array.from({ length: size }, (_, i) => String(i + 1))
+  // TODO: Crews who start are not necessarily the same as crews who end
+  const widthCrews =
+    Math.max(
+      ...data.crews.map(
+        (crew) =>
+          getStringWidth(`${crew.start}`, {
+            fontFamily: 'var(--react-bumps-chart-font-family)',
+            fontSize: '12.8px',
+          })!
+      )
+    ) +
+    2 * gap;
+
+  const startNumbers = calculateNumbers(data, true);
+  const endNumbers = calculateNumbers(data, false);
+
+  const widthStartNumbers =
+    Math.max(
+      ...startNumbers.map(
+        (number) =>
+          getStringWidth(`${number}`, {
+            fontFamily: 'var(--react-bumps-chart-font-family)',
+            fontSize: '12.8px',
+          })!
+      )
+    ) + gap;
+
+  const widthEndNumbers =
+    Math.max(
+      ...endNumbers.map(
+        (number) =>
+          getStringWidth(`${number}`, {
+            fontFamily: 'var(--react-bumps-chart-font-family)',
+            fontSize: '12.8px',
+          })!
+      )
+    ) + gap;
+
+  const division = calculateDivisions(
+    data,
+    scale,
+    widthStartNumbers + widthCrews,
+    widthEndNumbers + widthCrews,
+    blades
   );
-
-  const endNumbers = Array.from({ length: data.crews.length }, (_, i) =>
-    String(i + 1)
-  );
-
-  const division = calculateDivisions(data, scale, 0, 0);
-
   const extraText = calculateExtraText(data, scale);
 
   const stripes = calculateStripes(
     data,
     null,
     scale,
-    widthCrews - widthNumbers - gap,
-    widthDivisions + gap + widthCrews + widthNumbers,
+    left,
+    widthStartNumbers +
+      widthCrews +
+      widthDivisions +
+      widthCrews +
+      widthEndNumbers,
     sep
   );
 
@@ -108,24 +142,35 @@ export const BumpsChart = ({ data }: BumpsChart.Props) => {
             />
             <Crews
               align="end"
-              crews={data.crews.map((crew) => crew.start)}
+              crews={data.crews.map((crew, index) => ({
+                crew: crew.start,
+                blades: blades && crew.blades,
+                highlight: crew.highlight,
+                y: index,
+              }))}
               scale={scale}
-              x={left + widthNumbers + widthCrews}
+              x={left + widthStartNumbers + widthCrews - gap}
             />
             <Crews
               align="start"
-              crews={data.crews.map((crew) => crew.end)}
+              crews={data.crews.map((crew, index) => ({
+                crew: crew.gain !== null ? crew.start : null,
+                blades: blades && crew.blades,
+                highlight: crew.highlight,
+                y: index - (crew.gain ?? 0),
+              }))}
               scale={scale}
-              x={left + widthNumbers + widthCrews + gap + widthDivisions + gap}
+              x={left + widthStartNumbers + widthCrews + widthDivisions + gap}
             />
             <Division
               lines={division.polylines}
+              divisionLines={division.divisionLines}
               circles={division.circles}
-              skipped={[]}
+              skipped={division.skipped}
               rect={division.rect}
-              x={left + widthNumbers + widthCrews + gap}
+              x={left + widthStartNumbers + widthCrews}
             />
-            <ExtraText text={extraText} x={10} />
+            <ExtraText text={extraText} x={16} />
           </G>
         </Svg>
       </Page>

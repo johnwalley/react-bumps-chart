@@ -1,12 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { BumpsChart } from '../src/components/bumps-chart';
+import React from 'react';
+import eights1838_men from './eights1838_men.json';
 import mays2023_men from './mays2023_men.json';
 import mays2023_men_incomplete from './mays2023_men_incomplete.json';
 import torpids1858_men from './torpids1858_men.json';
 import torpids1975_men from './torpids1975_men.json';
 import town2024_women from './town2024_women.json';
-import eights1838_men from './eights1838_men.json';
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof BumpsChart> = {
   component: BumpsChart,
