@@ -1,4 +1,3 @@
-// @ts-ignore - This import is not working
 import classes from './label.module.css';
 
 namespace Label {

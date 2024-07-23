@@ -1,4 +1,3 @@
-// @ts-ignore - This import is not working
 import classes from './stripes.module.css';
 
 export type StripesProps = {

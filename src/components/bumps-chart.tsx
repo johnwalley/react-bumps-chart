@@ -1,22 +1,20 @@
-// @ts-ignore - This import is not working
-import classes from './bumps-chart.module.css';
-
-import { Event } from '../types';
-import getStringWidth from '@/utils/get-string-width';
-import { calculateDivisions } from '@/utils/calculate-divisions';
-import { Numbers } from './numbers/numbers';
-import { calculateNumbers } from '@/utils/calculate-numbers';
-import { Division } from './division/division';
-import { Crews } from './crews/crews';
-import { ExtraText } from './extra-text/extra-text';
-import { calculateExtraText } from '@/utils/calculate-extra-text';
-import { calculateStripes } from '@/utils/calculate-stripes';
-import { Stripes } from './stripes/stripes';
-import { Blades } from './blades/blades';
-
 import './globals.css';
 
-import { shortShortNames, abbreviations } from 'react-rowing-blades';
+import { abbreviations, shortShortNames } from 'react-rowing-blades';
+
+import { Blades } from './blades/blades';
+import { Crews } from './crews/crews';
+import { Division } from './division/division';
+import { Event } from '../types';
+import { ExtraText } from './extra-text/extra-text';
+import { Numbers } from './numbers/numbers';
+import { Stripes } from './stripes/stripes';
+import { calculateDivisions } from '@/utils/calculate-divisions';
+import { calculateExtraText } from '@/utils/calculate-extra-text';
+import { calculateNumbers } from '@/utils/calculate-numbers';
+import { calculateStripes } from '@/utils/calculate-stripes';
+import classes from './bumps-chart.module.css';
+import getStringWidth from '@/utils/get-string-width';
 import { useMemo } from 'react';
 
 const scale = 16;
