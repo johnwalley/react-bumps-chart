@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.11.4...v1.12.0) (2024-12-29)
+
+
+### Features
+
+* multi year pdf ([#337](https://github.com/johnwalley/react-bumps-chart/issues/337)) ([ab7e171](https://github.com/johnwalley/react-bumps-chart/commit/ab7e171f7293334b906ffa93977188054516fdf4))
+
+
+### Bug Fixes
+
+* improve react 19 support ([faa11e9](https://github.com/johnwalley/react-bumps-chart/commit/faa11e935d20ee60a90c0fa5819d994ebd32d237))
+
 ### [1.11.4](https://github.com/johnwalley/react-bumps-chart/compare/v1.11.3...v1.11.4) (2024-07-07)
 
 
