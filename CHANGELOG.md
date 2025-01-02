@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.12.0...v1.12.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* do not show blades if crew has withdrawn ([740b068](https://github.com/johnwalley/react-bumps-chart/commit/740b0689f7fe9f2b6ffddd3ed5be798f2ef6ed91))
+
 ## [1.12.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.11.4...v1.12.0) (2024-12-29)
 
 
