@@ -9,6 +9,7 @@ import mays18462_men from './mays1846.2_men.json';
 import mays2022_men from './mays2022_men.json';
 import mays2023_men from './mays2023_men.json';
 import mays2024_men from './mays2024_men.json';
+import mays_full from './mays_full.json';
 
 const meta: Meta<typeof BumpsChartMultiYear> = {
   component: BumpsChartMultiYear,
@@ -64,7 +65,7 @@ export const MayBumps1845MensDivisions: Story = {
   decorators: [
     (Story) => (
       <>
-        <h1>May Bumps - 1845- Men's Divisions</h1>
+        <h1>May Bumps - 1845 - Men's Divisions</h1>
         <div>
           <Story />
         </div>
@@ -82,7 +83,31 @@ export const DarkMode: Story = {
   decorators: [
     (Story) => (
       <div className="dark" style={{ backgroundColor: 'black' }}>
-        <h1>May Bumps - 1845- Men's Divisions</h1>
+        <h1>May Bumps - 1845 - Men's Divisions</h1>
+        <div>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+};
+
+export const MayBumpsFull: Story = {
+  name: "May Bumps - Full Men's History",
+
+  args: {
+    data: mays_full.map((event) => ({
+      ...event,
+      crews: event.crews.map((crew) => ({
+        ...crew,
+        highlight: crew.start === 'LMBC',
+      })),
+    })),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: '40000px' }}>
+        <h1>May Bumps - Full Men's History</h1>
         <div>
           <Story />
         </div>
