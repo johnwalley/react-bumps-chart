@@ -17,6 +17,7 @@ const scale = 16;
 const sep = 32;
 const gap = 5;
 const xOffset = 10;
+const fontSize = 12.8;
 
 const styles = StyleSheet.create({
   page: {},
@@ -34,14 +35,20 @@ export const BumpsChartMultiYear = ({
   blades = false,
 }: BumpsChartMultiYear.Props) => {
   let height = 0;
-  const fontSize = 12;
   const left = xOffset + scale * 2;
 
-  // TODO: Crews who start are not necessarily the same as crews who end
-  const widthCrews =
+  const widthStartCrews =
     Math.max(
       ...data[0].crews.map(
-        (crew) => getStringWidth(`${crew.start}`, { fontSize: 12.8 })!
+        (crew) => getStringWidth(`${crew.start}`, { fontSize: fontSize })!
+      )
+    ) +
+    2 * gap;
+
+  const widthEndCrews =
+    Math.max(
+      ...data[0].crews.map(
+        (crew) => getStringWidth(`${crew.end}`, { fontSize: fontSize })!
       )
     ) +
     2 * gap;
@@ -52,14 +59,14 @@ export const BumpsChartMultiYear = ({
   const widthStartNumbers =
     Math.max(
       ...startNumbers.map(
-        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+        (number) => getStringWidth(`${number}`, { fontSize: fontSize })!
       )
     ) + gap;
 
   const widthEndNumbers =
     Math.max(
       ...endNumbers.map(
-        (number) => getStringWidth(`${number}`, { fontSize: 12.8 })!
+        (number) => getStringWidth(`${number}`, { fontSize: fontSize })!
       )
     ) + gap;
 
@@ -109,7 +116,7 @@ export const BumpsChartMultiYear = ({
           xPos + scale * event.days + sep + (scale * event2!.days) / 2;
 
         const midp = (mid1 + mid2) / 2;
-        const tWidth = getStringWidth(nYear, { fontSize: 12.8 })!;
+        const tWidth = getStringWidth(nYear, { fontSize: fontSize })!;
 
         labels.push({
           label: { label: nYear, pos: [midp, h] },
@@ -154,13 +161,13 @@ export const BumpsChartMultiYear = ({
         event2,
         scale,
         eventNum === 0
-          ? xDivisionOffset - widthCrews - widthStartNumbers - gap
+          ? xDivisionOffset - widthStartCrews - widthStartNumbers - gap
           : xDivisionOffset,
         event.days * scale +
           (eventNum === 0
-            ? widthCrews + widthStartNumbers + gap
+            ? widthStartCrews + widthStartNumbers + gap
             : eventNum === data.length - 1
-              ? gap + widthCrews + widthEndNumbers
+              ? gap + widthEndCrews + widthEndNumbers
               : 0),
         sep
       )
@@ -214,30 +221,33 @@ export const BumpsChartMultiYear = ({
           width:
             left +
             widthStartNumbers +
-            widthCrews +
+            widthStartCrews +
             gap +
             xDivisionOffsets[data.length] +
             gap +
-            widthCrews +
+            widthEndCrews +
             widthEndNumbers,
           height: height + 3 * fontSize,
         }}
         style={styles.page}
       >
         <Svg
-          viewBox={`0 0 ${widthStartNumbers + widthCrews + gap + xDivisionOffsets[data.length] - sep + gap + widthCrews + widthEndNumbers} ${height + 3 * fontSize}`}
+          viewBox={`0 0 ${widthStartNumbers + widthStartCrews + gap + xDivisionOffsets[data.length] - sep + gap + widthEndCrews + widthEndNumbers} ${height + 3 * fontSize}`}
           preserveAspectRatio="none"
         >
           <G transform="translate(0 20)">
             {labels.map((label) => (
-              <Label label={label} x={widthStartNumbers + widthCrews + gap} />
+              <Label
+                label={label}
+                x={widthStartNumbers + widthStartCrews + gap}
+              />
             ))}
           </G>
           <G transform="translate(0 30)">
             {stripes.map((stripe) => (
               <Stripes
                 stripes={stripe}
-                x={widthStartNumbers + widthCrews + gap}
+                x={widthStartNumbers + widthStartCrews + gap}
               />
             ))}
             <Numbers
@@ -252,12 +262,12 @@ export const BumpsChartMultiYear = ({
               scale={scale}
               x={
                 widthStartNumbers +
-                widthCrews +
+                widthStartCrews +
                 gap +
                 xDivisionOffsets[data.length] -
                 sep +
                 gap +
-                widthCrews +
+                widthEndCrews +
                 widthEndNumbers -
                 gap
               }
@@ -271,7 +281,7 @@ export const BumpsChartMultiYear = ({
                 y: index,
               }))}
               scale={scale}
-              x={widthStartNumbers + widthCrews}
+              x={widthStartNumbers + widthStartCrews}
             />
             <Crews
               align="start"
@@ -284,7 +294,7 @@ export const BumpsChartMultiYear = ({
               scale={scale}
               x={
                 widthEndNumbers +
-                widthCrews +
+                widthEndCrews +
                 gap +
                 xDivisionOffsets[data.length] -
                 sep +
@@ -298,7 +308,7 @@ export const BumpsChartMultiYear = ({
                 text={join.text}
                 x={
                   widthStartNumbers +
-                  widthCrews +
+                  widthStartCrews +
                   gap +
                   xDivisionOffsets[index + 1] -
                   sep
@@ -313,7 +323,10 @@ export const BumpsChartMultiYear = ({
                 rect={division.rect}
                 skipped={division.skipped}
                 x={
-                  widthStartNumbers + widthCrews + gap + xDivisionOffsets[index]
+                  widthStartNumbers +
+                  widthStartCrews +
+                  gap +
+                  xDivisionOffsets[index]
                 }
               />
             ))}
