@@ -114,7 +114,7 @@ export const BumpsChartMultiYear = ({
           xPos + scale * event.days + sep + (scale * event2!.days) / 2;
 
         const midp = (mid1 + mid2) / 2;
-        const tWidth = getStringWidth(nYear, { fontSize: fontSize })!;
+        const tWidth = getStringWidth(nYear, { fontSize: 12.8 })!;
 
         labels.push({
           label: { label: nYear, pos: [midp, h] },
@@ -219,9 +219,9 @@ export const BumpsChartMultiYear = ({
       preserveAspectRatio="none"
     >
       <g transform="translate(0 20)">
-        {labels.map((label) => (
+        {labels.map((label, index) => (
           <Label
-            key={label.label.label}
+            key={index}
             label={label}
             x={widthStartNumbers + widthStartCrews + gap}
           />
