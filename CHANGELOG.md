@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/johnwalley/react-bumps-chart/compare/v1.12.1...v1.12.2) (2025-02-21)
+
+
+### Bug Fixes
+
+* make key unique ([076577d](https://github.com/johnwalley/react-bumps-chart/commit/076577d77ae93bfd9ce02e8ca49e1af5e111a073))
+* use correct end crew names for layout ([49fbe73](https://github.com/johnwalley/react-bumps-chart/commit/49fbe7389d36ab93567fbd23a031ae3d377853a7))
+
 ### [1.12.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.12.0...v1.12.1) (2025-01-02)
 
 
