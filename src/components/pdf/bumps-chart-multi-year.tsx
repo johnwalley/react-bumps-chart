@@ -47,7 +47,7 @@ export const BumpsChartMultiYear = ({
 
   const widthEndCrews =
     Math.max(
-      ...data[0].crews.map(
+      ...data[data.length - 1].crews.map(
         (crew) => getStringWidth(`${crew.end}`, { fontSize: fontSize })!
       )
     ) +
@@ -236,16 +236,18 @@ export const BumpsChartMultiYear = ({
           preserveAspectRatio="none"
         >
           <G transform="translate(0 20)">
-            {labels.map((label) => (
+            {labels.map((label, index) => (
               <Label
+                key={index}
                 label={label}
                 x={widthStartNumbers + widthStartCrews + gap}
               />
             ))}
           </G>
           <G transform="translate(0 30)">
-            {stripes.map((stripe) => (
+            {stripes.map((stripe, index) => (
               <Stripes
+                key={index}
                 stripes={stripe}
                 x={widthStartNumbers + widthStartCrews + gap}
               />
@@ -293,8 +295,8 @@ export const BumpsChartMultiYear = ({
               }))}
               scale={scale}
               x={
-                widthEndNumbers +
-                widthEndCrews +
+                widthStartNumbers +
+                widthStartCrews +
                 gap +
                 xDivisionOffsets[data.length] -
                 sep +
@@ -303,6 +305,7 @@ export const BumpsChartMultiYear = ({
             />
             {joins.map((join, index) => (
               <Join
+                key={index}
                 lines={join.lines}
                 joins={join.polylines}
                 text={join.text}
@@ -317,6 +320,7 @@ export const BumpsChartMultiYear = ({
             ))}
             {divisions.map((division, index) => (
               <Division
+                key={index}
                 lines={division.polylines}
                 divisionLines={division.divisionLines}
                 circles={division.circles}

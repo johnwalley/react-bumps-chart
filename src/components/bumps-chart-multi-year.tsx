@@ -45,7 +45,7 @@ export const BumpsChartMultiYear = ({
 
   const widthEndCrews =
     Math.max(
-      ...data[0].crews.map(
+      ...data[data.length - 1].crews.map(
         (crew) => getStringWidth(`${crew.end}`, { fontSize: fontSize })!
       )
     ) +
@@ -273,8 +273,8 @@ export const BumpsChartMultiYear = ({
           }))}
           scale={scale}
           x={
-            widthEndNumbers +
-            widthEndCrews +
+            widthStartNumbers +
+            widthStartCrews +
             gap +
             xDivisionOffsets[data.length] -
             sep +
