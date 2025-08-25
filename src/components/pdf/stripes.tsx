@@ -1,4 +1,4 @@
-import { G, Rect } from "@react-pdf/renderer";
+import { G, Rect } from '@react-pdf/renderer';
 
 export type StripesProps = {
   stripes: number[][][];
