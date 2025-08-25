@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BumpsChart } from '../src/components/pdf/bumps-chart';
 import { PDFViewer } from '@react-pdf/renderer';

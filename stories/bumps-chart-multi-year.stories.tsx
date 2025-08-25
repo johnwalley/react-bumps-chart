@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BumpsChartMultiYear } from '../src/components/bumps-chart-multi-year';
 import React from 'react';

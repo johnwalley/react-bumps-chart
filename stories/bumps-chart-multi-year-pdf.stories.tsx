@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PDFViewer, usePDF } from '@react-pdf/renderer';
 
 import { BumpsChartMultiYear } from '../src/components/pdf/bumps-chart-multi-year';
