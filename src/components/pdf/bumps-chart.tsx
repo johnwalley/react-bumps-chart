@@ -1,5 +1,4 @@
 import { Document, G, Page, StyleSheet, Svg } from '@react-pdf/renderer';
-
 import { Crews } from './crews';
 import { Division } from './division';
 import { Event } from '../../types';
@@ -43,10 +42,11 @@ namespace BumpsChart {
 
 export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const left = xOffset + scale * 2;
-
-  const widthNumbers = 32;
+  const right = gap;
 
   const widthDivisions = data.days * scale;
+
+  const widthBlades = 32;
 
   // TODO: Crews who start are not necessarily the same as crews who end
   const widthCrews =
@@ -61,10 +61,11 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const division = calculateDivisions(
     data,
     scale,
-    widthStartNumbers + widthCrews,
-    widthEndNumbers + widthCrews,
+    widthStartNumbers + widthBlades + widthCrews,
+    widthEndNumbers + widthBlades + widthCrews,
     blades
   );
+
   const extraText = calculateExtraText(data, scale);
 
   const stripes = calculateStripes(
@@ -73,9 +74,11 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
     scale,
     left,
     widthStartNumbers +
+      widthBlades +
       widthCrews +
       widthDivisions +
       widthCrews +
+      widthBlades +
       widthEndNumbers,
     sep
   );
@@ -86,28 +89,37 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
         size={{
           width:
             left +
-            widthNumbers +
+            widthStartNumbers +
+            widthBlades +     
             widthCrews +
-            gap +
             widthDivisions +
-            gap +
             widthCrews +
-            widthNumbers,
-          height: 32 + data.crews.length * scale,
+            widthBlades +
+            widthEndNumbers +
+            right,
+          height: 2 * gap + data.crews.length * scale,
         }}
         style={styles.page}
       >
         <Svg
-          viewBox={`0 0 ${left + widthNumbers + widthCrews + gap + widthDivisions + gap + widthCrews + widthNumbers} ${32 + data.crews.length * scale}`}
+          viewBox={`0 0 ${left +
+            widthStartNumbers +
+            widthBlades +     
+            widthCrews +
+            widthDivisions +
+            widthCrews +
+            widthBlades +
+            widthEndNumbers +
+            right} ${2 * gap + data.crews.length * scale}`}
           preserveAspectRatio="none"
         >
-          <G transform="translate(0 20)">
+          <G transform={`translate(0 ${gap})`}>
             <Stripes stripes={stripes} x={0} />
             <Numbers
               align="start"
               numbers={startNumbers}
               scale={scale}
-              x={left}
+              x={left + gap}
             />
             <Numbers
               align="end"
@@ -115,13 +127,14 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
               scale={scale}
               x={
                 left +
-                widthNumbers +
+                widthStartNumbers +
+                widthBlades +
                 widthCrews +
-                gap +
                 widthDivisions +
-                gap +
                 widthCrews +
-                widthNumbers
+                widthBlades +
+                widthEndNumbers -
+                gap
               }
             />
             <Crews
@@ -133,7 +146,7 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
                 y: index,
               }))}
               scale={scale}
-              x={left + widthStartNumbers + widthCrews - gap}
+              x={left + widthStartNumbers + widthBlades + widthCrews - gap}
             />
             <Crews
               align="start"
@@ -144,7 +157,14 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
                 y: index - (crew.gain ?? 0),
               }))}
               scale={scale}
-              x={left + widthStartNumbers + widthCrews + widthDivisions + gap}
+              x={
+                left +
+                widthStartNumbers +
+                widthBlades +
+                widthCrews +
+                widthDivisions +
+                gap
+              }
             />
             <Division
               lines={division.polylines}
@@ -152,7 +172,7 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
               circles={division.circles}
               skipped={division.skipped}
               rect={division.rect}
-              x={left + widthStartNumbers + widthCrews}
+              x={left + widthStartNumbers + widthBlades + widthCrews}
             />
             <ExtraText text={extraText} x={16} />
           </G>

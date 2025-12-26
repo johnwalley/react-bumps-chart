@@ -21,6 +21,19 @@ const scale = 16;
 const sep = 32;
 const gap = 3;
 const xOffset = 0;
+const fontSize = 12.8;
+
+const getMaxStringWidth = (strings: string[]) => {
+  return Math.max(
+    ...strings.map(
+      (str) =>
+        getStringWidth(`${str}`, {
+          fontFamily: 'var(--react-bumps-chart-font-family)',
+          fontSize: `${fontSize}px`,
+        })!
+    )
+  );
+};
 
 namespace BumpsChart {
   export type Props = {
@@ -137,41 +150,13 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
 
   // TODO: Crews who start are not necessarily the same as crews who end
   const widthCrews =
-    Math.max(
-      ...data.crews.map(
-        (crew) =>
-          getStringWidth(`${crew.start}`, {
-            fontFamily: 'var(--react-bumps-chart-font-family)',
-            fontSize: '12.8px',
-          })!
-      )
-    ) +
-    2 * gap;
+    getMaxStringWidth(data.crews.map((crew) => crew.start)) + 2 * gap;
 
   const startNumbers = calculateNumbers(data, true);
   const endNumbers = calculateNumbers(data, false);
 
-  const widthStartNumbers =
-    Math.max(
-      ...startNumbers.map(
-        (number) =>
-          getStringWidth(`${number}`, {
-            fontFamily: 'var(--react-bumps-chart-font-family)',
-            fontSize: '12.8px',
-          })!
-      )
-    ) + gap;
-
-  const widthEndNumbers =
-    Math.max(
-      ...endNumbers.map(
-        (number) =>
-          getStringWidth(`${number}`, {
-            fontFamily: 'var(--react-bumps-chart-font-family)',
-            fontSize: '12.8px',
-          })!
-      )
-    ) + gap;
+  const widthStartNumbers = getMaxStringWidth(startNumbers) + gap;
+  const widthEndNumbers = getMaxStringWidth(endNumbers) + gap;
 
   const division = calculateDivisions(
     data,
