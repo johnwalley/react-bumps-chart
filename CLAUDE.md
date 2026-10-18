@@ -11,7 +11,7 @@ React Bumps Chart is a React library for rendering rowing bumps charts - special
 - `npm run storybook` - Start Storybook dev server (port 6006) for development
 - `npm run build` - Compile TypeScript and build with Vite (outputs to `dist/`); always in production mode, whatever `NODE_ENV` says
 - `npm run check-exports` - Check the packed package's types resolve for Node16 and bundlers with arethetypeswrong (needs a build first)
-- `npm test` - Run Vitest tests (`test/`); `npx vitest run test/calculate-join.test.ts` for one file, `-u` to update snapshots
+- `npm test` - Run Vitest tests (`test/`; `*.client.test.tsx` files run in jsdom); `npx vitest run test/calculate-join.test.ts` for one file, `-u` to update snapshots
 - `npm run build-storybook` - Build static Storybook
 - `npm run release` - Create release using standard-version
 
@@ -22,11 +22,11 @@ Tests snapshot the pure `src/utils` layout functions against the event fixtures 
 ### Main Components
 
 **BumpsChart** - Single event chart (SVG)
-- Props: `data: Event`, `blades?: boolean`, `spoons?: boolean`
+- Props: `data: Event`, `blades?: boolean`, `spoons?: boolean`, `measureText?: MeasureText`
 - Renders crew trajectories as polylines showing position changes across racing days
 
 **BumpsChartMultiYear** - Multiple consecutive years (SVG)
-- Props: `data: Event[]`, `blades?: boolean`
+- Props: `data: Event[]`, `blades?: boolean`, `measureText?: MeasureText`
 - Handles year labels, coordinate alignment, and visual connections between years
 
 **PDF Components** (`src/components/pdf/`) - Parallel components using `@react-pdf/renderer` for PDF export
@@ -61,7 +61,7 @@ stories/                # Storybook stories with test data
 - **Namespace pattern for Props**: Components use TypeScript namespaces (e.g., `BumpsChart.Props`)
 - **CSS Modules**: Component-scoped styling with `.module.css` files
 - **Path aliases**: `@/components` and `@/utils` configured in Vite/TypeScript
-- **Shared layout**: SVG and PDF components only render. All positions come from `layoutChart` / `layoutChartMultiYear`, which take a `measureText` function: `useMeasureText()` for SVG (estimates on the server, DOM after mount, re-measures when fonts load) and `measurePdfText` (Helvetica metrics) for PDF. Change layout there, not in components
+- **Shared layout**: SVG and PDF components only render. All positions come from `layoutChart` / `layoutChartMultiYear`, which take a `measureText` function: `useMeasureText()` for SVG (the `measureText` prop if given, on the server and in the browser, with chart text unkerned to match; otherwise estimates on the server, then the DOM after mount in the chart's own `--react-bumps-chart-font-family`, re-measured when fonts load) and `measurePdfText` (Helvetica metrics) for PDF. Change layout there, not in components
 - **Memoization**: `get-string-width.ts` caches DOM measurements (cleared when web fonts load), `useMemo` for layouts
 - **Coordinate system**: Canvas-based positioning with scale factor (default: 16)
 

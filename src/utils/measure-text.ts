@@ -1,11 +1,12 @@
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import {
+  RefObject,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react';
 import getStringWidth, { clearStringWidthCache } from './get-string-width';
 import { MeasureText, fontSize } from './layout-chart';
-
-const style = {
-  fontFamily: 'var(--react-bumps-chart-font-family)',
-  fontSize: `${fontSize}px`,
-};
 
 // Helvetica's advance widths in 1/1000 em, which Arial and Liberation Sans
 // share, for printable ASCII and typographic quotes. Grouped by width;
@@ -44,9 +45,9 @@ const ADVANCE = new Map<string, number>(
  * Approximates text width when there's no DOM to measure with, from
  * Helvetica's advance widths (which Arial shares). Matches what the DOM
  * measures before kerning when the chart's font stack falls back to Arial or
- * Helvetica; with
- * another font loaded, such as the default Roboto Flex, the browser's
- * measurement still differs and the chart changes shape after hydration.
+ * Helvetica; with another font loaded, such as the default Roboto Flex, the
+ * browser's measurement still differs and the chart changes shape after
+ * hydration.
  */
 export const estimateTextWidth: MeasureText = (text) => {
   let width = 0;
@@ -58,39 +59,69 @@ export const estimateTextWidth: MeasureText = (text) => {
   return (width * fontSize) / 1000;
 };
 
-/** Measures text as the SVG charts draw it, falling back to an estimate. */
-export const measureSvgText: MeasureText = (text) =>
-  getStringWidth(text, style) ?? estimateTextWidth(text);
-
 const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
 /**
- * Returns a text measurer for SVG charts. Estimates on the server and the
- * first client render so hydration matches, then measures with the DOM before
- * paint, and again whenever a web font finishes loading.
+ * The font a chart's text is drawn in. The measuring element lives on
+ * `document.body`, where the variable has its page-wide value, so it is read
+ * from the chart instead: a page can override it for the chart alone.
  */
-export function useMeasureText(): MeasureText {
-  // 0 until mounted, then bumped each time fonts load
-  const [version, setVersion] = useState(0);
+function chartFontFamily(svg: SVGSVGElement | null) {
+  const fontFamily =
+    svg &&
+    getComputedStyle(svg)
+      .getPropertyValue('--react-bumps-chart-font-family')
+      .trim();
+
+  // The stylesheet's own fallback when the variable isn't set
+  return fontFamily || 'Arial';
+}
+
+/**
+ * Returns a text measurer for SVG charts. A `measureText` passed in is used
+ * as is, on the server and in the browser alike. Otherwise estimates on the
+ * server and the first client render so hydration matches, then measures with
+ * the DOM, in the chart's font, before paint, and again whenever a web font
+ * finishes loading.
+ */
+export function useMeasureText(
+  svg: RefObject<SVGSVGElement | null>,
+  measureText?: MeasureText
+): MeasureText {
+  // Null until mounted. A new object each time a web font loads, so layouts
+  // depending on the measurer recalculate
+  const [font, setFont] = useState<{ fontFamily: string } | null>(null);
 
   useIsomorphicLayoutEffect(() => {
+    if (measureText) return;
+
     const fonts = document.fonts;
+
+    const read = () => setFont({ fontFamily: chartFontFamily(svg.current) });
 
     const onLoadingDone = () => {
       clearStringWidthCache();
-      setVersion((version) => version + 1);
+      read();
     };
 
-    setVersion(1);
+    read();
     fonts?.addEventListener('loadingdone', onLoadingDone);
 
     return () => fonts?.removeEventListener('loadingdone', onLoadingDone);
-  }, []);
+  }, [svg, measureText]);
 
-  // A new function each version so layouts depending on it recalculate
-  return useMemo<MeasureText>(
-    () => (version === 0 ? estimateTextWidth : (text) => measureSvgText(text)),
-    [version]
-  );
+  return useMemo<MeasureText>(() => {
+    if (measureText) return measureText;
+    if (!font) return estimateTextWidth;
+
+    // As the chart draws its text: see `text` in bumps-chart.module.css
+    const style = {
+      fontFamily: font.fontFamily,
+      fontSize: `${fontSize}px`,
+      fontWeight: '400',
+    };
+
+    return (text) => getStringWidth(text, style) ?? estimateTextWidth(text);
+  }, [measureText, font]);
 }

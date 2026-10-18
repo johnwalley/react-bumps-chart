@@ -7,23 +7,40 @@ import { Event } from '../types';
 import { ExtraText } from './extra-text/extra-text';
 import { Numbers } from './numbers/numbers';
 import { Stripes } from './stripes/stripes';
+import classNames from 'classnames';
 import classes from './bumps-chart.module.css';
-import { layoutChart, scale } from '@/utils/layout-chart';
+import { MeasureText, layoutChart, scale } from '@/utils/layout-chart';
 import { useMeasureText } from '@/utils/measure-text';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 namespace BumpsChart {
   export type Props = {
     data: Event;
     blades?: boolean;
     spoons?: boolean;
+    /**
+     * Returns the width of a crew name or position at the chart's font size
+     * (12.8), in chart units. Used on the server and in the browser alike, so
+     * a chart laid out with it never changes shape on hydration. It must
+     * match the font the chart draws in, which is unkerned when this is given.
+     * Pass a stable function, such as one defined at module level: a new one
+     * each render lays the chart out again each render.
+     *
+     * Defaults to measuring with the DOM, which can only estimate on the server.
+     */
+    measureText?: MeasureText;
   };
 }
 
 export type BumpsChartProps = BumpsChart.Props;
 
-export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
-  const measureText = useMeasureText();
+export const BumpsChart = ({
+  data,
+  blades = false,
+  measureText: measureTextProp,
+}: BumpsChart.Props) => {
+  const ref = useRef<SVGSVGElement>(null);
+  const measureText = useMeasureText(ref, measureTextProp);
 
   const layout = useMemo(
     () => layoutChart(data, { measureText, blades }),
@@ -32,7 +49,10 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
 
   return (
     <svg
-      className={classes.root}
+      ref={ref}
+      className={classNames(classes.root, {
+        [classes.unkerned]: measureTextProp,
+      })}
       viewBox={`0 0 ${layout.width} ${layout.height}`}
       preserveAspectRatio="none"
     >
