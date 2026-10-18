@@ -42,8 +42,11 @@ src/
 │   ├── stripes/        # Background patterns
 │   └── pdf/            # React-PDF versions of above
 ├── utils/              # Pure calculation functions
+│   ├── layout-chart.ts         # Positions every part of a single-event chart
+│   ├── layout-chart-multi-year.ts  # Same for consecutive events
 │   ├── calculate-divisions.ts  # Core trajectory algorithm
-│   ├── get-string-width.ts     # SVG text measurement (memoized)
+│   ├── measure-text.ts         # SVG text measurement + useMeasureText hook
+│   ├── get-string-width.ts     # DOM text measurement (cached)
 │   └── ...
 └── types.ts            # TypeScript interfaces (Event, Crew)
 
@@ -55,7 +58,8 @@ stories/                # Storybook stories with test data
 - **Namespace pattern for Props**: Components use TypeScript namespaces (e.g., `BumpsChart.Props`)
 - **CSS Modules**: Component-scoped styling with `.module.css` files
 - **Path aliases**: `@/components` and `@/utils` configured in Vite/TypeScript
-- **Memoization**: Custom memoization in `get-string-width.ts`, `useMemo` hooks for performance
+- **Shared layout**: SVG and PDF components only render. All positions come from `layoutChart` / `layoutChartMultiYear`, which take a `measureText` function: `useMeasureText()` for SVG (estimates on the server, DOM after mount, re-measures when fonts load) and `measurePdfText` (Helvetica metrics) for PDF. Change layout there, not in components
+- **Memoization**: `get-string-width.ts` caches DOM measurements (cleared when web fonts load), `useMemo` for layouts
 - **Coordinate system**: Canvas-based positioning with scale factor (default: 16)
 
 ### Core Data Types
