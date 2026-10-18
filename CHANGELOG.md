@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.12.3...v1.13.0) (2026-10-18)
+
+
+### Features
+
+* expose PDF charts and data types in the public API ([bef8ba6](https://github.com/johnwalley/react-bumps-chart/commit/bef8ba6a10af3ab3f8ae6e1d01e9b5973437081a)), closes [#343](https://github.com/johnwalley/react-bumps-chart/issues/343)
+
+
+### Bug Fixes
+
+* **build:** always build the library in production mode ([912dc54](https://github.com/johnwalley/react-bumps-chart/commit/912dc542707b57dac2cfbce040b95c8598194678))
+* keep deep type imports from dist resolving ([fdef2d9](https://github.com/johnwalley/react-bumps-chart/commit/fdef2d9aff3c6fd91dda01276a227b34f2a015bd))
+* stop calculateJoin mutating the caller's data ([d83c562](https://github.com/johnwalley/react-bumps-chart/commit/d83c562a15aa74a248355d9287777fe0eeb658d9)), closes [#341](https://github.com/johnwalley/react-bumps-chart/issues/341)
+
 ### [1.12.3](https://github.com/johnwalley/react-bumps-chart/compare/v1.12.2...v1.12.3) (2025-03-13)
 
 
