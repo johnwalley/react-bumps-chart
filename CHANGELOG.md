@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.13.1...v1.14.0) (2026-10-18)
+
+
+### Features
+
+* let consumers supply measureText ([f34776e](https://github.com/johnwalley/react-bumps-chart/commit/f34776e982100e918790588a86fc8dffe3ea9d6d))
+
+
+### Bug Fixes
+
+* estimate text widths with Helvetica metrics ([cbf5fd2](https://github.com/johnwalley/react-bumps-chart/commit/cbf5fd2616c2b3b678f30df4f8054434521afbe9))
+* measure in the font chart text is drawn in, and test hydration ([b0dc5c6](https://github.com/johnwalley/react-bumps-chart/commit/b0dc5c64b15e989dd5bcc3ba11a66d470d3e6f35))
+* stop react-pdf warning that charts overflow the page ([f09c076](https://github.com/johnwalley/react-bumps-chart/commit/f09c07671a7b7e808182959ac6243e29a964fe22))
+* tighten estimateTextWidth's tests and quote widths ([d51f70a](https://github.com/johnwalley/react-bumps-chart/commit/d51f70ae9a79023c8760b398ec5f0da9daf3413e))
+
 ### [1.13.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.13.0...v1.13.1) (2026-10-18)
 
 
