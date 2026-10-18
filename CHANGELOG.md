@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/johnwalley/react-bumps-chart/compare/v1.13.0...v1.13.1) (2026-10-18)
+
+
+### Bug Fixes
+
+* make types resolve under node16 and nodenext ([f78fe62](https://github.com/johnwalley/react-bumps-chart/commit/f78fe625a59d760bfb59bff2f9c91135bde3e639))
+
 ## [1.13.0](https://github.com/johnwalley/react-bumps-chart/compare/v1.12.3...v1.13.0) (2026-10-18)
 
 
