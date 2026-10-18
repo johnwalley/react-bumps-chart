@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { beforeAll, describe, expect, test } from 'vitest';
 import { BumpsChart } from '../src/components/bumps-chart';
 import { Font } from '@react-pdf/renderer';
 import { estimateTextWidth } from '@/utils/measure-text';
@@ -15,21 +15,25 @@ describe('measurePdfText', () => {
 });
 
 describe('estimateTextWidth', () => {
-  // Every printable ASCII character, then whole crew names
-  const printable = Array.from({ length: 0x7f - 0x20 }, (_, i) =>
-    String.fromCharCode(0x20 + i)
-  );
+  // Every printable ASCII character and the typographic quotes the table
+  // lists, then whole crew names
+  const characters = [
+    ...Array.from({ length: 0x7f - 0x20 }, (_, i) =>
+      String.fromCharCode(0x20 + i)
+    ),
+    ...'‘’“”',
+  ];
   const names = Object.values(events).flatMap((event) =>
     event.crews.map((crew) => crew.start)
   );
 
-  test('measurePdfText is measuring real Helvetica', () => {
-    // Without it, measurePdfText falls back to estimateTextWidth and the
-    // comparisons below would check the estimate against itself
+  beforeAll(() => {
+    // Without it, measurePdfText falls back to estimateTextWidth and every
+    // comparison below would check the estimate against itself
     expect(Font.getFont({ fontFamily: 'Helvetica' }).data).toBeTruthy();
   });
 
-  test.each(printable)('matches Helvetica for %j', (character) => {
+  test.each(characters)('matches Helvetica for %j', (character) => {
     expect(estimateTextWidth(character)).toBeCloseTo(
       measurePdfText(character),
       6
