@@ -114,7 +114,7 @@ export function layoutChart(
         ? {
             x: left + widthBeforeDivisions + widthDivisions + widthCrews + gap,
             clubs: event.crews.map((crew) =>
-              crew.end ? clubCode(crew.club_end) : undefined
+              crew.end && crew.club_end ? clubCode(crew.club_end) : undefined
             ),
           }
         : null,

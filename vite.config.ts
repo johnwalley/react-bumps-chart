@@ -13,16 +13,23 @@ export default defineConfig({
   },
   build: {
     lib: {
-      // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: {
+        index: resolve(__dirname, "src/index.ts"),
+        pdf: resolve(__dirname, "src/pdf.ts"),
+      },
       formats: ["es"],
-      // the proper extensions will be added
-      fileName: "index",
+      // Keep the stylesheet at dist/index.css, where consumers import it from
+      cssFileName: "index",
+      fileName: (_format, entryName) => `${entryName}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["react", "react-dom", "react/jsx-runtime",
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "@react-pdf/renderer",
       ],
     },
   },

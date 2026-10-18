@@ -19,6 +19,8 @@ namespace BumpsChart {
   };
 }
 
+export type BumpsChartProps = BumpsChart.Props;
+
 export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   // react-pdf can't draw react-rowing-blades icons, so leave no space for them
   const layout = layoutChart(data, {

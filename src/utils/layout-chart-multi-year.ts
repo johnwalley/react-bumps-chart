@@ -56,7 +56,7 @@ export function layoutChartMultiYear(
 
   const widthEndCrews =
     getMaxWidth(
-      data[data.length - 1].crews.map((crew) => crew.end),
+      data[data.length - 1].crews.map((crew) => crew.end ?? ''),
       measureText
     ) +
     2 * gap;
