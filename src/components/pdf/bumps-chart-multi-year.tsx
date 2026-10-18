@@ -8,7 +8,7 @@ import { Label } from './label';
 import { Numbers } from './numbers';
 import { Stripes } from './stripes';
 import { calculateDivisions } from '@/utils/calculate-divisions';
-import { caluclateJoin as calculateJoin } from '@/utils/calculate-join';
+import { calculateJoin, markJointYearHeadship } from '@/utils/calculate-join';
 import { calculateNumbers } from '@/utils/calculate-numbers';
 import { calculateStripes } from '@/utils/calculate-stripes';
 import getStringWidth from '@/utils/get-string-width';
@@ -82,6 +82,9 @@ export const BumpsChartMultiYear = ({
 
   let xDivisionOffset = 0;
   const xDivisionOffsets: number[] = [0];
+
+  // Copy so marking joint-year headships doesn't mutate the caller's data
+  const events = [...data];
 
   for (let eventNum = 0; eventNum < data.length; eventNum++) {
     const event = data[eventNum];
@@ -179,9 +182,12 @@ export const BumpsChartMultiYear = ({
         event2!,
         top,
         scale,
-        sep,
-        skipFirst
+        sep
       );
+
+      if (skipFirst) {
+        events[eventNum] = markJointYearHeadship(event, event2!);
+      }
 
       if (h > height) {
         height = h;
@@ -198,7 +204,7 @@ export const BumpsChartMultiYear = ({
 
   xPos = left;
 
-  for (const event of data) {
+  for (const event of events) {
     const { height: h, ...division } = calculateDivisions(
       event,
       scale,
@@ -276,7 +282,7 @@ export const BumpsChartMultiYear = ({
             />
             <Crews
               align="end"
-              crews={data[0].crews.map((crew, index) => ({
+              crews={events[0].crews.map((crew, index) => ({
                 crew: crew.start,
                 blades: blades && crew.blades,
                 highlight: crew.highlight,

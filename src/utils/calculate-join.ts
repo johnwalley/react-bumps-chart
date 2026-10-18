@@ -1,13 +1,12 @@
 import { Event } from '../types';
 import { range } from 'lodash';
 
-export function caluclateJoin(
+export function calculateJoin(
   event: Event,
   event2: Event,
   yOff: number,
   scale: number,
-  sep: number,
-  jointYear = false
+  sep: number
 ) {
   const lines = [];
   const polylines = [];
@@ -20,19 +19,6 @@ export function caluclateJoin(
   let yNext = yOff + scale * event.crews.length - scale / 2 + 4;
   let ySep = scale * 0.75;
   let verticals = 0;
-
-  let matchHeadship = null;
-
-  if (jointYear) {
-    matchHeadship = event2.crews[0].end;
-
-    for (const crew of event.crews) {
-      if (crew.start === matchHeadship) {
-        crew.blades = true;
-        break;
-      }
-    }
-  }
 
   for (const crewNum2 of range(event2.crews.length)) {
     if (event2.crews[crewNum2].start.length === 0) {
@@ -101,4 +87,25 @@ export function caluclateJoin(
   }
 
   return { lines, polylines, text, height: yNext };
+}
+
+/**
+ * When a year is split across two events, the crew that finishes head of the
+ * second event is awarded blades in the first. Returns a copy of `event` with
+ * that crew marked.
+ */
+export function markJointYearHeadship(event: Event, event2: Event): Event {
+  const headship = event2.crews[0].end;
+  const index = event.crews.findIndex((crew) => crew.start === headship);
+
+  if (index === -1) {
+    return event;
+  }
+
+  return {
+    ...event,
+    crews: event.crews.map((crew, i) =>
+      i === index ? { ...crew, blades: true } : crew
+    ),
+  };
 }
