@@ -1,7 +1,5 @@
 import './globals.css';
 
-import { abbreviations, shortShortNames } from 'react-rowing-blades';
-
 import { Blades } from './blades/blades';
 import { Crews } from './crews/crews';
 import { Division } from './division/division';
@@ -9,31 +7,10 @@ import { Event } from '../types';
 import { ExtraText } from './extra-text/extra-text';
 import { Numbers } from './numbers/numbers';
 import { Stripes } from './stripes/stripes';
-import { calculateDivisions } from '@/utils/calculate-divisions';
-import { calculateExtraText } from '@/utils/calculate-extra-text';
-import { calculateNumbers } from '@/utils/calculate-numbers';
-import { calculateStripes } from '@/utils/calculate-stripes';
 import classes from './bumps-chart.module.css';
-import getStringWidth from '@/utils/get-string-width';
+import { layoutChart, scale } from '@/utils/layout-chart';
+import { useMeasureText } from '@/utils/measure-text';
 import { useMemo } from 'react';
-
-const scale = 16;
-const sep = 32;
-const gap = 3;
-const xOffset = 0;
-const fontSize = 12.8;
-
-const getMaxStringWidth = (strings: string[]) => {
-  return Math.max(
-    ...strings.map(
-      (str) =>
-        getStringWidth(`${str}`, {
-          fontFamily: 'var(--react-bumps-chart-font-family)',
-          fontSize: `${fontSize}px`,
-        })!
-    )
-  );
-};
 
 namespace BumpsChart {
   export type Props = {
@@ -44,244 +21,69 @@ namespace BumpsChart {
 }
 
 export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
-  let names;
-  let abbr;
+  const measureText = useMeasureText();
 
-  switch (data.set) {
-    case 'May Bumps':
-    case 'Lent Bumps':
-      names = shortShortNames.cambridge;
-      abbr = abbreviations.cambridge;
-      break;
-    case 'Summer Eights':
-    case 'Torpids':
-      names = shortShortNames.oxford;
-      abbr = abbreviations.oxford;
-      break;
-    case 'Town Bumps':
-      names = shortShortNames.uk;
-      abbr = Object.assign(
-        {},
-        ...Object.values(abbreviations.uk).map((x: any) => ({ [x]: x }))
-      );
-      break;
-    default:
-      throw new Error(`${data.set} not recognised as a set`);
-  }
-
-  const startCodes = useMemo(
-    () =>
-      data.crews.map((crew) => {
-        const name = crew.club;
-
-        let code = Object.keys(names).find((key) => names[key] === abbr[name]);
-
-        // Couldn't find club code based on abbreviation
-        // Search using full name instead
-        if (!code) {
-          code = Object.keys(names).find((key) => names[key] === name);
-        }
-
-        if (!code) {
-          if (name === 'LMBC') {
-            code = 'lmb';
-          } else if (name === '1st and 3rd') {
-            code = 'ftt';
-          } else if (name === "St Catharine's") {
-            code = 'scc';
-          } else if (name === "St Edmund's") {
-            code = 'sec';
-          } else if (name === 'Town') {
-            code = 'cam';
-          } else if (name === 'Old Cantabs') {
-            code = 'cab';
-          }
-        }
-
-        return code;
-      }),
-    [data.crews]
-  );
-
-  const endCodes = useMemo(
-    () =>
-      data.crews.map((crew) => {
-        if (!crew.end) {
-          return undefined;
-        }
-
-        const name = crew.club_end;
-
-        let code = Object.keys(names).find((key) => names[key] === abbr[name]);
-
-        // Couldn't find club code based on abbreviation
-        // Search using full name instead
-        if (!code) {
-          code = Object.keys(names).find((key) => names[key] === name);
-        }
-
-        if (!code) {
-          if (name === 'LMBC') {
-            code = 'lmb';
-          } else if (name === '1st and 3rd') {
-            code = 'ftt';
-          } else if (name === "St Catharine's") {
-            code = 'scc';
-          } else if (name === "St Edmund's") {
-            code = 'sec';
-          } else if (name === 'Town') {
-            code = 'cam';
-          } else if (name === 'Old Cantabs') {
-            code = 'cab';
-          }
-        }
-
-        return code;
-      }),
-    [data.crews]
-  );
-
-  const left = xOffset + scale * 2;
-  const right = gap;
-
-  const widthDivisions = data.days * scale;
-
-  const widthBlades = 32;
-
-  // TODO: Crews who start are not necessarily the same as crews who end
-  const widthCrews =
-    getMaxStringWidth(data.crews.map((crew) => crew.start)) + 2 * gap;
-
-  const startNumbers = calculateNumbers(data, true);
-  const endNumbers = calculateNumbers(data, false);
-
-  const widthStartNumbers = getMaxStringWidth(startNumbers) + gap;
-  const widthEndNumbers = getMaxStringWidth(endNumbers) + gap;
-
-  const division = calculateDivisions(
-    data,
-    scale,
-    widthStartNumbers + widthBlades + widthCrews,
-    widthEndNumbers + widthBlades + widthCrews,
-    blades
-  );
-
-  const extraText = calculateExtraText(data, scale);
-
-  const stripes = calculateStripes(
-    data,
-    null,
-    scale,
-    left,
-    widthStartNumbers +
-      widthBlades +
-      widthCrews +
-      widthDivisions +
-      widthCrews +
-      widthBlades +
-      widthEndNumbers,
-    sep
+  const layout = useMemo(
+    () => layoutChart(data, { measureText, blades }),
+    [data, measureText, blades]
   );
 
   return (
     <svg
       className={classes.root}
-      viewBox={`0 0 ${
-        left +
-        widthStartNumbers +
-        widthBlades +
-        widthCrews +
-        widthDivisions +
-        widthCrews +
-        widthBlades +
-        widthEndNumbers +
-        right
-      } ${2 * gap + data.crews.length * scale}`}
+      viewBox={`0 0 ${layout.width} ${layout.height}`}
       preserveAspectRatio="none"
     >
-      <g transform={`translate(0 ${gap})`}>
-        <Stripes stripes={stripes} x={0} />
+      <g transform={`translate(0 ${layout.y})`}>
+        <Stripes stripes={layout.stripes} x={0} />
         <Numbers
           align="start"
-          numbers={startNumbers}
+          numbers={layout.startNumbers.numbers}
           scale={scale}
-          x={left + gap}
+          x={layout.startNumbers.x}
         />
         <Numbers
           align="end"
-          numbers={endNumbers}
+          numbers={layout.endNumbers.numbers}
           scale={scale}
-          x={
-            left +
-            widthStartNumbers +
-            widthBlades +
-            widthCrews +
-            widthDivisions +
-            widthCrews +
-            widthBlades +
-            widthEndNumbers -
-            gap
-          }
+          x={layout.endNumbers.x}
         />
-        <Blades
-          flip
-          crews={startCodes}
-          scale={scale}
-          x={left + widthStartNumbers + widthBlades - gap}
-        />
-        {data.results.length > 0 && (
+        {layout.startBlades && (
           <Blades
-            crews={endCodes}
+            flip
+            crews={layout.startBlades.clubs}
             scale={scale}
-            x={
-              left +
-              widthStartNumbers +
-              widthBlades +
-              widthCrews +
-              widthDivisions +
-              widthCrews +
-              gap
-            }
+            x={layout.startBlades.x}
+          />
+        )}
+        {layout.endBlades && (
+          <Blades
+            crews={layout.endBlades.clubs}
+            scale={scale}
+            x={layout.endBlades.x}
           />
         )}
         <Crews
           align="end"
-          crews={data.crews.map((crew, index) => ({
-            crew: crew.start,
-            blades: blades && crew.blades,
-            highlight: crew.highlight,
-            y: index,
-          }))}
+          crews={layout.startCrews.crews}
           scale={scale}
-          x={left + widthStartNumbers + widthBlades + widthCrews - gap}
+          x={layout.startCrews.x}
         />
         <Crews
           align="start"
-          crews={data.crews.map((crew, index) => ({
-            crew: crew.gain !== null ? crew.start : null,
-            blades: blades && crew.blades,
-            highlight: crew.highlight,
-            y: index - (crew.gain ?? 0),
-          }))}
+          crews={layout.endCrews.crews}
           scale={scale}
-          x={
-            left +
-            widthStartNumbers +
-            widthBlades +
-            widthCrews +
-            widthDivisions +
-            gap
-          }
+          x={layout.endCrews.x}
         />
         <Division
-          lines={division.polylines}
-          divisionLines={division.divisionLines}
-          circles={division.circles}
-          skipped={division.skipped}
-          rect={division.rect}
-          x={left + widthStartNumbers + widthBlades + widthCrews}
+          lines={layout.division.polylines}
+          divisionLines={layout.division.divisionLines}
+          circles={layout.division.circles}
+          skipped={layout.division.skipped}
+          rect={layout.division.rect}
+          x={layout.division.x}
         />
-        <ExtraText text={extraText} x={16} />
+        <ExtraText text={layout.extraText.text} x={layout.extraText.x} />
       </g>
     </svg>
   );
