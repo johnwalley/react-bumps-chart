@@ -62,20 +62,40 @@ export const estimateTextWidth: MeasureText = (text) => {
 const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-/**
- * The font a chart's text is drawn in. The measuring element lives on
- * `document.body`, where the variable has its page-wide value, so it is read
- * from the chart instead: a page can override it for the chart alone.
- */
-function chartFontFamily(svg: SVGSVGElement | null) {
-  const fontFamily =
-    svg &&
-    getComputedStyle(svg)
-      .getPropertyValue('--react-bumps-chart-font-family')
-      .trim();
+type ChartFont = Pick<
+  CSSStyleDeclaration,
+  | 'fontFamily'
+  | 'fontKerning'
+  | 'fontStretch'
+  | 'fontStyle'
+  | 'fontVariationSettings'
+  | 'fontWeight'
+  | 'letterSpacing'
+>;
 
-  // The stylesheet's own fallback when the variable isn't set
-  return fontFamily || 'Arial';
+/**
+ * The font a chart's text is drawn in, read from text it has rendered. The
+ * measuring element lives on `document.body`, so it can't rely on the chart's
+ * styles: this way it follows the stylesheet, a `--react-bumps-chart-font-family`
+ * set for the chart alone, a page's own rules for chart text, or the page font
+ * when the stylesheet isn't loaded. Null if the chart has no text to read.
+ */
+function chartFont(svg: SVGSVGElement | null): ChartFont | null {
+  const text = svg?.querySelector('text');
+
+  if (!text) return null;
+
+  const style = getComputedStyle(text);
+
+  return {
+    fontFamily: style.fontFamily,
+    fontKerning: style.fontKerning,
+    fontStretch: style.fontStretch,
+    fontStyle: style.fontStyle,
+    fontVariationSettings: style.fontVariationSettings,
+    fontWeight: style.fontWeight,
+    letterSpacing: style.letterSpacing,
+  };
 }
 
 /**
@@ -91,14 +111,14 @@ export function useMeasureText(
 ): MeasureText {
   // Null until mounted. A new object each time a web font loads, so layouts
   // depending on the measurer recalculate
-  const [font, setFont] = useState<{ fontFamily: string } | null>(null);
+  const [font, setFont] = useState<ChartFont | null>(null);
 
   useIsomorphicLayoutEffect(() => {
     if (measureText) return;
 
     const fonts = document.fonts;
 
-    const read = () => setFont({ fontFamily: chartFontFamily(svg.current) });
+    const read = () => setFont(chartFont(svg.current));
 
     const onLoadingDone = () => {
       clearStringWidthCache();
@@ -115,12 +135,8 @@ export function useMeasureText(
     if (measureText) return measureText;
     if (!font) return estimateTextWidth;
 
-    // As the chart draws its text: see `text` in bumps-chart.module.css
-    const style = {
-      fontFamily: font.fontFamily,
-      fontSize: `${fontSize}px`,
-      fontWeight: '400',
-    };
+    // In the chart's units, as layout expects
+    const style = { ...font, fontSize: `${fontSize}px` };
 
     return (text) => getStringWidth(text, style) ?? estimateTextWidth(text);
   }, [measureText, font]);
