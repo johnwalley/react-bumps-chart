@@ -9,12 +9,13 @@ React Bumps Chart is a React library for rendering rowing bumps charts - special
 ## Commands
 
 - `npm run storybook` - Start Storybook dev server (port 6006) for development
-- `npm run build` - Compile TypeScript and build with Vite (outputs to `dist/`)
+- `npm run build` - Compile TypeScript and build with Vite (outputs to `dist/`); always in production mode, whatever `NODE_ENV` says
+- `npm run check-exports` - Check the packed package's types resolve for Node16 and bundlers with arethetypeswrong (needs a build first)
 - `npm test` - Run Vitest tests (`test/`); `npx vitest run test/calculate-join.test.ts` for one file, `-u` to update snapshots
 - `npm run build-storybook` - Build static Storybook
 - `npm run release` - Create release using standard-version
 
-Tests snapshot the pure `src/utils` layout functions against the event fixtures in `stories/*.json`. CI (`.github/workflows/ci.yml`) runs `tsc`, tests and build on every PR. No linting is configured.
+Tests snapshot the pure `src/utils` layout functions against the event fixtures in `stories/*.json`. CI (`.github/workflows/ci.yml`) runs `tsc`, tests, build and `check-exports` on every PR. No linting is configured.
 
 ## Architecture
 
