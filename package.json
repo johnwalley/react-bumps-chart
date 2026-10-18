@@ -15,7 +15,11 @@
       "types": "./dist/pdf.d.ts",
       "import": "./dist/pdf.js"
     },
-    "./dist/*": "./dist/*",
+    "./dist/*.js": "./dist/*.js",
+    "./dist/*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
