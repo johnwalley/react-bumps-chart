@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "tsc && NODE_ENV=production vite build",
-    "prepublishOnly": "npm test && npm run build",
+    "check-exports": "attw --pack . --profile esm-only",
+    "prepublishOnly": "npm test && npm run build && npm run check-exports",
     "test": "vitest run",
     "release": "standard-version",
     "storybook": "storybook dev -p 6006",
@@ -47,6 +48,7 @@
   "author": "John Walley",
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@react-pdf/renderer": "^4.3.0",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-links": "^10.1.10",
@@ -79,9 +81,9 @@
     "react-rowing-blades": "^2.4.2"
   },
   "peerDependencies": {
+    "@react-pdf/renderer": "^4.3.0",
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
-    "@react-pdf/renderer": "^4.3.0"
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "@react-pdf/renderer": {

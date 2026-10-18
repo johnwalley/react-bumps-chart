@@ -38,5 +38,21 @@ export default defineConfig({
       localsConvention: "camelCaseOnly",
     },
   },
-  plugins: [react(), dts({ exclude: ["stories/**/*.stories.tsx", "test/**"], insertTypesEntry: true })],
+  plugins: [
+    react(),
+    dts({
+      exclude: ["stories/**/*.stories.tsx", "test/**"],
+      insertTypesEntry: true,
+      // Node16/NodeNext resolution needs file extensions on relative imports in
+      // ESM declarations. Every relative import in src points at a file, not a
+      // directory index, so appending .js is enough (attw in CI checks this)
+      beforeWriteFile: (filePath, content) => ({
+        filePath,
+        content: content.replace(
+          /((?:from|import\()\s*['"])(\.{1,2}\/[^'"]+?)(?<!\.js)(['"])/g,
+          "$1$2.js$3",
+        ),
+      }),
+    }),
+  ],
 });
