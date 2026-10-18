@@ -8,17 +8,18 @@ const style = {
 };
 
 // Helvetica's advance widths in 1/1000 em, which Arial and Liberation Sans
-// share. Grouped by width; anything unlisted counts as the commonest, 556
-// (most lowercase letters and digits).
+// share, for printable ASCII and typographic quotes. Grouped by width;
+// anything unlisted counts as the commonest, 556 (most lowercase letters and
+// digits).
 const ADVANCE_FALLBACK = 556;
 const ADVANCE = new Map<string, number>(
   (
     [
       [191, "'"],
-      [222, 'ijl’'],
+      [222, 'ijl‘’'],
       [260, '|'],
       [278, ' !,./:;I[\\]ft'],
-      [333, '()-`r'],
+      [333, '()-`r“”'],
       [334, '{}'],
       [355, '"'],
       [389, '*'],
@@ -42,7 +43,8 @@ const ADVANCE = new Map<string, number>(
 /**
  * Approximates text width when there's no DOM to measure with, from
  * Helvetica's advance widths (which Arial shares). Matches what the DOM
- * measures when the chart's font stack falls back to Arial or Helvetica; with
+ * measures before kerning when the chart's font stack falls back to Arial or
+ * Helvetica; with
  * another font loaded, such as the default Roboto Flex, the browser's
  * measurement still differs and the chart changes shape after hydration.
  */
