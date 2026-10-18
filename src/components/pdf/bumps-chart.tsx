@@ -32,10 +32,15 @@ export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   return (
     <Document>
       <Page
-        size={{ width: layout.width, height: layout.height }}
+        size={{
+          width: Math.ceil(layout.width),
+          height: Math.ceil(layout.height),
+        }}
         style={styles.page}
       >
         <Svg
+          width={layout.width}
+          height={layout.height}
           viewBox={`0 0 ${layout.width} ${layout.height}`}
           preserveAspectRatio="none"
         >
