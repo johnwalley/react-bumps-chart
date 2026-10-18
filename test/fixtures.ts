@@ -14,7 +14,7 @@ import torpids1975_men from '../stories/torpids1975_men.json';
 import town2024_women from '../stories/town2024_women.json';
 
 /** Single events, keyed by name, used for snapshot tests. */
-export const events = {
+export const events: Record<string, Event> = {
   eights1838_men,
   mays1845_1_men,
   mays1845_2_men,
@@ -27,12 +27,10 @@ export const events = {
   torpids1858_men,
   torpids1975_men,
   town2024_women,
-  // The JSON doesn't match `Event` exactly (e.g. `end` can be null and
-  // `club_end` is sometimes missing), so cast through unknown
-} as unknown as Record<string, Event>;
+};
 
 /** Consecutive events as passed to `BumpsChartMultiYear`. */
-export const sequences = {
+export const sequences: Record<string, Event[]> = {
   mays2022_2024: [mays2022_men, mays2023_men, mays2024_men],
   mays1845_1846: [
     mays1845_1_men,
@@ -40,10 +38,10 @@ export const sequences = {
     mays1846_1_men,
     mays1846_2_men,
   ],
-} as unknown as Record<string, Event[]>;
+};
 
 /** Every men's May Bumps from 1827, too large to snapshot. */
-export const maysFull = mays_full as unknown as Event[];
+export const maysFull: Event[] = mays_full;
 
 /** Recursively freezes `value` so any attempt to mutate it throws. */
 export function deepFreeze<T>(value: T): T {

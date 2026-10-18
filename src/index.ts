@@ -1,4 +1,6 @@
-import { BumpsChart } from './components/bumps-chart';
-import { BumpsChartMultiYear } from './components/bumps-chart-multi-year';
-
-export { BumpsChart, BumpsChartMultiYear };
+export { BumpsChart, type BumpsChartProps } from './components/bumps-chart';
+export {
+  BumpsChartMultiYear,
+  type BumpsChartMultiYearProps,
+} from './components/bumps-chart-multi-year';
+export type { Crew, Event } from './types';

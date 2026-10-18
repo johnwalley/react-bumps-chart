@@ -20,6 +20,8 @@ namespace BumpsChart {
   };
 }
 
+export type BumpsChartProps = BumpsChart.Props;
+
 export const BumpsChart = ({ data, blades = false }: BumpsChart.Props) => {
   const measureText = useMeasureText();
 

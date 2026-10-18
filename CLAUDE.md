@@ -30,6 +30,8 @@ Tests snapshot the pure `src/utils` layout functions against the event fixtures 
 
 **PDF Components** (`src/components/pdf/`) - Parallel components using `@react-pdf/renderer` for PDF export
 
+**Entry points** - `src/index.ts` (`react-bumps-chart`) exports the SVG components; `src/pdf.ts` (`react-bumps-chart/pdf`) exports the PDF ones. Both export the `Event`/`Crew` types and `*Props` types. Anything public must be exported from these files
+
 ### Directory Structure
 
 ```
@@ -70,7 +72,8 @@ The `Event` interface represents a racing event with properties like `set` (even
 
 - **Vite** with SWC compiler, outputting ES modules only
 - **TypeScript** strict mode enabled
-- **External dependencies**: React/React-DOM not bundled
+- **Two entries** (`index`, `pdf`) mapped in package.json `exports`; CSS is emitted at `dist/index.css`, which consumers import directly
+- **External dependencies**: React/React-DOM and `@react-pdf/renderer` not bundled. `@react-pdf/renderer` is an optional peer dependency, so the main entry must never import it
 - Declarations generated via `vite-plugin-dts`
 
 ## Dependencies

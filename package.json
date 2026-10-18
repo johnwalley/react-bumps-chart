@@ -6,6 +6,25 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./pdf": {
+      "types": "./dist/pdf.d.ts",
+      "import": "./dist/pdf.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "pdf": [
+        "./dist/pdf.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "tsc && vite build",
     "test": "vitest run",
@@ -23,6 +42,7 @@
   "author": "John Walley",
   "license": "MIT",
   "devDependencies": {
+    "@react-pdf/renderer": "^4.3.0",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-links": "^10.1.10",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
@@ -45,7 +65,6 @@
     "vitest": "^5.0.3"
   },
   "dependencies": {
-    "@react-pdf/renderer": "^4.3.0",
     "classnames": "^2.5.1",
     "d3-array": "^2.0.0",
     "d3-delaunay": "^6.0.4",
@@ -56,6 +75,12 @@
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "@react-pdf/renderer": "^4.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@react-pdf/renderer": {
+      "optional": true
+    }
   }
 }

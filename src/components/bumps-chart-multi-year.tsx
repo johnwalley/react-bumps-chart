@@ -21,6 +21,8 @@ namespace BumpsChartMultiYear {
   };
 }
 
+export type BumpsChartMultiYearProps = BumpsChartMultiYear.Props;
+
 export const BumpsChartMultiYear = ({
   data,
   blades = false,
