@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "stories/react-rowing-blades.d.ts"],
+  "include": ["src", "test", "stories/react-rowing-blades.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
