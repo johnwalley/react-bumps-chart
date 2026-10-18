@@ -1,0 +1,99 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`calculateExtraText > eights1838_men 1`] = `
+[
+  "Division 1 @ 0,88",
+]
+`;
+
+exports[`calculateExtraText > mays1845_1_men 1`] = `
+[
+  "Division 1 @ 0,216",
+  "Division 2 @ 0,552",
+]
+`;
+
+exports[`calculateExtraText > mays1845_2_men 1`] = `
+[
+  "Division 1 @ 0,216",
+  "Division 2 @ 0,552",
+]
+`;
+
+exports[`calculateExtraText > mays1846_1_men 1`] = `
+[
+  "Division 1 @ 0,184",
+  "Division 2 @ 0,496",
+]
+`;
+
+exports[`calculateExtraText > mays1846_2_men 1`] = `
+[
+  "Division 1 @ 0,208",
+]
+`;
+
+exports[`calculateExtraText > mays2022_men 1`] = `
+[
+  "Division 1 @ 0,136",
+  "Division 2 @ 0,408",
+  "Division 3 @ 0,680",
+  "Division 4 @ 0,952",
+  "Division 5 @ 0,1184",
+]
+`;
+
+exports[`calculateExtraText > mays2023_men 1`] = `
+[
+  "Division 1 @ 0,136",
+  "Division 2 @ 0,408",
+  "Division 3 @ 0,680",
+  "Division 4 @ 0,952",
+  "Division 5 @ 0,1160",
+]
+`;
+
+exports[`calculateExtraText > mays2023_men_incomplete 1`] = `
+[
+  "Division 1 @ 0,136",
+  "Division 2 @ 0,408",
+  "Division 3 @ 0,680",
+  "Division 4 @ 0,952",
+  "Division 5 @ 0,1160",
+]
+`;
+
+exports[`calculateExtraText > mays2024_men 1`] = `
+[
+  "Division 1 @ 0,136",
+  "Division 2 @ 0,408",
+  "Division 3 @ 0,680",
+  "Division 4 @ 0,952",
+  "Division 5 @ 0,1160",
+]
+`;
+
+exports[`calculateExtraText > torpids1858_men 1`] = `
+[
+  "Division 1 @ 0,104",
+]
+`;
+
+exports[`calculateExtraText > torpids1975_men 1`] = `
+[
+  "Division 1 @ 0,56",
+  "Division 2 @ 0,192",
+  "Division 3 @ 0,352",
+  "Division 4 @ 0,512",
+  "Division 5 @ 0,672",
+  "Division 6 @ 0,832",
+]
+`;
+
+exports[`calculateExtraText > town2024_women 1`] = `
+[
+  "Division 1 @ 0,136",
+  "Division 2 @ 0,408",
+  "Division 3 @ 0,656",
+]
+`;

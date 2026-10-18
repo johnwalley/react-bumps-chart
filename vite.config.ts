@@ -31,5 +31,5 @@ export default defineConfig({
       localsConvention: "camelCaseOnly",
     },
   },
-  plugins: [react(), dts({ exclude: ["stories/**/*.stories.tsx"], insertTypesEntry: true })],
+  plugins: [react(), dts({ exclude: ["stories/**/*.stories.tsx", "test/**"], insertTypesEntry: true })],
 });
