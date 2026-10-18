@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+/* With a measureText prop, a name's width must be the sum of its characters'
+   widths, which kerning would break */
+.unkerned text {
+  font-kerning: none;
+}
+
 text {
   font-family: var(--react-bumps-chart-font-family, Arial);
   font-weight: 400;

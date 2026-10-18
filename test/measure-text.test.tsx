@@ -59,4 +59,15 @@ describe('server rendering', () => {
     expect(markup).toContain(`viewBox="0 0 ${width} ${height}"`);
     expect(width).toBeGreaterThan(event.days * 16 + 2 * 100);
   });
+
+  test('lays out with a measureText passed in', () => {
+    const event = events.mays2023_men;
+    const measureText = (text: string) => text.length * 5;
+    const markup = renderToStaticMarkup(
+      <BumpsChart data={event} measureText={measureText} />
+    );
+    const { width, height } = layoutChart(event, { measureText });
+
+    expect(markup).toContain(`viewBox="0 0 ${width} ${height}"`);
+  });
 });

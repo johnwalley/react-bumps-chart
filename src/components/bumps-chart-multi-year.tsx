@@ -7,17 +7,29 @@ import { Join } from './join/join';
 import { Label } from './label/label';
 import { Numbers } from './numbers/numbers';
 import { Stripes } from './stripes/stripes';
+import classNames from 'classnames';
 import classes from './bumps-chart.module.css';
 import { layoutChartMultiYear } from '@/utils/layout-chart-multi-year';
-import { scale } from '@/utils/layout-chart';
+import { MeasureText, scale } from '@/utils/layout-chart';
 import { useMeasureText } from '@/utils/measure-text';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 namespace BumpsChartMultiYear {
   export type Props = {
     data: Event[];
     blades?: boolean;
     spoons?: boolean;
+    /**
+     * Returns the width of a crew name or position at the chart's font size
+     * (12.8), in chart units. Used on the server and in the browser alike, so
+     * a chart laid out with it never changes shape on hydration. It must
+     * match the font the chart draws in, which is unkerned when this is given.
+     * Pass a stable function, such as one defined at module level: a new one
+     * each render lays the chart out again each render.
+     *
+     * Defaults to measuring with the DOM, which can only estimate on the server.
+     */
+    measureText?: MeasureText;
   };
 }
 
@@ -26,8 +38,10 @@ export type BumpsChartMultiYearProps = BumpsChartMultiYear.Props;
 export const BumpsChartMultiYear = ({
   data,
   blades = false,
+  measureText: measureTextProp,
 }: BumpsChartMultiYear.Props) => {
-  const measureText = useMeasureText();
+  const ref = useRef<SVGSVGElement>(null);
+  const measureText = useMeasureText(ref, measureTextProp);
 
   const layout = useMemo(
     () => layoutChartMultiYear(data, { measureText, blades }),
@@ -36,7 +50,10 @@ export const BumpsChartMultiYear = ({
 
   return (
     <svg
-      className={classes.root}
+      ref={ref}
+      className={classNames(classes.root, {
+        [classes.unkerned]: measureTextProp,
+      })}
       viewBox={`0 0 ${layout.width} ${layout.height}`}
       preserveAspectRatio="none"
     >
