@@ -21,7 +21,7 @@ export const Crews = ({ align, crews, scale, x }: NumbersProps) => {
       style={{ fontSize: 12.8 }}
     >
       {crews.map((crew, index) => (
-        <Text key={index} y={(index + 0.5) * scale}>
+        <Text key={index} y={(crew.y + 0.5) * scale}>
           {crew.crew}
         </Text>
       ))}

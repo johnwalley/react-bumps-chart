@@ -2,7 +2,7 @@ import classes from './numbers.module.css';
 
 namespace Numbers {
   export type Props = {
-    align: string;
+    align: 'start' | 'middle' | 'end';
     numbers: string[];
     scale: number;
     x: number;

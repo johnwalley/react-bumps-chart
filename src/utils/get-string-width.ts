@@ -1,6 +1,6 @@
-import memoize from 'lodash/memoize';
-
 const MEASUREMENT_ELEMENT_ID = '__react_svg_text_measurement_id';
+
+const cache = new Map<string, number>();
 
 function getStringWidth(str: string, style?: object) {
   try {
@@ -30,7 +30,24 @@ function getStringWidth(str: string, style?: object) {
   }
 }
 
-export default memoize(
-  getStringWidth,
-  (str, style) => `${str}_${JSON.stringify(style)}`
-);
+/** Forget measured widths, e.g. once a web font has loaded. */
+export function clearStringWidthCache() {
+  cache.clear();
+}
+
+export default function memoizedGetStringWidth(str: string, style?: object) {
+  const key = `${str}_${JSON.stringify(style)}`;
+  const cached = cache.get(key);
+
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  const width = getStringWidth(str, style);
+
+  if (width !== null) {
+    cache.set(key, width);
+  }
+
+  return width;
+}

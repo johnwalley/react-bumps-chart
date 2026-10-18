@@ -3,7 +3,7 @@ import classes from './crews.module.css';
 
 namespace Crews {
   export type Props = {
-    align: string;
+    align: 'start' | 'middle' | 'end';
     crews: {
       crew: string | null;
       blades: boolean;
