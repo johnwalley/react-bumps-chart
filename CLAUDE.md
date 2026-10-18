@@ -11,7 +11,7 @@ React Bumps Chart is a React library for rendering rowing bumps charts - special
 - `npm run storybook` - Start Storybook dev server (port 6006) for development
 - `npm run build` - Compile TypeScript and build with Vite (outputs to `dist/`); always in production mode, whatever `NODE_ENV` says
 - `npm run check-exports` - Check the packed package's types resolve for Node16 and bundlers with arethetypeswrong (needs a build first)
-- `npm test` - Run Vitest tests (`test/`; `*.client.test.tsx` files run in jsdom); `npx vitest run test/calculate-join.test.ts` for one file, `-u` to update snapshots
+- `npm test` - Run Vitest tests (`test/`, in Node; a file that needs a DOM starts with `// @vitest-environment jsdom`, like `measure-text.client.test.tsx`); `npx vitest run test/calculate-join.test.ts` for one file, `-u` to update snapshots
 - `npm run build-storybook` - Build static Storybook
 - `npm run release` - Create release using standard-version
 
@@ -61,7 +61,7 @@ stories/                # Storybook stories with test data
 - **Namespace pattern for Props**: Components use TypeScript namespaces (e.g., `BumpsChart.Props`)
 - **CSS Modules**: Component-scoped styling with `.module.css` files
 - **Path aliases**: `@/components` and `@/utils` configured in Vite/TypeScript
-- **Shared layout**: SVG and PDF components only render. All positions come from `layoutChart` / `layoutChartMultiYear`, which take a `measureText` function: `useMeasureText()` for SVG (the `measureText` prop if given, on the server and in the browser, with chart text unkerned to match; otherwise estimates on the server, then the DOM after mount in the chart's own `--react-bumps-chart-font-family`, re-measured when fonts load) and `measurePdfText` (Helvetica metrics) for PDF. Change layout there, not in components
+- **Shared layout**: SVG and PDF components only render. All positions come from `layoutChart` / `layoutChartMultiYear`, which take a `measureText` function: `useMeasureText()` for SVG (the `measureText` prop if given, on the server and in the browser, with chart text unkerned to match; otherwise estimates on the server, then the DOM after mount in the font the chart's text is drawn in, re-measured when fonts load) and `measurePdfText` (Helvetica metrics) for PDF. Change layout there, not in components
 - **Memoization**: `get-string-width.ts` caches DOM measurements (cleared when web fonts load), `useMemo` for layouts
 - **Coordinate system**: Canvas-based positioning with scale factor (default: 16)
 
