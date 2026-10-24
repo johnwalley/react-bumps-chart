@@ -1,5 +1,8 @@
 # React Bumps Chart
 
+> [!IMPORTANT]
+> `react-bumps-chart` is now developed in [johnwalley/rowing](https://github.com/johnwalley/rowing/tree/main/packages/react-bumps-chart), alongside the other rowing packages. This repository is archived: open issues and pull requests there. The npm package is the same; 1.14.1 and later are published from the new repository.
+
 React Bumps Chart is a library for drawing rowing bumps charts.
 
 [![Version](https://img.shields.io/npm/v/react-bumps-chart.svg?style=flat-square)](https://www.npmjs.com/package/react-bumps-chart)
